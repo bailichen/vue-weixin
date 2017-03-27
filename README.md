@@ -71,6 +71,6 @@
 |-- favicon.ico                      // 页面左上角小图标
 |-- index.html                       // 入口html文件
 |-- package.json                     // 项目及工具的依赖配置文件
-|-- README.md                        // 说明
+|-- README.md                        // 说明de
 ```
 
