@@ -1,5 +1,5 @@
 {
-  "name": "elm",
+  "name": "weixin",
   "version": "1.0.0",
   "description": "vue2-elm",
   "author": "maguohua <1264889788@qq.com>",
@@ -14,6 +14,7 @@
     "vuex": "^2.0.0"
   },
   "devDependencies": {
+    "FontAwesome-webpack": "0.0.2",
     "autoprefixer": "^6.4.0",
     "autoprefixer-loader": "^3.2.0",
     "babel-core": "^6.0.0",
@@ -29,6 +30,7 @@
     "express": "^4.13.3",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
+    "font-awesome": "4.7.0",
     "function-bind": "^1.0.2",
     "html-webpack-plugin": "^2.8.1",
     "http-proxy-middleware": "^0.17.2",
