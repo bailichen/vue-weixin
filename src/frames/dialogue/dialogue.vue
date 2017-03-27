@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<head-top>
-			<span slot="title">fsdf</span>	
+			<span slot="title">fsdffdgghhtr</span>	
 		</head-top>
 	</section>	
 </template>
