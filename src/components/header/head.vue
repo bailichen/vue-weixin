@@ -32,4 +32,7 @@
 </script>
 <style lang="scss" scoped>
 	@import "../../style/public";
+	header{
+		width:100%;
+	}
 </style>

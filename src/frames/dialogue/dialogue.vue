@@ -33,6 +33,5 @@
 </script>
 <style lang="scss" scoped>
 	@import "../../style/public";
-	@import "../../style/font-awesome";
 	
 </style>
