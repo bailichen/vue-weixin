@@ -8,7 +8,7 @@ body, div, span, header, footer, nav, section, aside, article, ul, dl, dt, dd, l
     color: #666;
     box-sizing: border-box;
     font-weight: lighter;
-    font-family: "Microsoft Yahei",sans-serif;
+    font-family: Arial,'Hiragino Sans GB',Microsoft Yahei,Helvetica Neue,Helvetica,sans-serif !important;
     -webkit-tap-highlight-color:transparent;
     -webkit-font-smoothing: antialiased;
     &:focus {
@@ -68,4 +68,55 @@ html,body{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+//色值
+$black: #373b3e;
+$sc:#2c2b30;
+$littlesc:#969a9d;
+
+//定位上下左右居中
+@mixin center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);    
+}
+//上下居中
+@mixin topcenter{
+    position: absolute;
+    top:50%;
+    transform:translateY(-50%);
+}
+//左右居中
+@mixin leftcenter{
+    position: absolute;
+    left:50%;
+    transform:translateX(-50%);
+}
+//flex布局
+@mixin justify($value:space-between){
+    display: flex;
+    justify-content: space-between;
+}
+
+//上下居中
+@mixin align($type:center){
+    display: flex;
+    align-items: center;
+}
+
+//字体大小，颜色
+@mixin sizeColor($size, $color){
+    font-size: $size;
+    color: $color;
+}
+//字体大小、行高、字体
+@mixin fontStyle($size, $line-height, $family: 'Microsoft YaHei'){
+    font:#{$size}/#{$line-height} $family;
+}
+//宽高
+@mixin widthHeight($width,$height){
+    width: $width;
+    height: $height;
 }

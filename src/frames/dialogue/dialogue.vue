@@ -1,13 +1,14 @@
 <template>
 	<section>
-		<head-top>
-			<span slot="title">fsdffdgghhtr</span>	
-		</head-top>
+		<head-top logo-part="true" search-part="true" add="true"></head-top>
+		对话
+		<foot-guide></foot-guide>
 	</section>	
 </template>
 
 <script>
 	import headTop from '../../components/header/head'
+	import footGuide from '../../components/footer/foot'
 	export default{
 		data(){
 			return{
@@ -21,7 +22,8 @@
 			
 		},
 		components:{
-			headTop
+			headTop,
+			footGuide
 		},
 		computed:{
 			

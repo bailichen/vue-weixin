@@ -1,14 +1,14 @@
 <template>
-	<ul>
-	  	<router-link tag='li' to='home'>微信</router-link>
-	  	<router-link tag='li' to='city'>通讯录</router-link>
-	  	<router-link tag='li' to='msite'>发现</router-link>
-	  	<router-link tag='li' to='shop'>我</router-link>
-	</ul>
+	<section>
+		<head-top logo-part="true" search-part="true" add="true"></head-top>
+		通讯录
+		<foot-guide></foot-guide>
+	</section>	
 </template>
 
 <script>
-
+	import headTop from '../../components/header/head'
+	import footGuide from '../../components/footer/foot'
 	export default{
 		data(){
 			return{
@@ -19,13 +19,14 @@
 
 		},
 		mounted(){
-
+			
 		},
 		components:{
-
+			headTop,
+			footGuide
 		},
 		computed:{
-
+			
 		},
 		methods:{
 
@@ -33,6 +34,6 @@
 	}
 </script>
 <style lang="scss" scoped>
-
+	@import "../../style/public";
 	
 </style>
