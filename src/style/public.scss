@@ -74,6 +74,7 @@ html,body{
 $black: #373b3e;
 $sc:#2c2b30;
 $littlesc:#969a9d;
+$bgcolor:#ebebeb;
 
 //定位上下左右居中
 @mixin center{
@@ -97,7 +98,7 @@ $littlesc:#969a9d;
 //flex布局
 @mixin justify($value:space-between){
     display: flex;
-    justify-content: space-between;
+    justify-content: $value;
 }
 
 //上下居中

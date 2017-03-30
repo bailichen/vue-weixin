@@ -96,7 +96,7 @@
 	.footer{
 		position: fixed;
 		bottom:0;
-		@include widthHeight(100%, 2.2826666667rem);
+		@include widthHeight(100%, auto);
 		background:#fcfcfc;
 		border-top:1px solid #d4d4d4;
 		ul{

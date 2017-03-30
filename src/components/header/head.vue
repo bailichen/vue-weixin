@@ -8,10 +8,67 @@
 				</svg>
 			</router-link>
 		</section>
-		<section class="addPart" v-if="add">
+		<section class="addPart" v-if="add" @click="controlShow">
 			<svg class="icon-search">
 			    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#add"></use>
-			</svg>
+			</svg>	
+		</section>
+		<section class="selectpart" v-show="addthing">
+			<div class="cover" @click="controlhide"></div>
+			<div class="selectlist">
+				<ul>
+					<router-link to='' tag="li" class="selectpart_li">
+						<section class="selectsvg">
+							<svg fill="#fff"> 
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#wxspeak"></use>
+							</svg>
+						</section>
+						<section class="selectext">
+							发起群聊
+						</section>
+					</router-link>
+					<router-link to='' tag="li" class="selectpart_li">
+						<section class="selectsvg">
+							<svg fill="#fff"> 
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#addfriend"></use>
+							</svg>
+						</section>
+						<section class="selectext">
+							添加朋友
+						</section>
+					</router-link>
+					<router-link to='' tag="li" class="selectpart_li">
+						<section class="selectsvg">
+							<svg fill="#fff"> 
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#onesweep"></use>
+							</svg>
+						</section>
+						<section class="selectext">
+							扫一扫
+						</section>
+					</router-link>
+					<router-link to='' tag="li" class="selectpart_li">
+						<section class="selectsvg">
+							<svg fill="#fff"> 
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#receipt"></use>
+							</svg>
+						</section>
+						<section class="selectext">
+							收付款
+						</section>
+					</router-link>
+					<router-link to='' tag="li" class="selectpart_li">
+						<section class="selectsvg">
+							<svg fill="#fff"> 
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#help"></use>
+							</svg>
+						</section>
+						<section class="selectext">
+							帮助与反馈
+						</section>
+					</router-link>
+				</ul>
+			</div>
 		</section>
 	</header>	
 </template>
@@ -21,7 +78,7 @@
 	export default{
 		data(){
 			return{
-				
+				addthing:false,
 			}
 		},
 		props: ['logoPart', 'searchPart', 'add'],
@@ -38,7 +95,12 @@
 
 		},
 		methods:{
-
+			controlShow(){
+				this.addthing=true;
+			},
+			controlhide(){
+				this.addthing=false;
+			}
 		}
 	}
 </script>
@@ -73,6 +135,50 @@
 			svg{
 				@include widthHeight(100%,100%);
 			}
+			
+		}
+		.selectpart{
+			position: fixed;
+			z-index:2;
+			width:100%;
+			height:100%;
+			top:0;
+			right:0;
+			.cover{
+				position: fixed;
+				width:100%;
+				height:100%;
+				background:#000;
+				opacity: 0;
+			}
+			.selectlist{
+				position: absolute;
+				z-index:100;
+				top:2.06933rem;
+				right:0.4693333333rem;
+				width:8.5333333333rem;
+				background:#373b3e;
+				ul{
+					width:8.5333333333rem;
+					.selectpart_li{
+						@include widthHeight(100%,1.9626666667rem);
+						border-bottom:1px solid #2f3336;
+						@include justify(flex-start);
+						align-items:center;
+						.selectsvg{
+							@include widthHeight(0.96rem,0.9386666667rem);
+							margin:0 0.7466666667rem;
+							svg{
+								@include widthHeight(100%,100%);
+							}
+						}
+						.selectext{
+							@include sizeColor(0.64rem,#fff);
+						}
+					}
+				}
+			}
+			
 		}
 	}
 </style>
