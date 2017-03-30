@@ -121,3 +121,9 @@ $bgcolor:#ebebeb;
     width: $width;
     height: $height;
 }
+
+@mixin bg($url){
+    background-image: url($url);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}

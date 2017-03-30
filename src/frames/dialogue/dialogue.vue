@@ -18,7 +18,9 @@
 			<ul>
 				<li>
 					<div class="imgwipe">
-						<i class="redicon_num" v-if="newinfor">1</i>
+						<i class="redicon_num" v-if="newinfor">
+						1
+						</i>
 						<i class="redicon" v-if="newtext"></i>
 						<div class="imgstyle">
 							<img src="../../images/cangdu.jpg" alt="">
@@ -69,7 +71,7 @@
 	export default{
 		data(){
 			return{
-				notice:true,		//电脑登录是否静音
+				notice:false,		//电脑登录是否静音
 				newinfor:false,		//未静音时消息提醒
 				newtext:false,		//静音时消息提醒
 
@@ -145,15 +147,14 @@
 							line-height:0.8806666667rem;
 							padding:0 4px;
 							text-align:center;
-							background:#ff333b;
-							border-radius:50%;
+							@include bg('../../images/warn.png');
 						}
 						.redicon{
 							position: absolute;
 							right:-0.21rem;
 							top:-0.21rem;
 							@include widthHeight(0.4266666667rem,0.4266666667rem);
-							background:#ff333b;
+							@include bg('../../images/warn.png');
 							border-radius:50%;
 						}
 						.imgstyle{
