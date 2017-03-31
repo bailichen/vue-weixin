@@ -1,6 +1,6 @@
 
 ### 利用vue2+vuex写一个模仿微信app的单页面应用
-使用FontAwesome字体图标
+使用SVG格式构建页面icon图
 
 # 目标功能
 - [ ] 微信 
