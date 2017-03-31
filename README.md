@@ -7,7 +7,7 @@
 - [ ] 通讯录 
 - [ ] 发现 
 - [ ] 我
-- [ ] widows 微信已登录
+- [x] widows 微信已登录
 - [ ] 搜索页
 - [ ] 对话页、对话功能
 - [ ] 朋友圈
@@ -42,6 +42,8 @@
 |       |-- addressbook              // 通讯录
 |       |-- find                     // 发现
 |       |-- me                     	 // 我
+|       |-- computer                 // pc端登录
+|       |-- transfer                 // 向pc端传递文件
 |
 |   |-- plugins                      // 引用的插件
 |
@@ -49,7 +51,7 @@
 |
 |   |-- service                      // 数据交互统一调配
 |
-|   |-- store                        // vuex的状态管理
+|   |-- vuex                        // vuex的状态管理
 |       |-- modules                  // 加载各种store模块
 |       |-- action.js                // 配置根actions
 |       |-- getters.js               // 配置根getters
@@ -58,8 +60,7 @@
 |       |-- mutations.js             // 配置根mutations
 |
 |   |-- style                        // 各种样式文件
-|       |-- public.scss              // 公共样式文件
-|       |-- mixin.scss               // 样式配置文件
+|       |-- public.scss              // 公共样式文件、样式配置文件
 |
 |   |-- App.vue                      // 页面入口文件
 |

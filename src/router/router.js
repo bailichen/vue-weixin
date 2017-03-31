@@ -5,6 +5,7 @@ const addressbook = r => require.ensure([], () => r(require('../frames/addressbo
 const find = r => require.ensure([], () => r(require('../frames/find/find')), 'find')
 const me = r => require.ensure([], () => r(require('../frames/me/me')), 'me')
 const computer = r => require.ensure([], () => r(require('../frames/computer/computer')), 'computer')
+const transfer = r => require.ensure([], () => r(require('../frames/transfer/transfer')), 'transfer')
 
 export default[{
 	path:'/',
@@ -16,5 +17,6 @@ export default[{
 		{path: '/find', component: find},	//发现
 		{path: '/me', component: me},	//我
 		{path: '/computer', component: computer},	//电脑登录
+		{path: '/transfer', component: transfer},	//文件传送助手
 	]
 }]

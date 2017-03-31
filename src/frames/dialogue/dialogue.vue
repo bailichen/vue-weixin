@@ -3,14 +3,14 @@
 		<!-- 头部 -->
 		<head-top logo-part="true" search-part="true" add="true"></head-top>
 		<!-- 电脑登录 -->
-		<section class="computer">
+		<section class="computer" v-if="computershow">
 			<router-link to='/computer' class="computer_link">
 				<section class="computer_icon">
 					<svg>
 						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#computer"></use>
 					</svg>
 				</section>
-				<section class="computer_text">Windows 微信已登录<span v-if="notice">， 手机通知已关闭</span></section>
+				<section class="computer_text">Windows 微信已登录<span v-if="mute">， 手机通知已关闭</span></section>
 			</router-link>
 		</section>
 		<!-- 对话列表 -->
@@ -68,12 +68,13 @@
 <script>
 	import headTop from '../../components/header/head'
 	import footGuide from '../../components/footer/foot'
+	import {mapState} from 'vuex'
 	export default{
 		data(){
 			return{
-				notice:false,		//电脑登录是否静音
 				newinfor:false,		//未静音时消息提醒
 				newtext:false,		//静音时消息提醒
+
 
 			}
 		},
@@ -81,14 +82,16 @@
 
 		},
 		mounted(){
-			
+
 		},
 		components:{
 			headTop,
 			footGuide
 		},
 		computed:{
-			
+			...mapState([
+				'mute','computershow'
+			])
 		},
 		methods:{
 
@@ -107,12 +110,12 @@
 			.computer_link{
 				@include justify(flex-start);
 				.computer_icon{
-					@include widthHeight(1.4933333333rem, 1.9626666667rem);
+					@include widthHeight(1.2933333333rem, 1.9626666667rem);
 					margin-left:1.0666666667rem;
 					margin-right:0.96rem;
 					@include align;
 					svg{
-						@include widthHeight(100%,1.152rem);
+						@include widthHeight(100%,1rem);
 					}
 				}
 				.computer_text{
