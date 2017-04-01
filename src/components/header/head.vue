@@ -110,7 +110,7 @@
 		@include widthHeight(100%,2.06933rem);
 		background:$black;
 		color:#fff;
-		position: relative;
+		position: fixed;
 		.logoPart{
 			@include topcenter;
 			@include sizeColor(0.704rem,#fff);
