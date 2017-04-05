@@ -17,7 +17,7 @@
 			<!-- 对话列表 -->
 			<section class="conversation">
 				<ul>
-					<li>
+					<li @click="conversation('/dialogue/conversation')">
 						<div class="imgwipe">
 							<i class="redicon_num" v-if="newinfor">
 							1
@@ -61,7 +61,7 @@
 		</div>
 		<!-- 底部导航 -->
 		<foot-guide></foot-guide>
-		<transition name="router-slide">
+		<transition name="router-show">
 		    <router-view></router-view>
 		</transition>
 	</section>	
@@ -96,12 +96,20 @@
 			])
 		},
 		methods:{
-
+			conversation(path){
+				this.$router.push(path)
+			}
 		}
 	}
 </script>
 <style lang="scss" scoped>
 	@import "../../style/public";
+	.router-show-enter-active,.router-show-leave-active{
+		transition: all .4s;
+	}
+	.router-show-enter,.router-show-leave-active{
+		transform:translateX(100%)
+	}
 	.dialogue{
 		width:100%;
 		background:#fff;

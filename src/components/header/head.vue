@@ -1,6 +1,21 @@
 <template>
 	<header>
-		<section class="logoPart" v-if="logoPart">微信</section>
+		<section class="logoPart" v-if="logoPart">
+			微信
+		</section>
+		<section class="logoPart" v-if="crossover">
+			<section class="goback" @click="$router.go(-1)">
+				<svg fill="#fff"> 
+					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#back"></use>
+				</svg>
+			</section>
+			<section class="wall">|</section>
+			<section class="covers_name">
+				<span class="ellipsis">
+					{{crossover}}
+				</span>
+			</section>
+		</section>
 		<section class="searchPart" v-if="searchPart">
 			<router-link to='' class="searchlink">
 				<svg class="icon-search">
@@ -13,6 +28,7 @@
 			    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#add"></use>
 			</svg>	
 		</section>
+		
 		<section class="selectpart" v-show="addthing">
 			<div class="cover" @click="controlhide"></div>
 			<div class="selectlist">
@@ -70,6 +86,7 @@
 				</ul>
 			</div>
 		</section>
+		<slot name='person'></slot>
 	</header>	
 </template>
 
@@ -81,7 +98,7 @@
 				addthing:false,
 			}
 		},
-		props: ['logoPart', 'searchPart', 'add'],
+		props: ['logoPart', 'crossover', 'searchPart', 'add', 'person'],
 		created(){
 
 		},
@@ -115,6 +132,26 @@
 			@include topcenter;
 			@include sizeColor(0.704rem,#fff);
 			left:0.5973333333rem;
+			@include justify(flex-start);
+			align-items:center;
+			.goback{
+				@include widthHeight(1rem,1rem);
+				svg{
+					@include widthHeight(100%,100%);
+				}
+			}
+			.wall{
+				margin:0 0.5333333333rem;
+				@include sizeColor(1.0666666667rem,#2e3235);
+			}
+			.covers_name{
+				
+				span{
+					@include sizeColor(0.704rem,#fff);
+					display:block;
+					width:9.5rem;
+				}
+			}
 		}
 		.searchPart{
 			@include topcenter;
