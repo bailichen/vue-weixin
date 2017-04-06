@@ -29,6 +29,7 @@
 |   |-- components                   // 组件
 |       |-- footer                   // 底部微信导航
 |       |-- header                 	 // 头部公共组件
+|       |-- findandMe                // 发现和我 共同的模块的列表
 |
 |   |-- config                       // 基本配置
 |       |-- env.js                   // 环境切换配置
@@ -38,7 +39,8 @@
 |   |-- images                       // 公共图片
 |
 |   |-- frames                        // 页面组件
-|       |-- dialogue                 // 微信首页
+|       |-- dialogue                 // 微信首页(对话列表页)
+|			|--conversation			 //	对话详情页
 |       |-- addressbook              // 通讯录
 |       |-- find                     // 发现
 |       |-- me                     	 // 我
