@@ -215,7 +215,7 @@
 					</svg>
 				</div>
 				<div>
-					<input type="text" v-model="inputmessage" @input="whatInput" :class="{lightborder : light}">
+					<input type="text" v-model="inputmessage" @input="whatInput" @click="bottomHide" :class="{lightborder : light}">
 				</div>
 				<div>
 					<svg>
@@ -224,7 +224,7 @@
 				</div>
 				<div>
 					<div class="send" v-if="light">
-						发送
+						<span>发送</span>
 					</div>
 					<svg v-else @click="bottomShow">
 						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#addthing"></use>
@@ -366,9 +366,8 @@
 				//mouseWheel: true,  //侦听鼠标滚轮事件
 				//fadeScrollbars: true, //滚动条淡入淡出方式
 				probeType:2,//滚动条的灵敏性设置
-				zoom:true,
+				click:true,
 				bounce:true,//是否反弹效果
-				vScroll:true,
 			});	
 			//初始化swiper
 			new Swiper('.swiper-container', {
@@ -387,15 +386,16 @@
 			whatInput(){
 				if(this.inputmessage){
 					this.light=true;
+
 				}else{
 					this.light=false;
 				}
 			},
+
 			bottomShow(){
 				this.clickmore=true;
 			},
 			bottomHide(){
-				console.log(222)
 				this.clickmore=false;
 			}
 		}
@@ -434,13 +434,13 @@
 		padding-top: 2.06933rem;
 		.coversationlist{
 			height: 24.3rem;
-			overflow: hidden;
 			position: relative;
 			padding:0 .32rem;
 			margin:0 auto;
 			ul{
 				position: absolute;
 				padding-top:.4rem;
+				padding-bottom:4rem;
 				width:15.4rem;
 				top:0;
 				li{
@@ -531,7 +531,7 @@
 					border:0;
 					background:none;
 					@include sizeColor(0.64rem,#000);
-					border-bottom:2px solid #e0e0e0;
+					border-bottom:1px solid #e0e0e0;
 				}
 				.lightborder{
 					border-color:#19ad17;
@@ -542,10 +542,14 @@
 				.send{
 					width:1.8133333333rem;
 					background:#19ad17;
-					@include sizeColor(0.5973333333rem,#fff);
-					line-height:1.3653333333rem;
-					text-align:center;
+					height:1.3653333333rem;
 					border-radius:5px;
+					@include justify(center);
+					align-items:center;
+					span{
+						display:block;
+						@include sizeColor(0.5973333333rem,#fff);
+					}
 				}
 				.send:active{
 					background:#49eb47
@@ -598,6 +602,6 @@
 	}
 	.footshow{
 		bottom:0;
-		transition: all .4s;
+		transition: all .2s;
 	}
 </style>
