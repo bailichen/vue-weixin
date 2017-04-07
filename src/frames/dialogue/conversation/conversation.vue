@@ -1,6 +1,6 @@
 <template>
 	<section class="child_page">
-		<head-top crossover="我的名字" person="true">
+		<head-top crossover="我的名字">
 			<section class="coversPart" slot="person">
 				<router-link to='' class="person_link">
 					<svg fill="#fff" class="icon-search">
@@ -491,7 +491,7 @@
 							.whatsay_text{
 								margin-right:0.6399997rem;
 								margin-left:0;
-								background:#9DCB5D;
+								background:#9fe658;
 							}
 						}
 					}
@@ -541,8 +541,9 @@
 				margin-right:0;
 				.send{
 					width:1.8133333333rem;
-					background:#19ad17;
+					background:#16af17;
 					height:1.3653333333rem;
+					padding:.682666rem 0;
 					border-radius:5px;
 					@include justify(center);
 					align-items:center;
@@ -552,7 +553,7 @@
 					}
 				}
 				.send:active{
-					background:#49eb47
+					background:#33c034;
 				}
 			}
 		}

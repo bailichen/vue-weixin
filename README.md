@@ -5,8 +5,9 @@
 # 目标功能
 - [x] 微信 
 - [ ] 通讯录 
-- [ ] 发现 
-- [ ] 我
+- [x] 发现 
+- [x] 我
+- [x] 设置
 - [x] widows 微信已登录
 - [ ] 搜索页
 - [ ] 对话页、对话功能
@@ -44,6 +45,16 @@
 |       |-- addressbook              // 通讯录
 |       |-- find                     // 发现
 |       |-- me                     	 // 我
+|       	|-- settings             // 设置
+|       		|-- detailset             
+|       			|-- newmessage        // 新消息提醒
+|       			|-- disturbance       // 勿扰模式
+|       			|-- chat       			// 聊天
+|       			|-- privacy       		// 隐私
+|       			|-- currency      		// 通用
+|       			|-- aboutwc       		// 关于微信
+|       			|-- help       			// 帮助与反馈
+|       			|-- quit       			// 退出
 |       |-- computer                 // pc端登录
 |       |-- transfer                 // 向pc端传递文件
 |

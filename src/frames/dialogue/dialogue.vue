@@ -17,7 +17,7 @@
 			<!-- 对话列表 -->
 			<section class="conversation">
 				<ul>
-					<li @click="conversation('/dialogue/conversation')">
+					<router-link to="/dialogue/conversation" tag="li">
 						<div class="imgwipe">
 							<i class="redicon_num" v-if="newinfor">
 							1
@@ -36,14 +36,15 @@
 								好呀好呀
 							</div>
 						</div>
-					</li>
-					<li>
+					</router-link>
+					<router-link to="/dialogue/conversation" tag="li">
 						<div class="imgwipe">
 							<i class="redicon_num" v-if="newinfor">1</i>
 							<i class="redicon" v-if="newtext"></i>
 							<div class="imgstyle imgstyletwo">
 								<img src="../../images/cangdu.jpg" alt="">
 								<img src="../../images/yabao.jpg" alt="">
+								<img src="../../images/li.jpg" alt="">
 							</div>
 						</div>
 						<div class="infordetail">
@@ -55,7 +56,7 @@
 								好呀好呀
 							</div>
 						</div>
-					</li>
+					</router-link>
 				</ul>
 			</section>
 		</div>
@@ -96,9 +97,9 @@
 			])
 		},
 		methods:{
-			conversation(path){
-				this.$router.push(path)
-			}
+			// conversation(path){
+			// 	this.$router.push(path)
+			// }
 		}
 	}
 </script>

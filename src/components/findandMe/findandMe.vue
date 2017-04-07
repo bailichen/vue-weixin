@@ -101,7 +101,7 @@
 					</div>
 				</div>
 			</router-link>
-			<router-link to="" class="findlist">
+			<router-link :to="pathUrl ? '/me/settings' : '/dialogue/conversation'" class="findlist">
 				<div class="find_wipe">
 					<div class="findlist_left">
 						<section class="findlist_svg">
@@ -112,7 +112,6 @@
 						<section class="findlist_text">
 							<span v-if="pathUrl">设置</span>
 							<span v-else>小程序</span>
-							
 						</section>
 					</div>
 				</div>
