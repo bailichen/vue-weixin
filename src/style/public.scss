@@ -175,6 +175,7 @@ $bgcolor:#ebebeb;
   padding: 2px;
   -webkit-transition: all .4s ease;
   transition: all .4s ease;
+  
 }
 .tgl-light + .tgl-btn:after {
   border-radius: 50%;
@@ -184,4 +185,5 @@ $bgcolor:#ebebeb;
 }
 .tgl-light:checked + .tgl-btn {
   background: #1aad16;
+
 }
