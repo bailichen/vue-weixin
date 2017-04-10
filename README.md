@@ -20,7 +20,7 @@
 - [ ] 收藏
 - [ ] 我的钱包
 - [x] 设置
-
+- [x] 登录
 
 
 # 项目布局
@@ -58,8 +58,8 @@
 |       			|-- currency      		// 通用
 |       			|-- aboutwc       		// 关于微信
 |       			|-- help       			// 帮助与反馈
-|       			|-- quit       			// 退出
-|       |-- computer                 // pc端登录
+|       			|-- login       			// 登录
+|       |-- computer                 // pc端登录
 |       |-- transfer                 // 向pc端传递文件
 |
 |   |-- plugins                      // 引用的插件
