@@ -10,15 +10,16 @@
 				</svg>
 			</section>
 			<section class="wall">|</section>
-			<section class="covers_name">
+			<slot name='searchpart'></slot>
+			<section class="covers_name" v-if="$route.path.indexOf('search') == -1">
 				<span class="ellipsis">
 					{{crossover}}
 				</span>
 			</section>
 		</section>
 		<section class="searchPart" v-if="searchPart">
-			<router-link to='' class="searchlink">
-				<svg class="icon-search">
+			<router-link to='/search' class="searchlink">
+				<svg class="icon-search" fill="#fff">
 				    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search"></use>
 				</svg>
 			</router-link>
@@ -28,7 +29,7 @@
 			    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#add"></use>
 			</svg>	
 		</section>
-		
+		<!-- 下拉框 -->
 		<section class="selectpart" v-show="addthing">
 			<div class="cover" @click="controlhide"></div>
 			<div class="selectlist">
@@ -96,9 +97,10 @@
 		data(){
 			return{
 				addthing:false,
+				
 			}
 		},
-		props: ['logoPart', 'crossover', 'searchPart', 'add', 'person'],
+		props: ['logoPart', 'crossover', 'searchPart', 'add', 'person', "search"],
 		created(){
 
 		},
@@ -145,8 +147,8 @@
 				margin:0 0.5333333333rem;
 				@include sizeColor(1.0666666667rem,#2e3235);
 			}
+			
 			.covers_name{
-				
 				span{
 					@include sizeColor(0.704rem,#fff);
 					display:block;

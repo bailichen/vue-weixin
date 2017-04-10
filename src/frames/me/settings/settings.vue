@@ -23,10 +23,10 @@
 				<router-link to='/me/settings/aboutwc' tag="li">
 					关于微信
 				</router-link>
-				<router-link to='/me/settings/help' tag="li">
+				<!-- <router-link to='/me/settings/help' tag="li">
 					帮助与反馈
-				</router-link>
-				<router-link to='/me/settings/quit' tag="li">
+				</router-link> -->
+				<router-link to='/me/settings/login' tag="li">
 					退出
 				</router-link>
 			</ul>
