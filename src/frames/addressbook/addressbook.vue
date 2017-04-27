@@ -52,7 +52,7 @@
 					<li>
 						<h1>A</h1>
 						<ul>
-							<router-link to="" tag="li">
+							<router-link to="/addressbook/details" tag="li">
 								<div class="personlist_img">
 									<img src="../../images/chen.jpg" alt="">
 								</div>
@@ -77,6 +77,9 @@
 		</section>
 		
 		<foot-guide></foot-guide>
+		<transition name="router-show">
+		    <router-view></router-view>
+		</transition>
 	</section>	
 </template>
 
@@ -109,6 +112,13 @@
 </script>
 <style lang="scss" scoped>
 	@import "../../style/public";
+	.router-show-enter-active,.router-show-leave-active{
+		transition: all .4s;
+	}
+	.router-show-enter,.router-show-leave-active{
+		transform:translateX(100%)
+	}
+
 	.contacts{
 		width:100%;
 		background:#fff;

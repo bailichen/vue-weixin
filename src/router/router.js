@@ -3,6 +3,7 @@ import App from '../APP'
 const dialogue = r => require.ensure([], () => r(require('../frames/dialogue/dialogue')), 'dialogue')
 const conversation = r => require.ensure([], () => r(require('../frames/dialogue/conversation/conversation')), 'conversation')
 const addressbook = r => require.ensure([], () => r(require('../frames/addressbook/addressbook')), 'addressbook')
+const details = r => require.ensure([], () => r(require('../frames/addressbook/details/details')), 'details')
 const find = r => require.ensure([], () => r(require('../frames/find/find')), 'find')
 const me = r => require.ensure([], () => r(require('../frames/me/me')), 'me')
 const computer = r => require.ensure([], () => r(require('../frames/computer/computer')), 'computer')
@@ -30,7 +31,17 @@ export default[{
 				component: conversation,},		//对话详情页
 			],
 		},	
-		{path: '/addressbook', component: addressbook},	//通讯录
+		{
+			path: '/addressbook', 
+			component: addressbook,
+			children: [
+				{
+					path: '/addressbook/details',
+					component: details,
+				}
+			]
+
+		},	//通讯录
 		{path: '/find', component: find},	//发现
 		{path: '/search', component: search},	//发现
 		{path: '/me', component: me,
