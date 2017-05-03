@@ -49,31 +49,27 @@
 			</div>
 			<div class="contacts_bottom">
 				<ul class="contacts_bottom_ul">
-					<li>
-						<h1>A</h1>
+					<li v-for="(value, key, index) in manageaddress" :key="key">
+						<h1>{{key}}</h1>
 						<ul>
-							<router-link to="/addressbook/details" tag="li">
+							<router-link to="/addressbook/details" tag="li" v-for="item in value">
 								<div class="personlist_img">
-									<img src="../../images/chen.jpg" alt="">
+									<img :src="item.headurl" alt="">
 								</div>
 								<div class="personlist_name ellipsis">
-									百里辰
+									{{item.remarks ? item.remarks : item.petname}}
 								</div>
 							</router-link>
 						</ul>
 					</li>
 				</ul>
 				<section class="list_guide">
-					<dl>
-						<dd>A</dd>
-						<dd>B</dd>
-						<dd>C</dd>
-						<dd>D</dd>
+					<dl v-for="value in sortlist">
+						<dd>{{value}}</dd>
 					</dl>
 					<p>#</p>
 				</section>
 			</div>
-			
 		</section>
 		
 		<foot-guide></foot-guide>
@@ -84,16 +80,19 @@
 </template>
 
 <script>
-	import headTop from '../../components/header/head'
-	import footGuide from '../../components/footer/foot'
+	import headTop from 'src/components/header/head'
+	import footGuide from 'src/components/footer/foot'
+	import {contactList} from 'src/service/getData'
 	export default{
 		data(){
 			return{
-				
+				contactList:{},		//所有通讯录列表
 			}
 		},
 		created(){
-
+			contactList().then((res) => {
+				this.contactList=res;
+			})
 		},
 		mounted(){
 			
@@ -103,7 +102,26 @@
 			footGuide
 		},
 		computed:{
-			
+			manageaddress(){
+				let addresslist={};
+				for(let i=65; i <= 90; i++){
+					if(this.contactList[String.fromCharCode(i)]){
+						if((this.contactList[String.fromCharCode(i)].length)>0){
+							addresslist[String.fromCharCode(i)]=this.contactList[String.fromCharCode(i)];
+						}
+						
+					}
+				}
+				return addresslist
+
+			},
+			sortlist(){
+				let sortnumlist=[];
+				for(let i=65; i<= 90; i++){
+					sortnumlist.push(String.fromCharCode(i))
+				}
+				return sortnumlist
+			}
 		},
 		methods:{
 
@@ -151,6 +169,7 @@
 			}
 		}
 		.contacts_bottom{
+			margin-bottom:4rem;
 			.contacts_bottom_ul{
 				
 				li{
@@ -198,6 +217,7 @@
 				dl{
 					dd{
 						@include sizeColor(0.54rem,#585858);
+						text-align:center;
 					}
 				}
 				p{
