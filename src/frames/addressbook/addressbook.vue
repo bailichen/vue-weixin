@@ -2,7 +2,7 @@
 	<section>
 		<head-top logo-part="true" search-part="true" add="true"></head-top>
 		<!-- 联系人列表 -->
-		<section class="contacts">
+		<section class="contacts" ref="contactList">
 			<div class="contacts_top">
 				<ul>
 					<router-link to="" tag="li" class="contacts_li">
@@ -52,7 +52,7 @@
 					<li v-for="(value, key, index) in manageaddress" :key="key">
 						<h1>{{key}}</h1>
 						<ul>
-							<router-link to="/addressbook/details" tag="li" v-for="item in value">
+							<router-link to="/addressbook/details" tag="li" v-for="(item, index) in value" @click.native='detailMessage(item.wxid,item.headurl,item.remarks,item.petname,item.sdasd,item.gallery,item.district,item.source,item.sex)'>
 								<div class="personlist_img">
 									<img :src="item.headurl" alt="">
 								</div>
@@ -64,14 +64,15 @@
 					</li>
 				</ul>
 				<section class="list_guide">
-					<dl v-for="value in sortlist">
+					<dl v-for="(value, index) in sortlist" :key="index" @click="findPeople(index)">
 						<dd>{{value}}</dd>
 					</dl>
 					<p>#</p>
 				</section>
 			</div>
+
 		</section>
-		
+		<section class="peoplenum">{{peoplenum}}位联系人</section>
 		<foot-guide></foot-guide>
 		<transition name="router-show">
 		    <router-view></router-view>
@@ -83,13 +84,18 @@
 	import headTop from 'src/components/header/head'
 	import footGuide from 'src/components/footer/foot'
 	import {contactList} from 'src/service/getData'
+	import {mapMutations} from 'vuex'
 	export default{
 		data(){
 			return{
 				contactList:{},		//所有通讯录列表
+				peoplenum:null,		//通讯录人数
 			}
 		},
 		created(){
+			
+		},
+		beforeMount(){
 			contactList().then((res) => {
 				this.contactList=res;
 			})
@@ -108,12 +114,11 @@
 					if(this.contactList[String.fromCharCode(i)]){
 						if((this.contactList[String.fromCharCode(i)].length)>0){
 							addresslist[String.fromCharCode(i)]=this.contactList[String.fromCharCode(i)];
+							this.peoplenum += Number(this.contactList[String.fromCharCode(i)].length)
 						}
-						
 					}
 				}
 				return addresslist
-
 			},
 			sortlist(){
 				let sortnumlist=[];
@@ -124,7 +129,18 @@
 			}
 		},
 		methods:{
+			...mapMutations([
+			    'SAVE_MESSAGE'
+			]),
+			detailMessage(wxid,headurl,remarks,petname,sdasd,gallery,district,source,sex){
+				//判断备注是否存在 若不存在，就用昵称
+				let comment = '';
+				comment =  remarks ? remarks : petname;
+				this.SAVE_MESSAGE({headurl, comment, wxid, district, gallery, sdasd, source, sex})
+			},
+			findPeople(index){
 
+			}
 		}
 	}
 </script>
@@ -169,7 +185,7 @@
 			}
 		}
 		.contacts_bottom{
-			margin-bottom:4rem;
+			
 			.contacts_bottom_ul{
 				
 				li{
@@ -225,6 +241,11 @@
 				}
 			}
 		}
-		
+	}
+	.peoplenum{
+		padding-bottom:3rem;
+		text-align:center;
+		margin-top:.5rem;
+		@include sizeColor(0.6rem,#666);
 	}
 </style>

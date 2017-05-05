@@ -215,7 +215,7 @@
 					</svg>
 				</div>
 				<div>
-					<input type="text" v-model="inputmessage" @input="whatInput" @click="bottomHide" :class="{lightborder : light}">
+					<input type="text" v-model="inputmessage"  @input="whatInput" @click="inputBottomHide" :class="{lightborder : light}">
 				</div>
 				<div>
 					<svg>
@@ -362,11 +362,11 @@
 		mounted(){
 			//初始化IScroll
 			new IScroll('.coversationlist',{
+				click:true,
 				scrollbars:false,
 				//mouseWheel: true,  //侦听鼠标滚轮事件
 				//fadeScrollbars: true, //滚动条淡入淡出方式
 				probeType:2,//滚动条的灵敏性设置
-				click:true,
 				bounce:true,//是否反弹效果
 			});	
 			//初始化swiper
@@ -396,6 +396,10 @@
 				this.clickmore=true;
 			},
 			bottomHide(){
+				console.log(1)
+				this.clickmore=false;
+			},
+			inputBottomHide(){
 				this.clickmore=false;
 			}
 		}
@@ -523,11 +527,14 @@
 			div:nth-of-type(2){
 				margin-right:0.3413333333rem;
 				width:9.8rem;
+				height:1.152rem;
+				border-bottom:1px solid #e0e0e0;
 				input{
 					display:block;
 					width:9.8rem;
 					padding:0 0.4133333333rem;
 					line-height:1.152rem;
+					height:1.152rem;
 					border:0;
 					background:none;
 					@include sizeColor(0.64rem,#000);

@@ -1,2 +1,3 @@
 export const RECORD_MUTE = 'RECORD_MUTE'
 export const COMPUTER_SHOW = 'COMPUTER_SHOW'
+export const SAVE_MESSAGE = 'SAVE_MESSAGE'

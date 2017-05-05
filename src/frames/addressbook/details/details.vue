@@ -4,19 +4,19 @@
 		<div class="details">
 			<div class="details_li">
 				<div class="details_left">
-					<img src="../../../images/chen.jpg" alt="">
+					<img :src="headurl" alt="">
 				</div>
 				<div class="details_right">
 					<div class="details_right_top">
-						<span>百里辰</span>
+						<span>{{comment}}</span>
 						<div class="sexsvg">
 							<svg>
-								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#girl"></use>
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="sex == 0 ? '#boy' : '#girl' "></use>
 							</svg>
 						</div>
 					</div>
 					<div class="details_right_obt">
-						微信号：bailichen
+						微信号：{{wxid}}
 					</div>
 				</div>
 			</div>
@@ -31,7 +31,7 @@
 						地区
 					</div>
 					<div class="area_details_right">
-						埃及
+						{{district}}
 					</div>
 				</div>
 				<div class="person_photo">
@@ -40,14 +40,12 @@
 							个人相册
 						</div>
 						<div class="person_photo_right clear">
-							<img src="../../../images/chen.jpg" alt="">
-							<img src="../../../images/cangdu.jpg" alt="">
-							<img src="../../../images/hu.jpg" alt="">
+							<img :src="value" alt="" v-for="value in gallery">
 						</div>
 					</router-link>
 				</div>
 				<div class="details_person_more">
-					<router-link to='' class="clickmore">
+					<router-link to='/addressbook/details/more' class="clickmore">
 							更多
 					</router-link>
 				</div>
@@ -66,23 +64,26 @@
 
 <script>
 	import headTop from 'src/components/header/head'
+	import {mapState} from 'vuex'
 	export default{
 		data(){
 			return{
-				
+				gallery:[]		//个人相册
 			}
 		},
 		created(){
 
 		},
 		mounted(){
-			
+			this.gallery=this.gallery
 		},
 		components:{
 			headTop,
 		},
 		computed:{
-			
+			...mapState([
+			    'headurl', 'comment', 'wxid', 'district', 'gallery', 'sex',
+			]),
 		},
 		methods:{
 
@@ -124,6 +125,7 @@
 			.details_right{
 				.details_right_top{
 					@include justify(flex-start);
+					 align-items: center;
 					margin-top:0.256rem;
 					margin-bottom:0.4266666667rem;
 					span{
@@ -133,7 +135,7 @@
 					}
 					.sexsvg{
 						@include widthHeight(.64rem,.90rem);
-						@include align(center);
+						@include align(top);
 						svg{
 							@include widthHeight(100%,.64rem);
 						}

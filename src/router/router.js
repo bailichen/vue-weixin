@@ -4,6 +4,8 @@ const dialogue = r => require.ensure([], () => r(require('../frames/dialogue/dia
 const conversation = r => require.ensure([], () => r(require('../frames/dialogue/conversation/conversation')), 'conversation')
 const addressbook = r => require.ensure([], () => r(require('../frames/addressbook/addressbook')), 'addressbook')
 const details = r => require.ensure([], () => r(require('../frames/addressbook/details/details')), 'details')
+const more = r => require.ensure([], () => r(require('../frames/addressbook/details/more/more')), 'more')
+
 const find = r => require.ensure([], () => r(require('../frames/find/find')), 'find')
 const me = r => require.ensure([], () => r(require('../frames/me/me')), 'me')
 const computer = r => require.ensure([], () => r(require('../frames/computer/computer')), 'computer')
@@ -37,7 +39,13 @@ export default[{
 			children: [
 				{
 					path: '/addressbook/details',
-					component: details,
+					component: details,		//详细资料
+					children: [
+						{
+							path: '/addressbook/details/more',
+							component:more,		//更多
+						}
+					]
 				}
 			]
 

@@ -71,7 +71,7 @@
 |
 |   |-- service                      // 数据交互统一调配
 |       |-- search.js                 // 搜索的分类
-|       |-- contacts.js                 // 联系人列表
+|       |-- contacts.js                 // 联系人列表数据
 |
 |   |-- vuex                        // vuex的状态管理
 |       |-- modules                  // 加载各种store模块

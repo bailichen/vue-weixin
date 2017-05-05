@@ -17,19 +17,19 @@
 			<!-- 对话列表 -->
 			<section class="conversation">
 				<ul>
-					<router-link to="/dialogue/conversation" tag="li">
+					<router-link to="/dialogue/conversation" tag="li" v-for="item in dialoglist">
 						<div class="imgwipe">
 							<i class="redicon_num" v-if="newinfor">
 							1
 							</i>
 							<i class="redicon" v-if="newtext"></i>
 							<div class="imgstyle">
-								<img src="../../images/cangdu.jpg" alt="">
+								<img :src="item.headurl" alt="">
 							</div>
 						</div>
 						<div class="infordetail">
 							<div class="infordetail_top clear">
-								<span class="left ellipsis">苍都</span>
+								<span class="left ellipsis">{{item.remarks}}</span>
 								<span class="right">12:07</span>
 							</div>
 							<div class="infordetail_bot ellipsis">
@@ -37,7 +37,7 @@
 							</div>
 						</div>
 					</router-link>
-					<router-link to="/dialogue/conversation" tag="li">
+					<!-- <router-link to="/dialogue/conversation" tag="li">
 						<div class="imgwipe">
 							<i class="redicon_num" v-if="newinfor">1</i>
 							<i class="redicon" v-if="newtext"></i>
@@ -56,7 +56,7 @@
 								好呀好呀
 							</div>
 						</div>
-					</router-link>
+					</router-link> -->
 				</ul>
 			</section>
 		</div>
@@ -71,18 +71,26 @@
 <script>
 	import headTop from '../../components/header/head'
 	import footGuide from '../../components/footer/foot'
+	import {dialog} from 'src/service/getData'
 	import {mapState} from 'vuex'
 	export default{
 		data(){
 			return{
-				newinfor:false,		//未静音时消息提醒
+				newinfor:true,		//未静音时消息提醒
 				newtext:false,		//静音时消息提醒
+				dialoglist:[]		//所有的对话列表
 
 
 			}
 		},
 		created(){
 
+		},
+		beforeMount(){
+			dialog().then((res) => {
+				console.log(res)
+				this.dialoglist=res;
+			})
 		},
 		mounted(){
 
