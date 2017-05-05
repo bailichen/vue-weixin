@@ -18,8 +18,10 @@
 - [ ] 朋友圈
 - [ ] 个人中心
 - [x] 详细资料
+- [x] 更多
 - [ ] 个人相册
 - [ ] 相册
+- [ ] 更多
 - [ ] 收藏
 - [ ] 我的钱包
 - [x] 设置
@@ -48,19 +50,21 @@
 |   |-- frames                       // 页面组件
 |       |-- search                 	 // 搜索页面
 |       |-- dialogue                 // 微信首页(对话列表页)
-|			|--conversation			 //	对话详情页
+|			|--conversation			           //	对话详情页
 |       |-- addressbook              // 通讯录
-|       |-- find                     // 发现
+|         |-- details                // 详细资料
+|           |-- more                 // 更多
+|       |-- find                     // 发现
 |       |-- me                     	 // 我
-|       	|-- settings             // 设置
+|       	|-- settings               // 设置
 |       		|-- detailset             
 |       			|-- newmessage        // 新消息提醒
 |       			|-- disturbance       // 勿扰模式
-|       			|-- chat       			// 聊天
+|       			|-- chat       		  	// 聊天
 |       			|-- privacy       		// 隐私
 |       			|-- currency      		// 通用
 |       			|-- aboutwc       		// 关于微信
-|       			|-- help       			// 帮助与反馈
+|       			|-- help       		  	// 帮助与反馈
 |       			|-- login       			// 登录
 |       |-- computer                 // pc端登录
 |       |-- transfer                 // 向pc端传递文件
@@ -71,9 +75,14 @@
 |
 |   |-- service                      // 数据交互统一调配
 |       |-- search.js                 // 搜索的分类
+<<<<<<< HEAD
 |       |-- contacts.js                 // 联系人列表数据
+=======
+|       |-- contacts.js              // 联系人列表
+|       |-- dialogist.js             // 对话列表
+>>>>>>> 0ba6d39ef0a3fbd92c35e83fac5a586f2771709d
 |
-|   |-- vuex                        // vuex的状态管理
+|   |-- vuex                         // vuex的状态管理
 |       |-- modules                  // 加载各种store模块
 |       |-- action.js                // 配置根actions
 |       |-- getters.js               // 配置根getters
