@@ -17,7 +17,7 @@
 			<!-- 对话列表 -->
 			<section class="conversation">
 				<ul>
-					<router-link to="/dialogue/conversation" tag="li" v-for="item in dialoglist" @click.native="refreshInfor(item)">
+					<router-link to="/dialogue/conversation" tag="li" v-for="item in contactList" @click.native="refreshInfor(item)">
 						<div class="imgwipe">
 							<i class="redicon_num" v-if="newinfor">
 							1
@@ -78,17 +78,17 @@
 			return{
 				newinfor:true,		//未静音时消息提醒
 				newtext:false,		//静音时消息提醒
-				dialoglist:[]		//所有的对话列表
+				dialogList:[]
 			}
 		},
 		created(){
-			this.getDialog();
+			//this.getDialog();
 		},
 		beforeMount(){
 			
 		},
-		mounted(){
-			this.dialoglist = this.contactList;
+		mounted(){	
+			this.dialogList = this.contactList
 		},
 		components:{
 			headTop,
@@ -105,12 +105,11 @@
                 'getDialog'
             ]),
             ...mapMutations([
-				"SAVE_DIALOGUE",
+				"SAVE_MESSAGE",
 			]),
             refreshInfor(item){
-            	this.infor = item;
-            	this.SAVE_DIALOGUE(this.infor);
-            	console.log(item.remarks)
+            	this.SAVE_MESSAGE(item)
+            	console.log(item.wxid)
             }
 		}
 	}
@@ -155,6 +154,7 @@
 			}
 			.conversation{
 				width:100%;
+				margin-bottom:2.4rem;
 				ul{
 					width:100%;
 					li{

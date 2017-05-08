@@ -4,7 +4,7 @@
 			微信
 		</section>
 		<section class="logoPart" v-if="crossover">
-			<section class="goback" @click="$router.go(-1)">
+			<section class="goback" @click="goBackThing">
 				<svg fill="#fff"> 
 					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#back"></use>
 				</svg>
@@ -119,6 +119,11 @@
 			},
 			controlhide(){
 				this.addthing=false;
+			},
+			goBackThing(){
+				this.$route.path == '/dialogue/conversation' ? this.$router.push('/dialogue') : window.history.go(-1);
+				
+
 			}
 		}
 	}

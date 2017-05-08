@@ -25,7 +25,11 @@ export default {
 	[SAVE_BEGINDIALOGUE](status, arrayData){
 		status.contactList = arrayData;
 	},
+	//增加对话人列表
 	[SAVE_DIALOGUE](status, obj){
 		status.contactList=[obj, ...status.contactList];
+		//数组去重
+		const newArr = new Set(status.contactList);
+		status.contactList = [...newArr];	
 	},
 }

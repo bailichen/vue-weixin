@@ -70,7 +70,6 @@
 					<p>#</p>
 				</section>
 			</div>
-
 		</section>
 		<section class="peoplenum">{{peoplenum}}位联系人</section>
 		<foot-guide></foot-guide>
@@ -108,6 +107,7 @@
 			footGuide
 		},
 		computed:{
+
 			manageaddress(){
 				let addresslist={};
 				for(let i=65; i <= 90; i++){
@@ -126,7 +126,9 @@
 					sortnumlist.push(String.fromCharCode(i))
 				}
 				return sortnumlist
-			}
+			},
+
+			
 		},
 		methods:{
 			...mapMutations([

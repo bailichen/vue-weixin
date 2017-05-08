@@ -50,8 +50,8 @@
 					</router-link>
 				</div>
 			</div> 
-			<div class="sendmessage"><!-- /dialogue/conversation -->
-				<router-link to='' class="send" @click.native="enterdDialogue">
+			<div class="sendmessage">
+				<router-link to='/dialogue/conversation' class="send" @click.native="enterdDialogue">
 					发消息
 				</router-link>
 			</div>
