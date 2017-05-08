@@ -1,6 +1,6 @@
 <template>
 	<section class="child_page">
-		<head-top crossover="我的名字">
+		<head-top :crossover="chatname">
 			<section class="coversPart" slot="person">
 				<router-link to='' class="person_link">
 					<svg fill="#fff" class="icon-search">
@@ -12,10 +12,10 @@
 		<section class="coversation">
 			<section class="coversationlist" @click="bottomHide">
 				<ul>
-					<li>
+					<li v-for="item in infor.Messageblob">
 						<!-- 对方 -->
 						<div class="other">
-							<img src="../../../images/cangdu.jpg" alt="">
+							<img :src="infor.headurl" alt="">
 							<div class="whatsay">
 								<div class="whatsay_svg">
 									<svg>
@@ -23,167 +23,7 @@
 									</svg>
 								</div>
 								<div class="whatsay_text">
-									我的名字我我的名字我我的名字我我的名字我我的名字我
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<!-- 自己 -->
-						<div class="other mysay">
-							<img src="../../../images/chen.jpg" alt="">
-							<div class="whatsay">
-								<div class="whatsay_svg">
-									<svg>
-										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#trigon-right"></use>
-									</svg>
-								</div>
-								<div class="whatsay_text">
-									好的
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<!-- 对方 -->
-						<div class="other">
-							<img src="../../../images/cangdu.jpg" alt="">
-							<div class="whatsay">
-								<div class="whatsay_svg">
-									<svg>
-										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#trigon-left"></use>
-									</svg>
-								</div>
-								<div class="whatsay_text">
-									我的名字我我的名字我我的名字我我的名字我我的名字我
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<!-- 自己 -->
-						<div class="other mysay">
-							<img src="../../../images/chen.jpg" alt="">
-							<div class="whatsay">
-								<div class="whatsay_svg">
-									<svg>
-										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#trigon-right"></use>
-									</svg>
-								</div>
-								<div class="whatsay_text">
-									好的
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<!-- 对方 -->
-						<div class="other">
-							<img src="../../../images/cangdu.jpg" alt="">
-							<div class="whatsay">
-								<div class="whatsay_svg">
-									<svg>
-										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#trigon-left"></use>
-									</svg>
-								</div>
-								<div class="whatsay_text">
-									我的名字我我的名字我我的名字我我的名字我我的名字我
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<!-- 自己 -->
-						<div class="other mysay">
-							<img src="../../../images/chen.jpg" alt="">
-							<div class="whatsay">
-								<div class="whatsay_svg">
-									<svg>
-										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#trigon-right"></use>
-									</svg>
-								</div>
-								<div class="whatsay_text">
-									好的
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<!-- 对方 -->
-						<div class="other">
-							<img src="../../../images/cangdu.jpg" alt="">
-							<div class="whatsay">
-								<div class="whatsay_svg">
-									<svg>
-										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#trigon-left"></use>
-									</svg>
-								</div>
-								<div class="whatsay_text">
-									我的名字我我的名字我我的名字我我的名字我我的名字我
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<!-- 自己 -->
-						<div class="other mysay">
-							<img src="../../../images/chen.jpg" alt="">
-							<div class="whatsay">
-								<div class="whatsay_svg">
-									<svg>
-										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#trigon-right"></use>
-									</svg>
-								</div>
-								<div class="whatsay_text">
-									好的
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<!-- 对方 -->
-						<div class="other">
-							<img src="../../../images/cangdu.jpg" alt="">
-							<div class="whatsay">
-								<div class="whatsay_svg">
-									<svg>
-										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#trigon-left"></use>
-									</svg>
-								</div>
-								<div class="whatsay_text">
-									我的名字我我的名字我我的名字我我的名字我我的名字我
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<!-- 自己 -->
-						<div class="other mysay">
-							<img src="../../../images/chen.jpg" alt="">
-							<div class="whatsay">
-								<div class="whatsay_svg">
-									<svg>
-										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#trigon-right"></use>
-									</svg>
-								</div>
-								<div class="whatsay_text">
-									好的
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<!-- 对方 -->
-						<div class="other">
-							<img src="../../../images/cangdu.jpg" alt="">
-							<div class="whatsay">
-								<div class="whatsay_svg">
-									<svg>
-										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#trigon-left"></use>
-									</svg>
-								</div>
-								<div class="whatsay_text">
-									我的名字我我的名字我我的名字我我的名字我我的名字我
+									{{item}}
 								</div>
 							</div>
 						</div>
@@ -346,6 +186,7 @@
 <script>
 	import headTop from 'src/components/header/head';
 	import IScroll from 'src/config/iscroll.js'
+	import {mapState, mapMutations} from 'vuex'
 	import 'src/config/swiper.min.js'
 	import 'src/style/swiper.min.css'
 	export default{ 
@@ -354,6 +195,7 @@
 				inputmessage:'',//输入的文本内容
 				light:false,	//输入框不为空时，input下边框变色
 				clickmore:false,	//点击加号底部显示、隐藏
+				chatname:'',		//聊天名字
 			}
 		},
 		created(){
@@ -374,19 +216,21 @@
 		        pagination: '.swiper-pagination',
 		        loop: false,
 		    });
-			
+			this.chatname=this.infor.petname ? this.infor.petname : this.infor.remarks;
+			console.log(this.infor.petname)
 		},
 		components:{
 			headTop,
 		},
 		computed:{
-			
+			...mapState([
+			    "infor",
+			]),
 		},
 		methods:{
 			whatInput(){
 				if(this.inputmessage){
 					this.light=true;
-
 				}else{
 					this.light=false;
 				}
@@ -396,7 +240,6 @@
 				this.clickmore=true;
 			},
 			bottomHide(){
-				console.log(1)
 				this.clickmore=false;
 			},
 			inputBottomHide(){

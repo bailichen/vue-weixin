@@ -7,7 +7,7 @@
 				<ul>
 					<router-link to="" tag="li" class="contacts_li">
 						<div class="contacts_img">
-							<svg>
+							<svg> 
 								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#newfriend"></use>
 							</svg>
 						</div>
@@ -52,7 +52,7 @@
 					<li v-for="(value, key, index) in manageaddress" :key="key">
 						<h1>{{key}}</h1>
 						<ul>
-							<router-link to="/addressbook/details" tag="li" v-for="(item, index) in value" @click.native='detailMessage(item.wxid,item.headurl,item.remarks,item.petname,item.sdasd,item.gallery,item.district,item.source,item.sex)'>
+							<router-link to="/addressbook/details" tag="li" v-for="(item, index) in value" @click.native='detailMessage(item)'>
 								<div class="personlist_img">
 									<img :src="item.headurl" alt="">
 								</div>
@@ -64,7 +64,7 @@
 					</li>
 				</ul>
 				<section class="list_guide">
-					<dl v-for="(value, index) in sortlist" :key="index" @click="findPeople(index)">
+					<dl v-for="(value, index) in sortlist" :key="index">
 						<dd>{{value}}</dd>
 					</dl>
 					<p>#</p>
@@ -132,14 +132,8 @@
 			...mapMutations([
 			    'SAVE_MESSAGE'
 			]),
-			detailMessage(wxid,headurl,remarks,petname,sdasd,gallery,district,source,sex){
-				//判断备注是否存在 若不存在，就用昵称
-				let comment = '';
-				comment =  remarks ? remarks : petname;
-				this.SAVE_MESSAGE({headurl, comment, wxid, district, gallery, sdasd, source, sex})
-			},
-			findPeople(index){
-
+			detailMessage(item){
+				this.SAVE_MESSAGE(item);
 			}
 		}
 	}

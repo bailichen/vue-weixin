@@ -17,7 +17,7 @@
 			<!-- 对话列表 -->
 			<section class="conversation">
 				<ul>
-					<router-link to="/dialogue/conversation" tag="li" v-for="item in dialoglist">
+					<router-link to="/dialogue/conversation" tag="li" v-for="item in dialoglist" @click.native="refreshInfor(item)">
 						<div class="imgwipe">
 							<i class="redicon_num" v-if="newinfor">
 							1
@@ -29,13 +29,13 @@
 						</div>
 						<div class="infordetail">
 							<div class="infordetail_top clear">
-								<span class="left ellipsis">{{item.remarks}}</span>
+								<span class="left ellipsis">{{item.remarks ? item.remarks : item.petname}}</span>
 								<span class="right">12:07</span>
 							</div>
 							<div class="infordetail_bot ellipsis">
-								好呀好呀
+								{{item.newmeassage}}
 							</div>
-						</div>
+						</div> 
 					</router-link>
 					<!-- <router-link to="/dialogue/conversation" tag="li">
 						<div class="imgwipe">
@@ -72,28 +72,23 @@
 	import headTop from '../../components/header/head'
 	import footGuide from '../../components/footer/foot'
 	import {dialog} from 'src/service/getData'
-	import {mapState} from 'vuex'
+	import {mapState,mapActions,mapMutations} from 'vuex'
 	export default{
 		data(){
 			return{
 				newinfor:true,		//未静音时消息提醒
 				newtext:false,		//静音时消息提醒
 				dialoglist:[]		//所有的对话列表
-
-
 			}
 		},
 		created(){
-
+			this.getDialog();
 		},
 		beforeMount(){
-			dialog().then((res) => {
-				console.log(res)
-				this.dialoglist=res;
-			})
+			
 		},
 		mounted(){
-
+			this.dialoglist = this.contactList;
 		},
 		components:{
 			headTop,
@@ -101,13 +96,22 @@
 		},
 		computed:{
 			...mapState([
-				'mute','computershow'
-			])
+				'mute', 'computershow', 'infor' ,'contactList',
+			]),
+			
 		},
 		methods:{
-			// conversation(path){
-			// 	this.$router.push(path)
-			// }
+			...mapActions([
+                'getDialog'
+            ]),
+            ...mapMutations([
+				"SAVE_DIALOGUE",
+			]),
+            refreshInfor(item){
+            	this.infor = item;
+            	this.SAVE_DIALOGUE(this.infor);
+            	console.log(item.remarks)
+            }
 		}
 	}
 </script>

@@ -3,10 +3,10 @@
 		<head-top crossover="微信"></head-top>
 		<section class="more">
 			<div>
-				<span>个性签名</span><span>{{sdasd}}</span>
+				<span>个性签名</span><span>{{infor.sdasd}}</span>
 			</div>
 			<div>
-				<span>来源</span><span>{{source}}</span>
+				<span>来源</span><span>{{infor.source}}</span>
 			</div>
 		</section>
 	</section>	
@@ -32,7 +32,7 @@
 		},
 		computed:{
 			...mapState([
-			    'sdasd', 'source',
+			    "infor",
 			]),
 		},
 		methods:{

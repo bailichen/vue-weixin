@@ -4,19 +4,19 @@
 		<div class="details">
 			<div class="details_li">
 				<div class="details_left">
-					<img :src="headurl" alt="">
+					<img :src="infor.headurl" alt="">
 				</div>
 				<div class="details_right">
 					<div class="details_right_top">
-						<span>{{comment}}</span>
+						<span>{{infor.remarks ? infor.remarks : infor.petname}}</span>
 						<div class="sexsvg">
 							<svg>
-								<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="sex == 0 ? '#boy' : '#girl' "></use>
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href=" infor.sex == 0 ? '#boy' : '#girl' "></use>
 							</svg>
 						</div>
 					</div>
 					<div class="details_right_obt">
-						微信号：{{wxid}}
+						微信号：{{infor.wxid}}
 					</div>
 				</div>
 			</div>
@@ -31,7 +31,7 @@
 						地区
 					</div>
 					<div class="area_details_right">
-						{{district}}
+						{{infor.district}}
 					</div>
 				</div>
 				<div class="person_photo">
@@ -49,9 +49,9 @@
 							更多
 					</router-link>
 				</div>
-			</div>
-			<div class="sendmessage">
-				<router-link to='/dialogue/conversation' class="send">
+			</div> 
+			<div class="sendmessage"><!-- /dialogue/conversation -->
+				<router-link to='' class="send" @click.native="enterdDialogue">
 					发消息
 				</router-link>
 			</div>
@@ -64,7 +64,7 @@
 
 <script>
 	import headTop from 'src/components/header/head'
-	import {mapState} from 'vuex'
+	import {mapState, mapMutations} from 'vuex'
 	export default{
 		data(){
 			return{
@@ -75,18 +75,25 @@
 
 		},
 		mounted(){
-			this.gallery=this.gallery
+			
+			this.gallery=this.infor.gallery
 		},
 		components:{
 			headTop,
 		},
 		computed:{
 			...mapState([
-			    'headurl', 'comment', 'wxid', 'district', 'gallery', 'sex',
+			    "infor",
 			]),
+			
 		},
 		methods:{
-
+			...mapMutations([
+				"SAVE_DIALOGUE",
+			]),
+			enterdDialogue(){
+				this.SAVE_DIALOGUE(this.infor);
+			}
 		}
 	}
 </script>

@@ -4,6 +4,8 @@ import {
 	RECORD_MUTE,
 	COMPUTER_SHOW,
 	SAVE_MESSAGE,
+	SAVE_BEGINDIALOGUE,
+	SAVE_DIALOGUE,
 } from './mutation-types.js'
 
 export default {
@@ -12,26 +14,18 @@ export default {
 		status.mute=mutestatus;
 	},
 	//是否电脑登录
-	[COMPUTER_SHOW](status,computerstatus){
+	[COMPUTER_SHOW](status, computerstatus){
 		status.computershow=computerstatus;
 	},
-	[SAVE_MESSAGE](status,{
-		headurl,	
-		comment,			
-		wxid,				
-		district,			
-		gallery,				
-		sdasd,				
-		source,
-		sex,	
-	}){
-		status.headurl=headurl;
-		status.comment=comment;
-		status.wxid=wxid;
-		status.district=district;
-		status.gallery=gallery;
-		status.sdasd=sdasd;
-		status.source=source;
-		status.sex=sex;
-	}
+	//保存联系人信息
+	[SAVE_MESSAGE](status, infor){
+		status.infor=infor;
+	},
+	//获取的数据先保存
+	[SAVE_BEGINDIALOGUE](status, arrayData){
+		status.contactList = arrayData;
+	},
+	[SAVE_DIALOGUE](status, obj){
+		status.contactList=[obj, ...status.contactList];
+	},
 }

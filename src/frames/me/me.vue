@@ -13,6 +13,7 @@
 	import headTop from 'src/components/header/head'
 	import findMe from 'src/components/findandMe/findandMe'
 	import footGuide from 'src/components/footer/foot'
+	
 	export default{
 		data(){
 			return{
@@ -22,6 +23,7 @@
 		created(){
 
 		},
+		
 		mounted(){
 			
 		},

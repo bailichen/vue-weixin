@@ -6,14 +6,14 @@
 				<div class="find_wipe">
 					<div class="findlist_left">
 						<section class="findlist_svg " :class="{'findlist_svg_me' : $route.path.indexOf('me') !== -1}">
-							<img src="../../images/chen.jpg" alt="" v-if="pathUrl">
+							<img :src="userInfo.headurl" alt="" v-if="pathUrl">
 							<svg v-else>
 								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#friendcircle"></use>
 							</svg>
 						</section>
 						<section class="me_name" v-if="pathUrl">
-							<div>辰</div>
-							<div>微信号：xulianjie442154157</div>
+							<div>{{userInfo.petname}}</div>
+							<div>微信号：{{userInfo.wxid}}</div>
 						</section>
 						<section class="findlist_text" v-else>
 							朋友圈
@@ -122,18 +122,24 @@
 </template>
 
 <script>
-	
+	import {userInfo} from 'src/service/getData'
 	
 	export default{
 		data(){
 			return{
 				newtext:true,
 				pathUrl:this.$route.path.indexOf("me") !== -1,
+				userInfo:{},			//用户信息
 			}
 		},
 		props: ['mepart',],
 		created(){
 
+		},
+		beforeMount(){
+			userInfo().then((res) => {
+				this.userInfo = res
+			})
 		},
 		mounted(){
 
