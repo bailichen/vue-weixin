@@ -1,10 +1,17 @@
 //处理数据
 
-import {dialog} from 'src/service/getData'
-import {SAVE_BEGINDIALOGUE} from './mutation-types.js'
+import {userInfo, dialog} from 'src/service/getData'
+import {GET_USERINFO, SAVE_BEGINDIALOGUE} from './mutation-types.js'
 
 export default {
-
+	//获取用户信息
+	async getUserInfo({
+		commit,
+		state
+	}){
+		let useData = await userInfo()
+		commit(GET_USERINFO,useData)
+	},
 	 async getDialog({
 	 	commit,
 	 	state

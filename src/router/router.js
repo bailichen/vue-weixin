@@ -30,7 +30,14 @@ export default[{
 		{path: '/dialogue', component: dialogue, //对话列表页
 			children: [
 				{path: '/dialogue/conversation',
-				component: conversation,},		//对话详情页
+				component: conversation,
+					children: [
+						{
+							path: '/addressbook/details',
+							component: details,		//详细资料
+						},
+					]
+				},		//对话详情页
 			],
 		},	
 		{

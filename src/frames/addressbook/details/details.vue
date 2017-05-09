@@ -50,7 +50,7 @@
 					</router-link>
 				</div>
 			</div> 
-			<div class="sendmessage">
+			<div class="sendmessage"><!--  -->
 				<router-link to='/dialogue/conversation' class="send" @click.native="enterdDialogue">
 					发消息
 				</router-link>
@@ -77,13 +77,20 @@
 		mounted(){
 			
 			this.gallery=this.infor.gallery
+			
+			for(let i = 0;i< this.contactList.length; i++){
+				
+				if(this.infor.wxid == this.contactList[i].wxid){
+					this.contactList.splice(i,1);
+				}
+			}
 		},
 		components:{
 			headTop,
 		},
 		computed:{
 			...mapState([
-			    "infor",
+			    "infor", "contactList", 
 			]),
 			
 		},

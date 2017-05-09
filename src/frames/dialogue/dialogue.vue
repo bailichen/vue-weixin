@@ -76,13 +76,13 @@
 	export default{
 		data(){
 			return{
-				newinfor:true,		//未静音时消息提醒
+				newinfor:false,		//未静音时新消息提醒
 				newtext:false,		//静音时消息提醒
 				dialogList:[]
 			}
 		},
 		created(){
-			//this.getDialog();
+			this.getDialog();
 		},
 		beforeMount(){
 			
@@ -109,7 +109,6 @@
 			]),
             refreshInfor(item){
             	this.SAVE_MESSAGE(item)
-            	console.log(item.wxid)
             }
 		}
 	}

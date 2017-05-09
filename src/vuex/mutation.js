@@ -6,6 +6,7 @@ import {
 	SAVE_MESSAGE,
 	SAVE_BEGINDIALOGUE,
 	SAVE_DIALOGUE,
+	GET_USERINFO,
 } from './mutation-types.js'
 
 export default {
@@ -24,12 +25,18 @@ export default {
 	//获取的数据先保存
 	[SAVE_BEGINDIALOGUE](status, arrayData){
 		status.contactList = arrayData;
+		
+		
 	},
 	//增加对话人列表
 	[SAVE_DIALOGUE](status, obj){
 		status.contactList=[obj, ...status.contactList];
+		
 		//数组去重
-		const newArr = new Set(status.contactList);
-		status.contactList = [...newArr];	
+		//const newArr = new Set(status.contactList);
+		//status.contactList = [...newArr];	
 	},
+	[GET_USERINFO](status,userInfo){
+		status.userInfo=userInfo
+	}
 }

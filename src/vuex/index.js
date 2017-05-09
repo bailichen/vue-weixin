@@ -12,6 +12,7 @@ const state = {
 	computershow:true,		//是否电脑登录
 	infor:{},				//联系人信息
 	contactList:[],			//对话列表
+	userInfo:{},				//用户信息
 }
 
 export default new Vuex.Store({

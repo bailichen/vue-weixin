@@ -15,7 +15,7 @@
 					<li v-for="item in infor.Messageblob">
 						<!-- 对方 -->
 						<div class="other">
-							<img :src="infor.headurl" alt="">
+							<img :src="infor.headurl" alt="" @click="enlargeImg(infor.headurl)">
 							<div class="whatsay">
 								<div class="whatsay_svg">
 									<svg>
@@ -28,10 +28,10 @@
 							</div>
 						</div>
 					</li>
-					<li>
+					<li v-for="item in userInfo.Messageblob">
 						<!-- 自己 -->
 						<div class="other mysay">
-							<img src="../../../images/chen.jpg" alt="">
+							<img :src="userInfo.headurl" alt="">
 							<div class="whatsay">
 								<div class="whatsay_svg">
 									<svg>
@@ -39,7 +39,7 @@
 									</svg>
 								</div>
 								<div class="whatsay_text">
-									好的
+									{{item}}
 								</div>
 							</div>
 						</div>
@@ -47,6 +47,7 @@
 				</ul>
 			</section>
 		</section>
+		
 		<footer :class=" {footshow : clickmore}">
 			<section class="foot_top">
 				<div>
@@ -63,7 +64,7 @@
 					</svg>
 				</div>
 				<div>
-					<div class="send" v-if="light">
+					<div class="send" v-if="light" @click="clickSend">
 						<span>发送</span>
 					</div>
 					<svg v-else @click="bottomShow">
@@ -177,16 +178,19 @@
 			    </div>
 			</section>
 		</footer>
+		<enlarge-cover v-if="enlargeShow" @enlargeHide = "enlargeShow = false" :enlarge="enlargeurl"></enlarge-cover>
 		<transition name="router-show">
 		    <router-view></router-view>
 		</transition>
-	</section>	
+	</section>
+
 </template>
 
 <script>
 	import headTop from 'src/components/header/head';
+	import enlargeCover from 'src/components/enlarge/enlarge';
 	import IScroll from 'src/config/iscroll.js'
-	import {mapState, mapMutations} from 'vuex'
+	import {mapState, mapActions, mapMutations} from 'vuex'
 	import 'src/config/swiper.min.js'
 	import 'src/style/swiper.min.css'
 	export default{ 
@@ -196,6 +200,9 @@
 				light:false,	//输入框不为空时，input下边框变色
 				clickmore:false,	//点击加号底部显示、隐藏
 				chatname:'',		//聊天名字
+				ifme:false,			//发消息的对象是否是自己
+				enlargeShow:false,	//头像放大是否显示
+				enlargeurl:null
 			}
 		},
 		created(){
@@ -216,18 +223,25 @@
 		        pagination: '.swiper-pagination',
 		        loop: false,
 		    });
-			this.chatname=this.infor.petname ? this.infor.petname : this.infor.remarks;
-			console.log(this.infor.petname)
+			this.chatname=this.infor.remarks ? this.infor.remarks : this.infor.petname;
+			this.getUserInfo();
 		},
 		components:{
 			headTop,
+			enlargeCover,
+
 		},
 		computed:{
 			...mapState([
-			    "infor",
+			    "infor", "userInfo"
 			]),
+			
 		},
 		methods:{
+			...mapActions([
+                'getUserInfo'
+            ]),
+           
 			whatInput(){
 				if(this.inputmessage){
 					this.light=true;
@@ -244,7 +258,16 @@
 			},
 			inputBottomHide(){
 				this.clickmore=false;
-			}
+			},
+			clickSend(){
+				//this.userInfo.Messageblob.push(this.inputmessage)
+				//this.inputmessage='';
+				//this.light=false;
+			},
+			enlargeImg(enlargeImg){
+				this.enlargeShow=true;
+				this.enlargeurl=enlargeImg;
+			},
 		}
 	}
 </script>
@@ -347,6 +370,7 @@
 			
 		}
 	}
+
 	footer{
 		position: fixed;
 		z-index:10;
