@@ -178,7 +178,7 @@
 			    </div>
 			</section>
 		</footer>
-		<enlarge-cover v-if="enlargeShow" @enlargeHide = "enlargeShow = false" :enlarge="enlargeurl"></enlarge-cover>
+		<enlarge-cover v-if="enlargeShow" :enlarge="enlargeurl"></enlarge-cover>
 		<transition name="router-show">
 		    <router-view></router-view>
 		</transition>
@@ -201,8 +201,8 @@
 				clickmore:false,	//点击加号底部显示、隐藏
 				chatname:'',		//聊天名字
 				ifme:false,			//发消息的对象是否是自己
-				enlargeShow:false,	//头像放大是否显示
-				enlargeurl:null
+				enlargeurl:'',
+				enlargeHide:false,
 			}
 		},
 		created(){
@@ -233,7 +233,7 @@
 		},
 		computed:{
 			...mapState([
-			    "infor", "userInfo"
+			    "infor", "userInfo", "enlargeShow",
 			]),
 			
 		},
@@ -241,7 +241,9 @@
 			...mapActions([
                 'getUserInfo'
             ]),
-           
+           ...mapMutations([
+                'ENLARGE_HEAD'
+            ]),
 			whatInput(){
 				if(this.inputmessage){
 					this.light=true;
@@ -265,7 +267,7 @@
 				//this.light=false;
 			},
 			enlargeImg(enlargeImg){
-				this.enlargeShow=true;
+				this.ENLARGE_HEAD(true)
 				this.enlargeurl=enlargeImg;
 			},
 		}

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapState, mapMutations} from 'vuex'
 	export default{
 		data(){
 			return{
@@ -24,12 +24,15 @@ import {mapState} from 'vuex'
 		},
 		computed:{
 			...mapState([
-			    "infor",
+			    "infor", "enlargeShow",
 			]),
 		},
 		methods:{
+			...mapMutations([
+                'ENLARGE_HEAD'
+            ]),
 			enlargeHide(){
-				this.$emit('enlargeHide')
+				this.ENLARGE_HEAD(false)
 			}
 		}
 	}

@@ -13,6 +13,7 @@ const state = {
 	infor:{},				//联系人信息
 	contactList:[],			//对话列表
 	userInfo:{},				//用户信息
+	enlargeShow: false,
 }
 
 export default new Vuex.Store({

@@ -7,6 +7,7 @@ import {
 	SAVE_BEGINDIALOGUE,
 	SAVE_DIALOGUE,
 	GET_USERINFO,
+	ENLARGE_HEAD,
 } from './mutation-types.js'
 
 export default {
@@ -36,7 +37,11 @@ export default {
 		//const newArr = new Set(status.contactList);
 		//status.contactList = [...newArr];	
 	},
+	//获取用户信息
 	[GET_USERINFO](status,userInfo){
 		status.userInfo=userInfo
+	},
+	[ENLARGE_HEAD](status,enlargeShow){
+		status.enlargeShow = enlargeShow
 	}
 }
