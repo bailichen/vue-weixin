@@ -40,9 +40,7 @@ export default[{
 				},		//对话详情页
 			],
 		},	
-		{
-			path: '/addressbook', 
-			component: addressbook,
+		{path: '/addressbook', component: addressbook,
 			children: [
 				{
 					path: '/addressbook/details',

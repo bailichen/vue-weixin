@@ -1,5 +1,5 @@
 <template>
-	<section class="enlarge" @click="enlargeHide" >
+	<section class="enlarge" @click="enlargeHide" :class="{moveout : }" >
 		<img :src="enlarge" alt="">
 	</section>
 </template>
@@ -32,20 +32,52 @@ import {mapState, mapMutations} from 'vuex'
                 'ENLARGE_HEAD'
             ]),
 			enlargeHide(){
-				this.ENLARGE_HEAD(false)
+				//this.ENLARGE_HEAD(false)
 			}
 		}
 	}
 </script>
 <style lang="scss" scoped>
 	@import "src/style/public";
+	@-webkit-keyframes zoomOut {
+	  from {
+	    opacity: 1;
+	  }
+
+	  50% {
+	    opacity: 0;
+	    -webkit-transform: scale3d(.3, .3, .3);
+	    transform: scale3d(.3, .3, .3);
+	  }
+
+	  100% {
+	    opacity: 0;
+	  }
+	}
+
+	@keyframes zoomOut {
+	  from {
+	    opacity: 1;
+	  }
+
+	  50% {
+	    opacity: 0;
+	    -webkit-transform: scale3d(.3, .3, .3);
+	    transform: scale3d(.3, .3, .3);
+	  }
+
+	  100% {
+	    opacity: 0;
+	  }
+	}
+
 	.enlarge{
 		position:fixed;
-		display:block;
 		@include widthHeight(100%,100%);
 		background:#000000;
 		top:0;
 		z-index:100;
+
 		img{
 			display:block;
 			width:100%;
@@ -58,5 +90,8 @@ import {mapState, mapMutations} from 'vuex'
 	}
 	.enlarge_part{
 		display:none;
+	}
+	body .moveout{
+		animation:zoomOut .4s;
 	}
 </style>

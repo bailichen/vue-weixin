@@ -110,7 +110,7 @@
 		transition: all .4s;
 	}
 	.router-show-enter,.router-show-leave-active{
-		transform:translateX(100%)
+		transform:translateX(-100%)
 	}
 	.child_page{
 		position: fixed;

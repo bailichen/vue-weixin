@@ -21,13 +21,12 @@ export default {
 	},
 	//保存联系人信息
 	[SAVE_MESSAGE](status, infor){
+		status.infor={};
 		status.infor=infor;
 	},
 	//获取的数据先保存
 	[SAVE_BEGINDIALOGUE](status, arrayData){
 		status.contactList = arrayData;
-		
-		
 	},
 	//增加对话人列表
 	[SAVE_DIALOGUE](status, obj){
@@ -41,7 +40,4 @@ export default {
 	[GET_USERINFO](status,userInfo){
 		status.userInfo=userInfo
 	},
-	[ENLARGE_HEAD](status,enlargeShow){
-		status.enlargeShow = enlargeShow
-	}
 }

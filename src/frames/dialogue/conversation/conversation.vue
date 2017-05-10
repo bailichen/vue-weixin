@@ -22,7 +22,7 @@
 										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#trigon-left"></use>
 									</svg>
 								</div>
-								<div class="whatsay_text">
+								<div class="whatsay_text" @dblclick="">
 									{{item}}
 								</div>
 							</div>
@@ -31,7 +31,7 @@
 					<li v-for="item in userInfo.Messageblob">
 						<!-- 自己 -->
 						<div class="other mysay">
-							<img :src="userInfo.headurl" alt="">
+							<img :src="userInfo.headurl" alt="" @click="enlargeImg(userInfo.headurl)">
 							<div class="whatsay">
 								<div class="whatsay_svg">
 									<svg>
@@ -47,7 +47,6 @@
 				</ul>
 			</section>
 		</section>
-		
 		<footer :class=" {footshow : clickmore}">
 			<section class="foot_top">
 				<div>
@@ -178,7 +177,9 @@
 			    </div>
 			</section>
 		</footer>
-		<enlarge-cover v-if="enlargeShow" :enlarge="enlargeurl"></enlarge-cover>
+		<section class="enlarge" v-if="enlarge" @click="enlargeHide" :class="{'movein-animate' : enlargeShow, 'moveout-animate-leave' : enlargehides}" >
+			<img :src="enlargeurl" alt="">
+		</section>
 		<transition name="router-show">
 		    <router-view></router-view>
 		</transition>
@@ -188,9 +189,8 @@
 
 <script>
 	import headTop from 'src/components/header/head';
-	import enlargeCover from 'src/components/enlarge/enlarge';
 	import IScroll from 'src/config/iscroll.js'
-	import {mapState, mapActions, mapMutations} from 'vuex'
+	import {mapState, mapActions,} from 'vuex'
 	import 'src/config/swiper.min.js'
 	import 'src/style/swiper.min.css'
 	export default{ 
@@ -201,8 +201,11 @@
 				clickmore:false,	//点击加号底部显示、隐藏
 				chatname:'',		//聊天名字
 				ifme:false,			//发消息的对象是否是自己
-				enlargeurl:'',
-				enlargeHide:false,
+				enlargeurl:'',		//头像地址
+				enlargehides:false,
+				enlargeShow:false,
+				enlarge:false,
+				timer:null
 			}
 		},
 		created(){
@@ -228,21 +231,20 @@
 		},
 		components:{
 			headTop,
-			enlargeCover,
 
 		},
 		computed:{
 			...mapState([
-			    "infor", "userInfo", "enlargeShow",
+			    "infor", "userInfo", 
 			]),
 			
 		},
+		beforeDestroy(){
+            clearTimeout(this.timer)
+        },
 		methods:{
 			...mapActions([
                 'getUserInfo'
-            ]),
-           ...mapMutations([
-                'ENLARGE_HEAD'
             ]),
 			whatInput(){
 				if(this.inputmessage){
@@ -267,9 +269,20 @@
 				//this.light=false;
 			},
 			enlargeImg(enlargeImg){
-				this.ENLARGE_HEAD(true)
 				this.enlargeurl=enlargeImg;
+				this.enlarge=true;
+				this.enlargeShow=true;
+				this.enlargehides=false;
+				
 			},
+			enlargeHide(){
+				clearTimeout(this.timer)
+				this.enlargehides=true;
+				this.enlargeShow=false;
+				this.timer = setTimeout(() =>{
+                    this.enlarge=false;
+                },400)
+			}
 		}
 	}
 </script>
@@ -480,5 +493,84 @@
 	.footshow{
 		bottom:0;
 		transition: all .2s;
+	}
+	.enlarge{
+		position:fixed;
+		@include widthHeight(100%,100%);
+		background:#000000;
+		top:0;
+		z-index:100;
+
+		img{
+			display:block;
+			width:100%;
+			height:15.0186666667rem;
+			position: absolute;
+			top:50%;
+			left:0;
+			margin-top:-7.5093333333rem;
+		}
+	}
+	.enlarge_part{
+		display:none;
+	}
+	body .movein-animate{
+		transition:all 1s;
+		animation:fadeIn .6s;
+	}
+	body .moveout-animate-leave{
+		transition:all 1s;
+		animation:zoomOut .6s;
+	}
+	@-webkit-keyframes fadeIn {
+	  from {
+	    opacity: 0;
+	  }
+
+	  100% {
+	    opacity: 1;
+	  }
+	}
+
+	@keyframes fadeIn {
+	  from {
+	    opacity: 0;
+	  }
+
+	  100% {
+	    opacity: 1;
+	  }
+	}
+
+	@-webkit-keyframes zoomOut {
+	  from {
+	    opacity: 1;
+	  }
+
+	  50% {
+	    opacity: 0;
+	    -webkit-transform: scale3d(.3, .3, .3);
+	    transform: scale3d(.3, .3, .3);
+	  }
+
+	  100% {
+	    opacity: 0;
+	  }
+	}
+
+	@keyframes zoomOut {
+	  from {
+	    opacity: 1;
+	  }
+
+	  50% {
+	    opacity: 0;
+	    -webkit-transform: scale3d(.3, .3, .3);
+	    transform: scale3d(.3, .3, .3);
+	  }
+
+	  100% {
+	    opacity: 0;
+	  }
 	}
 </style>
