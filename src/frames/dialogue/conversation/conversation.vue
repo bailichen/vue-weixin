@@ -191,7 +191,7 @@
 	import headTop from 'src/components/header/head';
 	import IScroll from 'src/config/iscroll.js'
 	import {mapState, mapActions,} from 'vuex'
-	import 'src/config/swiper.min.js'
+	import 'src/config/swiper.min.js' 
 	import 'src/style/swiper.min.css'
 	export default{ 
 		data(){
@@ -213,14 +213,14 @@
 		},
 		mounted(){
 			//初始化IScroll
-			new IScroll('.coversationlist',{
-				click:true,
-				scrollbars:false,
-				//mouseWheel: true,  //侦听鼠标滚轮事件
-				//fadeScrollbars: true, //滚动条淡入淡出方式
-				probeType:2,//滚动条的灵敏性设置
-				bounce:true,//是否反弹效果
-			});	
+			// new IScroll('.coversationlist',{
+			// 	click:true,
+			// 	scrollbars:false,
+			// 	//mouseWheel: true,  //侦听鼠标滚轮事件
+			// 	//fadeScrollbars: true, //滚动条淡入淡出方式
+			// 	probeType:2,//滚动条的灵敏性设置
+			// 	bounce:true,//是否反弹效果
+			// });	
 			//初始化swiper
 			new Swiper('.swiper-container', {
 		        pagination: '.swiper-pagination',
@@ -264,9 +264,9 @@
 				this.clickmore=false;
 			},
 			clickSend(){
-				//this.userInfo.Messageblob.push(this.inputmessage)
-				//this.inputmessage='';
-				//this.light=false;
+				this.userInfo.Messageblob.push(this.inputmessage)
+				this.inputmessage='';
+				this.light=false;
 			},
 			enlargeImg(enlargeImg){
 				this.enlargeurl=enlargeImg;
@@ -321,11 +321,12 @@
 			height: 24.3rem;
 			position: relative;
 			padding:0 .32rem;
+			overflow:auto;
 			margin:0 auto;
 			ul{
 				position: absolute;
 				padding-top:.4rem;
-				padding-bottom:4rem;
+				padding-bottom:3rem;
 				width:15.4rem;
 				top:0;
 				li{

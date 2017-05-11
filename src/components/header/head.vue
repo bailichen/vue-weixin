@@ -122,8 +122,6 @@
 			},
 			goBackThing(){
 				this.$route.path == '/dialogue/conversation' ? this.$router.push('/dialogue') : window.history.go(-1);
-				
-
 			}
 		}
 	}

@@ -1,8 +1,7 @@
 <template>
 	<section>
-		
 		<section class="find">
-			<router-link to="" class="findlist">
+			<router-link :to="$route.path.indexOf('find') !== -1 ? '/find/friendcircle' : '/me/personaldetails' " class="findlist">
 				<div class="find_wipe">
 					<div class="findlist_left">
 						<section class="findlist_svg " :class="{'findlist_svg_me' : $route.path.indexOf('me') !== -1}">
@@ -30,8 +29,8 @@
 					</div>
 				</div>
 			</router-link>
-			<router-link to="" class="findlist">
-				<div class="find_wipe">
+			<section to="" class="findlist">
+				<div class="find_wipe" @click="photoAlbum">
 					<div class="findlist_left">
 						<section class="findlist_svg">
 							<svg fill="#10aeff">
@@ -44,7 +43,7 @@
 						</section>
 					</div>
 				</div>
-				<div class="find_wipe">
+				<div class="find_wipe" @click="collect">
 					<div class="findlist_left">
 						<section class="findlist_svg">
 							<svg>
@@ -57,9 +56,9 @@
 						</section>
 					</div>
 				</div>
-			</router-link>
-			<router-link to="" class="findlist">
-				<div class="find_wipe">
+			</section>
+			<section to="" class="findlist">
+				<div class="find_wipe" @click="wallet">
 					<div class="findlist_left">
 						<section class="findlist_svg">
 							<svg>
@@ -72,9 +71,9 @@
 						</section>
 					</div>
 				</div>
-			</router-link>
-			<router-link to="" class="findlist">
-				<div class="find_wipe">
+			</section>
+			<section to="" class="findlist">
+				<div class="find_wipe" @click="shoppSth">
 					<div class="findlist_left">
 						<section class="findlist_svg">
 							<svg data-v-38f704c5="" fill="#10aeff">
@@ -87,7 +86,7 @@
 						</section>
 					</div>
 				</div>
-				<div class="find_wipe">
+				<div class="find_wipe" @click="gamesFace">
 					<div class="findlist_left">
 						<section class="findlist_svg">
 							<svg>
@@ -100,8 +99,8 @@
 						</section>
 					</div>
 				</div>
-			</router-link>
-			<router-link :to="pathUrl ? '/me/settings' : '/dialogue/conversation'" class="findlist">
+			</section>
+			<router-link :to="pathUrl ? '/me/settings' : '/find/miniapps'" class="findlist">
 				<div class="find_wipe">
 					<div class="findlist_left">
 						<section class="findlist_svg">
@@ -151,7 +150,44 @@
 			
 		},
 		methods:{
-
+			photoAlbum(){//相册或扫一扫
+				if(this.$route.path.indexOf("find") !== -1){
+					alert(1)
+				}else{
+					this.$router.push('/me/photoalbum')
+					
+				}
+			},
+			collect(){//摇一摇或收藏
+				if(this.$route.path.indexOf("find") !== -1){
+					alert(1)
+				}else{
+					this.$router.push('/me/collect')
+					
+				}
+			},
+			wallet(){//附近的人或钱包
+				if(this.$route.path.indexOf("find") !== -1){
+					alert(1)
+				}else{
+					this.$router.push('/me/wallet')
+					
+				}
+			},
+			shoppSth(){
+				if( this.pathUrl ){//购物或卡包
+					this.$router.push('/me/cardbag')
+				}else{
+					window.location.href="https://wqs.jd.com/portal/wx/portal_indexV4.shtml?PTAG=17007.13.1&ptype=1"
+				}
+			},
+			gamesFace(){
+				if( this.pathUrl ){//游戏或表情
+					this.$router.push('/me/face')
+				}else{
+					alert(2)
+				}
+			}
 		}
 	}
 </script>

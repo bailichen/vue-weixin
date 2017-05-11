@@ -7,7 +7,16 @@ const details = r => require.ensure([], () => r(require('../frames/addressbook/d
 const more = r => require.ensure([], () => r(require('../frames/addressbook/details/more/more')), 'more')
 
 const find = r => require.ensure([], () => r(require('../frames/find/find')), 'find')
+const friendcircle = r => require.ensure([], () => r(require('../frames/find/friendcircle/friendcircle')), 'friendcircle')
+const miniapps = r => require.ensure([], () => r(require('../frames/find/miniapps/miniapps')), 'miniapps')
 const me = r => require.ensure([], () => r(require('../frames/me/me')), 'me')
+const personaldetails = r => require.ensure([], () => r(require('../frames/me/personaldetails/personaldetails')), 'personaldetails')
+const photoalbum = r => require.ensure([], () => r(require('../frames/me/photoalbum/photoalbum')), 'photoalbum')
+const collect = r => require.ensure([], () => r(require('../frames/me/collect/collect')), 'collect')
+const wallet = r => require.ensure([], () => r(require('../frames/me/wallet/wallet')), 'wallet')
+const cardbag = r => require.ensure([], () => r(require('../frames/me/cardbag/cardbag')), 'cardbag')
+const face = r => require.ensure([], () => r(require('../frames/me/face/face')), 'face')
+
 const computer = r => require.ensure([], () => r(require('../frames/computer/computer')), 'computer')
 const transfer = r => require.ensure([], () => r(require('../frames/transfer/transfer')), 'transfer')
 const settings = r => require.ensure([], () => r(require('../frames/me/settings/settings')), 'settings')
@@ -55,7 +64,18 @@ export default[{
 			]
 
 		},	//通讯录
-		{path: '/find', component: find},	//发现
+		{path: '/find', component: find,
+			children:[
+				{
+					path:'/find/friendcircle',
+					component:friendcircle, //朋友圈
+				},
+				{
+					path:'/find/miniapps',
+					component:miniapps, //小程序
+				},
+			]
+		},	//发现
 		{path: '/search', component: search},	//发现
 		{path: '/me', component: me,
 			children: [
@@ -94,7 +114,25 @@ export default[{
 							component:login,		
 						},	//退出
 					]
-				}	
+				},	
+				{
+					path:'/me/personaldetails',component : personaldetails,		//个人信息
+				},
+				{
+					path:'/me/cardbag',component : cardbag,		//卡包
+				},
+				{
+					path:'/me/photoalbum',component : photoalbum,		//相册
+				},
+				{
+					path:'/me/collect',component : collect,		//我的收藏
+				},
+				{
+					path:'/me/wallet',component : wallet,		//钱包
+				},
+				{
+					path:'/me/face',component : face,		//表情
+				},
 			]
 		},	//我
 		{path: '/computer', component: computer},	//电脑登录
