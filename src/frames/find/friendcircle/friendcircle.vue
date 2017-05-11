@@ -4,7 +4,7 @@
 		<section class="friend">
 			<div class="theme" @click="exportInput">
 				<div class="themeinit"></div>
-				<img id="imgSrc" ref="imgSrc" :class="{shoowimg : imageSrc}"/>
+				<img id="imgSrc" ref="imgSrc" :src="themimage" :class="{shoowimg : imageSrc}"/>
 				<div class="themetext" :class="{shoowimg : !imageSrc}">轻触更换主题照片</div>
 			</div>
 			<div class="coverinput" :class="{shoowinput : afterclcik}">
@@ -14,12 +14,8 @@
 						更换相册封面
 						<input type="file" class="coverfile" id="input_file" @change="changeTheme"/>
 					</div>
-					
 				</div>
-				
 			</div>
-			
-   			
 		</section>
 	</section>	
 </template>
@@ -27,12 +23,14 @@
 <script>
 	import headTop from 'src/components/header/head'
 	import uploadPreview from 'src/config/uploadPreview.js' 
+	import {mapState, mapMutations} from 'vuex'
 	export default{
 		data(){
 			return{
 				filevalue:'',
 				imageSrc:true,
 				afterclcik:true,
+				themicon:'',
 			}
 		},
 		created(){
@@ -41,16 +39,22 @@
 		mounted(){
 			new uploadPreview({
 				UpBtn: "input_file",
-				ImgShow: "imgSrc"
+				ImgShow: "imgSrc",
 			});
+			
 		},
 		components:{
 			headTop,
 		},
 		computed:{
-			
+			...mapState([
+				"themimage",
+			])
 		},
 		methods:{
+			...mapMutations([
+				"SAVE_THEMIMG",
+			]),
 			exportInput(){
 				this.afterclcik=false;
 			},
@@ -59,6 +63,7 @@
 				console.log(this.$refs.imgSrc)				
 				this.imageSrc=false;
 				this.afterclcik=true;
+				this.SAVE_THEMIMG(this.$refs.imgSrc.src)
 			}
 		}
 	}

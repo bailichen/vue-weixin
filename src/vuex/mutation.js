@@ -8,6 +8,7 @@ import {
 	SAVE_DIALOGUE,
 	GET_USERINFO,
 	ENLARGE_HEAD,
+	SAVE_THEMIMG,
 } from './mutation-types.js'
 
 export default {
@@ -40,4 +41,9 @@ export default {
 	[GET_USERINFO](status,userInfo){
 		status.userInfo=userInfo
 	},
+	//保存上传的主题照片地址
+	[SAVE_THEMIMG](status,themimage){
+		status.themimage=themimage
+		console.log(status.themimage)
+	}
 }
