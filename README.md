@@ -45,6 +45,7 @@
 |       |-- env.js                   // 环境切换配置
 |       |-- fetch.js                 // 获取数据
 |       |-- rem.js                   // px转换rem
+|       |-- uploadPreview.js         // 上传图片控件
 |
 |   |-- images                       // 公共图片
 |

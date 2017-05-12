@@ -14,6 +14,7 @@ const state = {
 	contactList:[],			//对话列表
 	userInfo:{},			//用户信息
 	newImg:'',				//主题图片地址
+
 }
 
 export default new Vuex.Store({

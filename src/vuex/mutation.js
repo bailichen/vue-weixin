@@ -41,6 +41,7 @@ export default {
 	[GET_USERINFO](status,userInfo){
 		status.userInfo=userInfo
 	},
+
 	[SAVE_THEMIMG](status,newImg){
 		status.newImg=newImg
 	}
