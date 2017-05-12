@@ -8,6 +8,7 @@ import {
 	SAVE_DIALOGUE,
 	GET_USERINFO,
 	ENLARGE_HEAD,
+	SAVE_THEMIMG,
 } from './mutation-types.js'
 
 export default {
@@ -40,4 +41,7 @@ export default {
 	[GET_USERINFO](status,userInfo){
 		status.userInfo=userInfo
 	},
+	[SAVE_THEMIMG](status,newImg){
+		status.newImg=newImg
+	}
 }

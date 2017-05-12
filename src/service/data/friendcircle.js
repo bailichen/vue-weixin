@@ -1,0 +1,90 @@
+//朋友圈数据
+/*
+*wxid:微信号
+*headurl：微信头像
+*sex:性别(男0女1)
+*petname：昵称
+*remarks：备注
+*statements:发标的文字
+*postimage:发表的图片
+*like:点赞
+*comment:评论
+*
+*
+*/
+
+import {imgurl} from 'src/config/env';
+export const circle= [
+	{
+		"wxid":"xulianjie442154157",
+		"headurl":imgurl+'chen.jpg',
+		"petname":"徐连杰",
+		"sex":1,
+		"remarks":"",
+		"statements":"面试加油，你可以的，Fighting!",
+		"time":"5分钟前",
+		"postimage":[
+			imgurl+'chen.jpg',
+		],
+		"like":[
+			"国华大boss",
+		],
+		"comment":[
+			{
+				"wxid":"cangdu",
+				"petname":"苍都",
+				"remarks":"国华大boss",
+				"commentext":"看好你呦！"
+			},
+			{
+				"wxid":"achuqiao",
+				"petname":"a楚乔",
+				"remarks":"楚乔",
+				"commentext":"披荆斩棘",
+			},
+		]
+	},
+	{
+		"wxid":"cangdu",
+		"headurl":imgurl+'cangdu.jpg',
+		"petname":"苍都",
+		"sex":0,
+		"remarks":"国华大boss",
+		"statements":"目标10公里",
+		"time":"10分钟前",
+		"postimage":[
+			imgurl+'d.jpg',
+		],
+		"like":[],
+		"comment":[],
+	},
+	{
+		"wxid":"chenchangsheng",
+		"headurl":imgurl+'chenchangsheng.jpg',
+		"petname":"苍都",
+		"sex":0,
+		"remarks":"国华大boss",
+		"statements":"逆天改命",
+		"time":"20分钟前",
+		"postimage":[
+			
+		],
+		"like":['楚乔',],
+		"comment":[],
+	},
+	{
+		"wxid":"chenyuan",
+		"headurl":imgurl+'chenyuan.jpg',
+		"petname":"程鸢",
+		"sex":0,
+		"remarks":"",
+		"statements":"",
+		"time":"20分钟前",
+		"postimage":[
+			imgurl+'lanshuyi.jpg',
+		],
+		"like":['楚乔',],
+		"comment":[],
+	},
+]
+
