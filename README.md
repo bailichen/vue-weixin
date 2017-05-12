@@ -21,9 +21,10 @@
 - [x] 更多
 - [ ] 个人相册
 - [ ] 相册
-- [ ] 更多
+- [x] 更多
 - [ ] 收藏
 - [ ] 我的钱包
+- [x] 购物
 - [x] 设置
 - [x] 登录
 
@@ -77,12 +78,10 @@
 |
 |   |-- service                      // 数据交互统一调配
 |       |-- search.js                 // 搜索的分类
-<<<<<<< HEAD
 |       |-- contacts.js                 // 联系人列表数据
-=======
-|       |-- contacts.js              // 联系人列表
 |       |-- dialogist.js             // 对话列表
->>>>>>> 0ba6d39ef0a3fbd92c35e83fac5a586f2771709d
+|       |-- login.js                  // 个人用户信息
+|       |-- friendcircle.js          // 朋友圈数据
 |
 |   |-- vuex                         // vuex的状态管理
 |       |-- modules                  // 加载各种store模块
