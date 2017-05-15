@@ -4,7 +4,6 @@
 		<section class="friend">
 			<div class="theme" @click="exportInput">
 				<div class="themeinit"></div>
-<<<<<<< HEAD
 				<img :src="newImg" id="imgSrc" ref="imgSrc" class="imgSrc" />
 				<div class="themetext" :class="{shoowimg : imageSrc}">轻触更换主题照片</div>
 				<div class="personImg">
@@ -13,10 +12,6 @@
 						<img :src="userInfo.headurl" alt="">
 					</div>
 				</div>
-=======
-				<img id="imgSrc" ref="imgSrc" :src="themimage" :class="{shoowimg : imageSrc}"/>
-				<div class="themetext" :class="{shoowimg : !imageSrc}">轻触更换主题照片</div>
->>>>>>> e44b3241bd2c104732b5254e7307810fa7fc0f2b
 			</div>
 			<div class="coverinput" :class="{shoowinput : afterclcik}">
 				<div class="coverinputbg" @click="hideIput"></div>
@@ -27,7 +22,6 @@
 					</div>
 				</div>
 			</div>
-<<<<<<< HEAD
 			<div class="condition">
 				<ul>
 					<li>
@@ -59,8 +53,6 @@
 					</li>
 				</ul>
 			</div>
-=======
->>>>>>> e44b3241bd2c104732b5254e7307810fa7fc0f2b
 		</section>
 	</section>	
 </template>
@@ -68,22 +60,14 @@
 <script>
 	import headTop from 'src/components/header/head'
 	import uploadPreview from 'src/config/uploadPreview.js' 
-<<<<<<< HEAD
 	import {mapState, mapActions, mapMutations} from 'vuex'
-=======
-	import {mapState, mapMutations} from 'vuex'
->>>>>>> e44b3241bd2c104732b5254e7307810fa7fc0f2b
 	export default{
 		data(){
 			return{
 				filevalue:'',
 				imageSrc:false,
 				afterclcik:true,
-<<<<<<< HEAD
 				releaseimgnum:true,
-=======
-				themicon:'',
->>>>>>> e44b3241bd2c104732b5254e7307810fa7fc0f2b
 			}
 		},
 		created(){
@@ -94,7 +78,6 @@
 			new uploadPreview({
 				UpBtn: "input_file",
 				ImgShow: "imgSrc",
-<<<<<<< HEAD
 				ImgType:["gif", "jpeg", "jpg", "bmp", "png"],
 				callback:()=>{
 					this.imageSrc=true;
@@ -104,10 +87,6 @@
 				}
 			});
 			this.getUserInfo();
-=======
-			});
-			
->>>>>>> e44b3241bd2c104732b5254e7307810fa7fc0f2b
 		},
 		components:{
 			headTop,
