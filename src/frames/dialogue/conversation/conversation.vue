@@ -386,7 +386,22 @@
 			
 		}
 	}
+	.coversationlist::-webkit-scrollbar-track
+	{
+		-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+		background-color: #fff;
+	}
 
+	.coversationlist::-webkit-scrollbar
+	{
+		width: 3px;
+		background-color: #fff;
+	}
+
+	.coversationlist::-webkit-scrollbar-thumb
+	{
+		background-color: #e2e2e2;
+	}
 	footer{
 		position: fixed;
 		z-index:10;

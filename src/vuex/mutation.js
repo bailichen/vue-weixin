@@ -41,8 +41,12 @@ export default {
 	[GET_USERINFO](status,userInfo){
 		status.userInfo=userInfo
 	},
-
-	[SAVE_THEMIMG](status,newImg){
-		status.newImg=newImg
+	//上传主题图片
+	[SAVE_THEMIMG](status,{
+		newImg,
+		imagestatus
+	}){
+		status.newImg=newImg;
+		status.imagestatus=imagestatus
 	}
 }

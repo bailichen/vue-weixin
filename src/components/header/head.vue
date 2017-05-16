@@ -11,7 +11,8 @@
 			</section>
 			<section class="wall">|</section>
 			<slot name='searchpart'></slot>
-			<section class="covers_name" v-if="$route.path.indexOf('search') == -1">
+			<!-- <slot name='clickrefresh' ></slot> -->
+			<section class="covers_name" v-if="$route.path.indexOf('search') == -1" @click="refreshPage">
 				<span class="ellipsis">
 					{{crossover}}
 				</span>
@@ -100,7 +101,7 @@
 				
 			}
 		},
-		props: ['logoPart', 'crossover', 'searchPart', 'add', 'person', "search"],
+		props: ['logoPart', 'crossover', 'searchPart', 'add', 'person', "search", "clickrefresh"],
 		created(){
 
 		},
@@ -122,6 +123,9 @@
 			},
 			goBackThing(){
 				this.$route.path == '/dialogue/conversation' ? this.$router.push('/dialogue') : window.history.go(-1);
+			},
+			refreshPage(){//点击头部刷新页面
+				this.$emit('refreshPage');
 			}
 		}
 	}
