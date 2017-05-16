@@ -45,7 +45,8 @@
 |   |-- config                       // 基本配置
 |       |-- env.js                   // 环境切换配置
 |       |-- fetch.js                 // 获取数据
-|       |-- rem.js                   // px转换rem
+|       |-- mUtils.js                 // 工具
+|       |-- rem.js                   // px转换rem
 |       |-- uploadPreview.js         // 上传图片控件
 |
 |   |-- images                       // 公共图片
