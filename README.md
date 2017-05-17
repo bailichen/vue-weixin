@@ -59,7 +59,8 @@
 |         |-- details                // 详细资料
 |           |-- more                 // 更多
 |       |-- find                     // 发现
-|       |-- me                     	 // 我
+|         |-- firendcircle            // 朋友圈
+|       |-- me                     	 // 我
 |       	|-- settings               // 设置
 |       		|-- detailset             
 |       			|-- newmessage        // 新消息提醒
