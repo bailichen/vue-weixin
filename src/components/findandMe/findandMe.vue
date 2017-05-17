@@ -116,12 +116,12 @@
 				</div>
 			</router-link>
 		</section>
-		<section class="reminder">
+		<section class="reminder" v-if="alertreminder">
 			<div class="reminder_cover"></div>
-			<div class="reminder_content">
-				<img src="http://cangdu.org/files/images/reminder.gif" alt="" class="alertimg">
-				<p class="alert_text">请下载微信App使用该功能呦~</p>
-				<div class="alert_affirm">确认</div>
+			<div class="reminder_content" :class="{alertshow : remindershow, alerthide : reminderhide}">
+				<img :src="gifSrc" alt="" class="alertimg">
+				<p class="alert_text">正在开发中...</p>
+				<div class="alert_affirm" @click="affirmAlert">确认</div>
 			</div>
 		</section>
 	</section>	
@@ -129,23 +129,32 @@
 
 <script>
 	import {userInfo} from 'src/service/getData'
-	
+	import {imgurl} from 'src/config/env';
 	export default{
 		data(){
 			return{
 				newtext:true,
 				pathUrl:this.$route.path.indexOf("me") !== -1,
 				userInfo:{},			//用户信息
+				alertreminder:false,	//弹出层是否显示
+				remindershow:false,		//显示时的动画
+				reminderhide:false,		//隐藏时的动画
+				gifSrc:'',
+				timer:null,
 			}
 		},
 		props: ['mepart',],
 		created(){
-
+			this.gifSrc=imgurl+'reminder.gif';
 		},
+		beforeDestroy(){
+            clearTimeout(this.timer) 
+        },
 		beforeMount(){
 			userInfo().then((res) => {
 				this.userInfo = res
-			})
+			});
+			
 		},
 		mounted(){
 
@@ -157,17 +166,21 @@
 			
 		},
 		methods:{
+			showPart(){
+				this.alertreminder=true;
+				this.remindershow=true;
+				this.reminderhide=false;
+			},
 			photoAlbum(){//相册或扫一扫
 				if(this.$route.path.indexOf("find") !== -1){
-					alert(1)
+					this.showPart()
 				}else{
 					this.$router.push('/me/photoalbum')
-					
 				}
 			},
 			collect(){//摇一摇或收藏
 				if(this.$route.path.indexOf("find") !== -1){
-					alert(1)
+					this.showPart()
 				}else{
 					this.$router.push('/me/collect')
 					
@@ -175,7 +188,7 @@
 			},
 			wallet(){//附近的人或钱包
 				if(this.$route.path.indexOf("find") !== -1){
-					alert(1)
+					this.showPart()
 				}else{
 					this.$router.push('/me/wallet')
 					
@@ -192,8 +205,16 @@
 				if( this.pathUrl ){//游戏或表情
 					this.$router.push('/me/face')
 				}else{
-					alert(2)
+					this.showPart()
 				}
+			},
+			affirmAlert(){//提醒确认
+				this.reminderhide=true;
+				this.remindershow=false;
+				this.timer=setTimeout(()=>{
+					clearTimeout(this.timer);
+					this.alertreminder=false;
+				},1000);
 			}
 		}
 	}
@@ -321,8 +342,14 @@
 				@include sizeColor(0.7253333333rem,#fff);
 			}
 		}
+		.alertshow{
+			 animation: tada 1s 1 ease-in-out both;
+		}
+		.alerthide{
+			animation: zoomOutDown 1s 1 ease-in-out both;
+		}
 	}
-	@-webkit-keyframes neon4 {
+	@keyframes neon4 {
 	  from {
 	    text-shadow: 0 0 10px #fff,
 	               0 0 20px  #fff,
@@ -342,6 +369,51 @@
 	               0 0 40px #B6FF00,
 	               0 0 50px #B6FF00,
 	               0 0 75px #B6FF00;
+	  }
+	}
+	@keyframes tada {
+	  from {
+	    -webkit-transform: scale3d(1, 1, 1);
+	    transform: scale3d(1, 1, 1);
+	  }
+
+	  10%, 20% {
+	    -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+	    transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+	  }
+
+	  30%, 50%, 70%, 90% {
+	    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+	    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+	  }
+
+	  40%, 60%, 80% {
+	    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+	    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+	  }
+
+	  100% {
+	    -webkit-transform: scale3d(1, 1, 1);
+	    transform: scale3d(1, 1, 1);
+	  }
+	}
+	@keyframes zoomOutDown {
+	  40% {
+	    opacity: 1;
+	    -webkit-transform: scale3d(.475, .475, .475) translate3d(0, -60px, 0);
+	    transform: scale3d(.475, .475, .475) translate3d(0, -60px, 0);
+	    -webkit-animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+	    animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+	  }
+
+	  100% {
+	    opacity: 0;
+	    -webkit-transform: scale3d(.1, .1, .1) translate3d(0, 2000px, 0);
+	    transform: scale3d(.1, .1, .1) translate3d(0, 2000px, 0);
+	    -webkit-transform-origin: center bottom;
+	    transform-origin: center bottom;
+	    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+	    animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
 	  }
 	}
 </style>
