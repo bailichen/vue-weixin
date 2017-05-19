@@ -25,7 +25,7 @@ export const userInfo = {
 	"headurl":imgurl+'chen.jpg',
 	"petname":"徐连杰",
 	"sex":1,
-	"sdasd":"披荆斩棘",
+	"sdasd":"逆天改命",
 	"phone":"15800319949",
 	"sendobject":0,
 	"gallery":[
