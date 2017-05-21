@@ -1,7 +1,9 @@
 <template>
 	<section class="child_page">
 		<head-top crossover="我的收藏"></head-top>
-		
+		<section class="collect">
+			
+		</section>
 	</section>	
 </template>
 
@@ -40,5 +42,9 @@
 		bottom: 0;
 		z-index: 203;
 		background-color: #ebebeb;
+	}
+	.collect{
+		padding-top: 2.06933rem;
+		
 	}
 </style>

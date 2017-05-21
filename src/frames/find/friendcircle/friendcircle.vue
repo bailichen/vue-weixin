@@ -11,7 +11,7 @@
 					<div class="themetext" :class="{shoowimg : imagestatus}">轻触更换主题照片</div>
 					<div class="personImg">
 						<div class="personame">{{userInfo.petname}}</div>
-						<div class="headimg">
+						<div class="headimg" @click="personInfor">
 							<img :src="userInfo.headurl" alt="">
 						</div>
 					</div>
@@ -35,7 +35,7 @@
 								<h1>{{item.remarks ? item.remarks : item.petname}}</h1>
 								<div class="publishtext">
 									{{item.statements}}
-								</div>
+								</div> 
 								<div class="publishimg clear" v-show="item.postimage.length>0">
 									<img :src="value" alt="" v-for="value in item.postimage" :class="{releaseimg : item.postimage.length >= 2 ? true : false}">
 								</div>
@@ -149,7 +149,7 @@
 		},
 		methods:{
 			...mapMutations([
-                "SAVE_THEMIMG",
+                "SAVE_THEMIMG", "SAVE_MESSAGE",
             ]),
             ...mapActions([
             	"getUserInfo",
@@ -185,6 +185,10 @@
 			},
 			freshPage(){
 				animate(this.$refs.friend,{scrollTop:0})
+			},
+			personInfor(){
+				this.SAVE_MESSAGE(this.userInfo)
+				this.$router.push('/addressbook/details')
 			}
 		}
 	}
