@@ -53,8 +53,8 @@
 				
 			}
 		},
-		created(){
-
+		created(){ 
+			this.getUserInfo();
 		},
 		mounted(){
 			

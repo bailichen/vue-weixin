@@ -213,7 +213,6 @@
 	.friend_wipe{
 		width:100%;
 		height:30rem;
-		
 		overflow:auto;  
 		.friend{
 			padding-top:2.06933rem;
