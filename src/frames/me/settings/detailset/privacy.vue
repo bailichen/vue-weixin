@@ -48,13 +48,6 @@
 						<label class='tgl-btn' for='look'></label>
 					</div>
 				</li>
-				<li>
-					<div>允许陌生人查看十张照片</div>
-					<div class="push-button">
-						<input class='tgl tgl-light' id='look' type='checkbox' checked>
-						<label class='tgl-btn' for='look'></label>
-					</div>
-				</li>
 				<li class="new_music">
 					<div>允许朋友查看朋友圈的范围</div>
 					<div class="voice-music">

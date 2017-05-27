@@ -65,7 +65,8 @@
 	.collect{
 		
 		height:30rem;
-		overflow:auto; 
+		overflow-y:auto; 
+		-webkit-overflow-scrolling:touch;
 		.collectchild{
 			padding-top: 2.06933rem;
 			ul{

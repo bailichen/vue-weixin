@@ -69,6 +69,10 @@ html,body{
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.scroll{
+  overflow-y:auto; 
+  -webkit-overflow-scrolling:touch;
+}
 
 //色值
 $black: #373b3e;

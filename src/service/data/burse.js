@@ -8,8 +8,7 @@
 
 
 import {imgurl} from 'src/config/env';
-export const burse=[
-{
+export const burse={
 	"腾讯服务":[
 		{
 			"servicelogo":imgurl+'facetoface.jpg',
@@ -47,16 +46,14 @@ export const burse=[
 			"servicelogo":imgurl+'publicbenefit.jpg',
 			"servicename":"腾讯公益",
 		},
-	]
-},
-{
+	],
 	"第三方服务":[
 		{
 			"servicelogo":imgurl+'che.jpg',
 			"servicename":"摩拜单车",
 		},
 		{
-			"servicelogo":imgurl+'che.jpg',
+			"servicelogo":imgurl+'didi.jpg',
 			"servicename":"滴滴出行",
 		},
 		{
@@ -93,4 +90,4 @@ export const burse=[
 		},
 	]
 }
-]
+
