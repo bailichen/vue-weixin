@@ -84,6 +84,9 @@
 |       |-- dialogist.js             // 对话列表
 |       |-- login.js                  // 个人用户信息
 |       |-- friendcircle.js          // 朋友圈数据
+|       |-- album.js                // 个人相册
+|       |-- burse.js                // 钱包数据
+|       |-- collect.js              // 我的收藏
 |
 |   |-- vuex                         // vuex的状态管理
 |       |-- modules                  // 加载各种store模块
