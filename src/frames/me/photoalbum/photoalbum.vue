@@ -66,7 +66,9 @@
 <style lang="scss" scoped>
 	@import "src/style/public";
 	.child_page{
-		position: fixed;
+		position: absolute;
+		width:100%;
+		height:100%;
 		top: 0;
 		left: 0;
 		right: 0;
@@ -76,8 +78,7 @@
 	}
 	.photoalbum{
 		padding-top:2.06933rem;
-		height:30rem;
-		padding-bottom:4rem;
+		background-color: #fff;
 		.container{
 			width:100%;
 			padding-top:0.4266666667rem;

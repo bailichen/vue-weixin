@@ -1,7 +1,9 @@
 <template>
 	<section class="child_page">
 		<head-top crossover="卡包"></head-top>
-		
+		<section class="carbag">
+			
+		</section>
 	</section>	
 </template>
 
@@ -33,12 +35,15 @@
 <style lang="scss" scoped>
 	@import "src/style/public";
 	.child_page{
-		position: fixed;
+		position: absolute;
 		top: 0;
 		left: 0;
 		right: 0;
 		bottom: 0;
 		z-index: 203;
 		background-color: #ebebeb;
+	}
+	.carbag{
+		padding-top:2.06933rem;
 	}
 </style>

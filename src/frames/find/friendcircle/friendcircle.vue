@@ -196,7 +196,9 @@
 <style lang="scss" scoped>
 	@import "src/style/public";
 	.child_page{
-		position: fixed;
+		position: absolute;
+		width:100%;
+		height:100%;
 		top: 0;
 		left: 0;
 		right: 0;
@@ -317,7 +319,6 @@
 				padding-top:1.5786666667rem;
 				ul{
 					width:100%;
-					padding-bottom:6rem;
 					.condition_li{
 						padding:0.512rem;
 						border-bottom:1px solid #e2e2e2;
@@ -480,22 +481,7 @@
 		}
 	}
 	
-	.friend_wipe::-webkit-scrollbar-track
-	{
-		-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-		background-color: #fff;
-	}
-
-	.friend_wipe::-webkit-scrollbar
-	{
-		width: 3px;
-		background-color: #fff;
-	}
-
-	.friend_wipe::-webkit-scrollbar-thumb
-	{
-		background-color: #e2e2e2;
-	}
+	
 
 	@keyframes flipInX {
 	  from {
