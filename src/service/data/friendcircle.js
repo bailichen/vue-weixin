@@ -27,13 +27,13 @@ export const circle= [
 			imgurl+'chen.jpg',imgurl+'cangdu.jpg',imgurl+'chuqiao.jpg',imgurl+'h.jpg',imgurl+'dinglan.jpg',imgurl+'fengmian.jpg',
 		],
 		"like":[
-			"国华大boss",
+			"嗯",
 		],
 		"comment":[
 			{
-				"wxid":"cangdu",
-				"petname":"苍都",
-				"remarks":"国华大boss",
+				"wxid":"enen",
+				"petname":"嗯",
+				"remarks":"嗯",
 				"commentext":"看好你呦！"
 			},
 			{
@@ -43,24 +43,6 @@ export const circle= [
 				"commentext":"披荆斩棘",
 			},
 		],
-		"reviewshow":false,		//评论的弹层显示时的动画
-		"reviewhide":false,		//评论的弹层消失时的动画
-		"criticism":false,		//评论的弹层是否显示
-		"flag":true,			//点击判断
-	},
-	{
-		"wxid":"cangdu",
-		"headurl":imgurl+'cangdu.jpg',
-		"petname":"苍都",
-		"sex":0,
-		"remarks":"国华大boss",
-		"statements":"目标10公里,过午不食~",
-		"time":"10分钟前",
-		"postimage":[
-			imgurl+'jinghan.jpg',
-		],
-		"like":[],
-		"comment":[],
 		"reviewshow":false,		//评论的弹层显示时的动画
 		"reviewhide":false,		//评论的弹层消失时的动画
 		"criticism":false,		//评论的弹层是否显示
@@ -77,7 +59,7 @@ export const circle= [
 		"postimage":[
 			
 		],
-		"like":['楚乔',"国华大boss",],
+		"like":['楚乔',"嗯",],
 		"comment":[],
 		"reviewshow":false,		//评论的弹层显示时的动画
 		"reviewhide":false,		//评论的弹层消失时的动画
@@ -98,9 +80,9 @@ export const circle= [
 		"like":[],
 		"comment":[
 			{
-				"wxid":"cangdu",
-				"petname":"苍都",
-				"remarks":"国华大boss",
+				"wxid":"enen",
+				"petname":"嗯",
+				"remarks":"嗯",
 				"commentext":"看好你呦！"
 			},
 			{
@@ -129,10 +111,10 @@ export const circle= [
 		"like":[],
 		"comment":[
 			{
-				"wxid":"cangdu",
-				"petname":"苍都",
-				"remarks":"国华大boss",
-				"commentext":"漂亮"
+				"wxid":"enen",
+				"petname":"嗯",
+				"remarks":"嗯",
+				"commentext":"看好你呦！"
 			},
 			{
 				"wxid":"achuqiao",

@@ -37,14 +37,18 @@
 							</div>
 						</div> 
 					</router-link>
-					<!-- <router-link to="/dialogue/conversation" tag="li">
+				</ul>
+			</section>
+			<!-- 群聊 -->
+			<section class="conversation">
+				<ul>
+					<router-link to="/dialogue/conversation" tag="li">
 						<div class="imgwipe">
 							<i class="redicon_num" v-if="newinfor">1</i>
 							<i class="redicon" v-if="newtext"></i>
 							<div class="imgstyle imgstyletwo">
 								<img src="../../images/cangdu.jpg" alt="">
 								<img src="../../images/yabao.jpg" alt="">
-								<img src="../../images/li.jpg" alt="">
 							</div>
 						</div>
 						<div class="infordetail">
@@ -56,10 +60,39 @@
 								好呀好呀
 							</div>
 						</div>
-					</router-link> -->
+					</router-link>
 				</ul>
 			</section>
 		</div>
+		<!-- 输入用户名弹窗 -->
+		<section class="consumer" :class="{consumeradd : consumer}" v-if="consumerthing">
+			<div class="consumerbg"></div>
+			<div class="consumercon">
+				<section class="login">
+					<div class="useid" :class="{'useid_border' : borderColor}">
+						<div class="mark">帐号</div>
+						<div class="input_mark"><input type="text" placeholder="微信号(随便输入)" v-model="inputaccounts" @input="inpuMark" @click="accountsMark" /></div>
+						<div class="svg_close" v-if="accounts" @click="clearMark">
+							<svg fill="#c3c3c3">
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use>
+							</svg>
+						</div>
+					</div>
+					<div class="useid" :class="{'useid_border' : borderColortwo}">
+						<div class="mark">密码</div>
+						<div class="input_mark"><input type="password" placeholder="密码(随便输入)" maxlength="16" @input="inpuCode" v-model="inputcode" @click="accountsCode" /></div>
+						<div class="svg_close" v-if="code" @click="clearCode">
+							<svg fill="#c3c3c3">
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use>
+							</svg>
+						</div>
+					</div>
+					<div class="login_botton" @click="loginSuccess"> 
+						登 录
+					</div>
+				</section>
+			</div>
+		</section>
 		<!-- 底部导航 -->
 		<foot-guide></foot-guide>
 		<transition name="router-show">
@@ -78,7 +111,16 @@
 			return{
 				newinfor:false,		//未静音时新消息提醒
 				newtext:false,		//静音时消息提醒
-				dialogList:[]
+				dialogList:[],
+				consumer:false,
+				inputaccounts: "",		//帐号	
+				inputcode: "",			//密码
+				accounts: false,		//清除帐号
+				code: false,			//清除密码
+				borderColor:true,		//下边框颜色
+				borderColortwo: false,
+				timer:null,	
+
 			}
 		},
 		created(){
@@ -96,7 +138,7 @@
 		},
 		computed:{
 			...mapState([
-				'mute', 'computershow', 'infor' ,'contactList',
+				'mute', 'computershow', 'infor' ,'contactList','consumerthing',
 			]),
 			
 		},
@@ -105,10 +147,43 @@
                 'getDialog'
             ]),
             ...mapMutations([
-				"SAVE_MESSAGE",
+				"SAVE_MESSAGE","LOGIN_COVER"
 			]),
             refreshInfor(item){
             	this.SAVE_MESSAGE(item)
+            },
+            inpuMark(){
+            	this.inputaccounts ? this.accounts=true : this.accounts=false;
+            },
+            inpuCode(){
+            	this.inputcode ? this.code=true : this.code=false;
+            },
+            accountsMark(){
+            	this.borderColor=true;
+            	this.borderColortwo=false;
+            },
+            accountsCode(){
+            	this.borderColor=false;
+            	this.borderColortwo=true;
+            },
+            clearMark(){
+            	this.inputaccounts="";
+            	this.accounts=false;
+            },
+            clearCode(){
+            	this.inputcode="";
+            	this.code=false;
+            },
+            loginSuccess(){
+            	if(this.inputaccounts){
+            		this.consumer=true;
+            		clearTimeout(this.timer);
+            		this.timer=setTimeout(()=>{
+            			this.LOGIN_COVER(false);
+            		},400)
+            		
+            	}
+            	
             }
 		}
 	}
@@ -120,6 +195,85 @@
 	}
 	.router-show-enter,.router-show-leave-active{
 		transform:translateX(100%)
+	}
+	@keyframes fadeOut {
+	  from {
+	    opacity: 1;
+	  }
+	  100% {
+	    opacity: 0;
+	  }
+	}
+	.consumer{
+		position: fixed;
+		width:100%;
+		height:100%;
+		top:0;
+		left:0;
+		z-index:100;
+		.consumerbg{
+			position: fixed;
+			width:100%;
+			height:100%;
+			top:0;
+			background:#000;
+			opacity: .5;
+		}
+		.consumercon{
+			@include center;
+			.login{
+				background:#fff;
+				border-radius:5px;
+				padding: 1rem;
+				width:12.3786666667rem;
+				margin:0 auto;
+				.useid{
+					width:100%;
+					border-bottom:1px solid #d4d4d4;
+					@include justify(flex-start);
+					align-items:center;
+					.mark{
+						@include sizeColor(0.64rem, #333);
+						letter-spacing:0.5546666667rem;
+						line-height:2.0266666667rem;
+						padding-left:0.4266666667rem;
+					}
+					.input_mark{
+						margin-right:0.34rem;
+						margin-left:.5rem;
+						@include widthHeight(5.1rem,2.0266666667rem);
+						input{
+							display:inline-block;
+							width:5.1rem;
+							line-height:2rem;
+							@include sizeColor(0.64rem, #333);
+						}
+					}
+					.svg_close{
+						@include widthHeight(0.64rem, 0.64rem);
+						svg{
+							display:block;
+							@include widthHeight(100%, 100%);
+						}
+					}
+				}
+				.useid_border{
+					border-color:#45c01a;
+				}
+				.login_botton{
+					margin-top:1.536rem;
+					text-align:center;
+					background:#1aad19;
+					border:1px solid #179e16;
+					border-radius:5px;
+					line-height:1.6rem;
+					@include sizeColor(.7rem,#fff);
+				}
+			}
+		}
+	}
+	.consumeradd{
+		animation:fadeOut .4s 1 linear both;
 	}
 	.dialogue{
 		width:100%;
@@ -154,7 +308,6 @@
 			}
 			.conversation{
 				width:100%;
-				margin-bottom:2.4rem;
 				ul{
 					width:100%;
 					li{

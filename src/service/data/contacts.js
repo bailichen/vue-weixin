@@ -87,27 +87,6 @@ A:[
 B:[],
 C:[
 	{
-		"wxid":"cangdu",
-		"headurl":imgurl+'cangdu.jpg',
-		"petname":"苍都",
-		"sex":0,
-		"remarks":"国华",
-		"sdasd":"过午不食~",
-		"phone":"13000000000",
-		"gallery":[
-			imgurl+'cangdu.jpg',imgurl+'lichun.jpg',
-		],
-		"district":"江苏 连云港",
-		"source":"通过群聊添加",
-		"newmeassage":"一发型师在给一个女客人做头发的时候把她脸给烫伤了，后来经过协商。。。。他把她给娶了。。。",
-		"sendobject":1,
-		"Messageblob":[
-			"诺贝尔奖为什么没有数学奖？",
-			"看庭前花开花落，荣辱不惊，望天上云卷云舒，去留无意。",
-			"一发型师在给一个女客人做头发的时候把她脸给烫伤了，后来经过协商。。。。他把她给娶了。。。",
-		],
-	},
-	{
 		"wxid":"caiawei",
 		"headurl":imgurl+'caiwei.jpg',
 		"petname":"采薇",

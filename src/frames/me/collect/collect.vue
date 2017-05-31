@@ -54,7 +54,9 @@
 <style lang="scss" scoped>
 	@import "src/style/public";
 	.child_page{
-		position: fixed;
+		position: absolute;
+		width:100%;
+		height:100%;
 		top: 0;
 		left: 0;
 		right: 0;
@@ -63,14 +65,12 @@
 		background-color: #ebebeb;
 	}
 	.collect{
-		
-		height:30rem;
+		background-color: #ebebeb;
 		overflow-y:auto; 
 		-webkit-overflow-scrolling:touch;
 		.collectchild{
 			padding-top: 2.06933rem;
 			ul{
-				padding-bottom:6rem;
 				li{
 					margin-top:0.2133333333rem;
 					padding:0.8533333333rem;

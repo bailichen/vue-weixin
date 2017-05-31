@@ -10,6 +10,7 @@ import {
 	ENLARGE_HEAD,
 	SAVE_THEMIMG,
 	CHANGE_RED,
+	LOGIN_COVER,
 } from './mutation-types.js'
 
 export default {
@@ -53,5 +54,8 @@ export default {
 	//改变朋友圈红色提醒显隐
 	[CHANGE_RED](status,firendwarn){
 		status.firendwarn=firendwarn;
+	},
+	[LOGIN_COVER](status,consumerthing){
+		status.consumerthing=consumerthing;
 	}
 }
