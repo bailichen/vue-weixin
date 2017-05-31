@@ -157,6 +157,7 @@
 			ul{
 				width:14rem;
 				margin:0 auto;
+				-webkit-overflow-scrolling: touch; 
 				.contacts_li{
 					width:100%;
 					padding:0.3413333333rem 0;

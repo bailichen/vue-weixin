@@ -189,7 +189,7 @@
 
 <script>
 	import headTop from 'src/components/header/head';
-	import IScroll from 'src/config/iscroll.js'
+	//import IScroll from 'src/config/iscroll.js'
 	import {mapState, mapActions,} from 'vuex'
 	import 'src/config/swiper.min.js' 
 	import 'src/style/swiper.min.css'
@@ -295,7 +295,8 @@
 		transform:translateX(100%)
 	}
 	.child_page{
-		position: fixed;
+		position: absolute;
+		width:100%;
 		top: 0;
 		left: 0;
 		right: 0;
@@ -316,17 +317,17 @@
 		}
 	}
 	.coversation{
+		background-color: #ebebeb;
+		-webkit-overflow-scrolling: touch; 
 		padding-top: 2.06933rem;
 		.coversationlist{
-			height: 24.3rem;
 			position: relative;
 			padding:0 .32rem;
 			overflow:auto;
 			margin:0 auto;
 			ul{
-				position: absolute;
 				padding-top:.4rem;
-				padding-bottom:3rem;
+				padding-bottom:2.2rem;
 				width:15.4rem;
 				top:0;
 				li{
@@ -385,22 +386,6 @@
 			}
 			
 		}
-	}
-	.coversationlist::-webkit-scrollbar-track
-	{
-		-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-		background-color: #fff;
-	}
-
-	.coversationlist::-webkit-scrollbar
-	{
-		width: 3px;
-		background-color: #fff;
-	}
-
-	.coversationlist::-webkit-scrollbar-thumb
-	{
-		background-color: #e2e2e2;
 	}
 	footer{
 		position: fixed;

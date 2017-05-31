@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<section class="find">
-			<router-link :to="$route.path.indexOf('find') !== -1 ? '/find/friendcircle' : '/me/personaldetails' " class="findlist">
+			<router-link :to="$route.path.indexOf('find') !== -1 ? '/find/friendcircle' : '/me/personaldetails' " class="findlist" @click.native="firendThing">
 				<div class="find_wipe">
 					<div class="findlist_left">
 						<section class="findlist_svg " :class="{'findlist_svg_me' : $route.path.indexOf('me') !== -1}">
@@ -24,7 +24,7 @@
 						</svg>
 						<div v-else>
 							<img src="../../images/tao.jpg" alt="">
-							<i class="redicon" v-if="newtext"></i>
+							<i class="redicon" v-if="firendwarn"></i>
 						</div>
 					</div>
 				</div>
@@ -130,10 +130,10 @@
 <script>
 	import {userInfo} from 'src/service/getData'
 	import {imgurl} from 'src/config/env';
+	import {mapState,mapMutations} from 'vuex'
 	export default{
 		data(){
 			return{
-				newtext:true,
 				pathUrl:this.$route.path.indexOf("me") !== -1,
 				userInfo:{},			//用户信息
 				alertreminder:false,	//弹出层是否显示
@@ -154,18 +154,27 @@
 			userInfo().then((res) => {
 				this.userInfo = res
 			});
-			
 		},
 		mounted(){
-
+			
 		},
 		components:{
 			
 		},
 		computed:{
-			
+			...mapState([
+				'firendwarn', 
+			]),
 		},
 		methods:{
+			 ...mapMutations([
+				"CHANGE_RED",
+			]),
+			firendThing(){
+				if(this.$route.path.indexOf("find") !== -1){
+					this.CHANGE_RED(false);
+				}
+			},
 			showPart(){
 				this.alertreminder=true;
 				this.remindershow=true;
@@ -202,11 +211,7 @@
 				}
 			},
 			gamesFace(){
-				if( this.pathUrl ){//游戏或表情
-					this.$router.push('/me/face')
-				}else{
-					this.showPart()
-				}
+				this.showPart()
 			},
 			affirmAlert(){//提醒确认
 				this.reminderhide=true;

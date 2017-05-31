@@ -4,7 +4,7 @@
 		<section class="login">
 			<div class="useid" :class="{'useid_border' : borderColor}">
 				<div class="mark">帐号</div>
-				<div class="input_mark"><input type="text" placeholder="微信号" v-model="inputaccounts" @input="inpuMark" @click="accountsMark" /></div>
+				<div class="input_mark"><input type="text" placeholder="微信号(随便输入)" v-model="inputaccounts" @input="inpuMark" @click="accountsMark" /></div>
 				<div class="svg_close" v-if="accounts" @click="clearMark">
 					<svg fill="#c3c3c3">
 						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use>
@@ -13,7 +13,7 @@
 			</div>
 			<div class="useid" :class="{'useid_border' : borderColortwo}">
 				<div class="mark">密码</div>
-				<div class="input_mark"><input type="password" placeholder="密码" maxlength="16" @input="inpuCode" v-model="inputcode" @click="accountsCode" /></div>
+				<div class="input_mark"><input type="password" placeholder="密码(随便输入)" maxlength="16" @input="inpuCode" v-model="inputcode" @click="accountsCode" /></div>
 				<div class="svg_close" v-if="code" @click="clearCode">
 					<svg fill="#c3c3c3">
 						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use>

@@ -35,20 +35,17 @@ export default[{
 	path:'/',
 	component:App,
 	children: [
-		{path: '', redirect: '/dialogue'},   //地址为空时跳转dialogue页面
-		{path: '/dialogue', component: dialogue, //对话列表页
+		{path: '', redirect: '/me/settings/login'},   //地址为空时跳转dialogue页面
+		{path: '/me/settings/login', component: login, //对话列表页
 			children: [
 				{path: '/dialogue/conversation',
 				component: conversation,
-					children: [
-						{
-							path: '/addressbook/details',
-							component: details,		//详细资料
-						},
-					]
 				},		//对话详情页
 			],
 		},	
+		{
+			path:'/dialogue', component:dialogue
+		},
 		{path: '/addressbook', component: addressbook,
 			children: [
 				{

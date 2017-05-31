@@ -21,53 +21,9 @@ import {imgurl} from 'src/config/env';
 
 export const dialog = [
 {
-	"wxid":"achuqiao",
-	"headurl":imgurl+'chuqiao.jpg',
-	"petname":"a楚乔",
-	"sex":1,
-	"remarks":"楚乔",
-	"sdasd":"披荆斩棘",
-	"phone":"13333333333",
-	"sendobject":1,
-	"gallery":[
-		imgurl+'yuwenyue.jpg',imgurl+'c.jpg',imgurl+'chenchangsheng.jpg'
-	],
-	"district":"奴籍少女",
-	"source":"通过搜索手机号添加",
-	"newmeassage":"从前有个剑客，他人很冷，心很冷，剑很冷，最后冷死了",
-	"sendobject":1,
-	"Messageblob":[
-		"有位非常漂亮的女同事，有天起晚了没有时间化妆便急忙冲到公司。结果那天她被记旷工了。。。。",
-		"你病，或者不病倒，老板就在那里，不悲不喜；你休，或者不休假，工作就在那里，不来不去；你拼，或者不拼命，工资就在那里，不增不减；你辞，或者不辞职，地球还是会转，不歇不停",
-		"从前有个剑客，他人很冷，心很冷，剑很冷，最后冷死了",
-		"从前有个剑客，他人很冷，心很冷，剑很冷，最后冷死了",
-		"从前有个剑客，他人很冷，心很冷，剑很冷，最后冷死了",
-		"从前有个剑客，他人很冷，心很冷，剑很冷，最后冷死了",
-		"从前有个剑客，他人很冷，心很冷，剑很冷，最后冷死了",
-	],
+	"wxid":"fileTransfer",
+	"headurl":imgurl+'file.jpg',
+	"petname":"文件传输助手",
+	"remarks":"文件传输助手",
 },
-{
-	"wxid":"ayuwenyue",
-	"headurl":imgurl+'yuwenyue.jpg',
-	"petname":"a宇文玥",
-	"sex":0,
-	"remarks":"",
-	"sdasd":"涅槃而生",
-	"phone":"13000000000",
-	"gallery":[
-		imgurl+'wudaoya.jpg',imgurl+'h.jpg',imgurl+'hexiao.jpg'
-	],
-	"district":"宇文府",
-	"source":"通过搜索微信号添加",
-	"newmeassage":"你的肩膀，那么近却那么远，到最后想说的话都未曾讲。!",
-	"sendobject":1,
-	"Messageblob":[
-		"人生没有彩排，每天都是直播，不仅收视率低，而且工资不高。",
-		"看庭前花开花落，荣辱不惊，望天上云卷云舒，去留无意。",
-		"你的肩膀，那么近却那么远，到最后想说的话都未曾讲。",
-		"你的肩膀，那么近却那么远，到最后想说的话都未曾讲。",
-		"你的肩膀，那么近却那么远，到最后想说的话都未曾讲。",
-		"你的肩膀，那么近却那么远，到最后想说的话都未曾讲。",
-	],
-}
 ]

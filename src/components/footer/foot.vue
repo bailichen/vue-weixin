@@ -51,6 +51,7 @@
 					<svg>
 			    		<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="$route.path.indexOf('find') !== -1 ? '#findlight' : '#find'"></use>
 					</svg>
+					<i class="findwarn" v-if="firendwarn"></i>
 				</section>
 				<section class="li_text" :class="$route.path.indexOf('find') !== -1 ? 'colortext' : 'color' " >发现</section>
 			</router-link>
@@ -67,7 +68,7 @@
 </template>
 
 <script>
-
+	import {mapState} from 'vuex'
 	export default{
 		data(){
 			return{
@@ -75,7 +76,7 @@
 			}
 		},
 		created(){
-
+			
 		},
 		mounted(){
 			
@@ -84,7 +85,9 @@
 
 		},
 		computed:{
-
+			...mapState([
+				'firendwarn', 
+			]),
 		},
 		methods:{
 
@@ -114,6 +117,15 @@
 					@include widthHeight(1.224rem,1.224rem);
 					svg{
 						@include widthHeight(100%,100%);
+					}
+					.findwarn{
+						display:block;
+						position: absolute;
+						right:-0.11rem;
+						top:-0.11rem;
+						@include widthHeight(0.4266666667rem,0.4266666667rem);
+						@include bg('../../images/warn.png');
+						border-radius:50%;
 					}
 				}
 				.li_text{

@@ -15,7 +15,8 @@ const state = {
 	userInfo:{},			//用户信息
 	newImg:'',				//主题图片地址
 	imagestatus:false,
-
+	firendwarn:true,		//朋友圈提示红色按钮
+	
 }
 
 export default new Vuex.Store({

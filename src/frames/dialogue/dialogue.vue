@@ -126,6 +126,7 @@
 		background:#fff;
 		.dialogue_con{
 			padding-top:2.06933rem;
+			-webkit-overflow-scrolling: touch; 
 			.computer{
 				@include widthHeight(100%, 1.9626666667rem);
 				background:#f5f5f5;

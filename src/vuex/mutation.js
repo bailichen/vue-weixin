@@ -9,6 +9,7 @@ import {
 	GET_USERINFO,
 	ENLARGE_HEAD,
 	SAVE_THEMIMG,
+	CHANGE_RED,
 } from './mutation-types.js'
 
 export default {
@@ -34,8 +35,8 @@ export default {
 		status.contactList=[obj, ...status.contactList];
 		
 		//数组去重
-		//const newArr = new Set(status.contactList);
-		//status.contactList = [...newArr];	
+		const newArr = new Set(status.contactList);
+		status.contactList = [...newArr];	
 	},
 	//获取用户信息
 	[GET_USERINFO](status,userInfo){
@@ -48,5 +49,9 @@ export default {
 	}){
 		status.newImg=newImg;
 		status.imagestatus=imagestatus
+	},
+	//改变朋友圈红色提醒显隐
+	[CHANGE_RED](status,firendwarn){
+		status.firendwarn=firendwarn;
 	}
 }

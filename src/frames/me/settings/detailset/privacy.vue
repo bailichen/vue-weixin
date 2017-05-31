@@ -111,7 +111,9 @@
 <style lang="scss" scoped>
 	@import "src/style/public";
 	.child_page{
-		position: fixed;
+		position: absolute;
+		width:100%;
+		height:100%;
 		top: 0;
 		left: 0;
 		right: 0;
@@ -120,19 +122,19 @@
 		background-color: #ebebeb;
 	}
 	.newmessage{
-		padding-top: 3.06933rem;
-		height:28rem;
-		overflow:auto;
-		padding-bottom:3rem;
+		background-color: #ebebeb;
+		padding-top: 2.06933rem;
+		-webkit-overflow-scrolling:touch; 
 		.chatrecord{
 			padding-left:0.64rem;
 			padding-bottom:0.2133333333rem;
 			@include sizeColor(0.6rem,#888);
+			margin-top:1rem;
 		}
 		ul{
 			background:#fff;
 			padding:0 0.64rem;
-			margin-bottom:1rem;
+			
 			li{
 				border-bottom:1px solid #f1f1f1;
 				padding:0.4266666667rem 0;
