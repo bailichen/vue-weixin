@@ -2,15 +2,37 @@
 /*
 *petname:群名
 *group:群聊人信息
+*wxid:微信号
+*headurl:头像图片地址
+*petname:昵称	
+*remarks:备注
+*whoSay:说话内容
 *
 *
 */
-
+import {imgurl} from 'src/config/env';
 export const groupchat={
 	"petname":"开饭啦~",
 	"grouphead":[
 		{
-
+			"wxid":"chenchangsheng",
+			"headurl":imgurl+'chenchangsheng.jpg',
+			"petname":"陈长生",
+			"remarks":"",
+			"whoSay":"今天下雨",
+		},
+		{
+			"wxid":"xulianjie442154157",
+			"headurl":imgurl+'chen.jpg',
+			"petname":"徐连杰",
+			"whoSay":"今天下雨",
+		},
+		{
+			"wxid":"mengfeng",
+			"headurl":imgurl+'mengfeng.jpg',
+			"petname":"蒙枫",
+			"remarks":"",
+			"whoSay":"今天下雨",
 		}
 	]
 }
