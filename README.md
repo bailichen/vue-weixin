@@ -39,7 +39,7 @@
 |       |-- footer                   // 底部微信导航
 |       |-- header                 	 // 头部公共组件
 |       |-- findandMe                // 发现和我 共同的模块的列表
-|       |-- enlarge                   //放大头像图片
+|       |-- enlarge                  //放大头像图片
 |
 |   |-- config                       // 基本配置
 |       |-- env.js                   // 环境切换配置
