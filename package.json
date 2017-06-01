@@ -14,7 +14,6 @@
     "vuex": "^2.0.0"
   },
   "devDependencies": {
-    "node-sass": "^4.5.3",
     "FontAwesome-webpack": "0.0.2",
     "autoprefixer": "^6.4.0",
     "autoprefixer-loader": "^3.2.0",
@@ -40,6 +39,7 @@
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "node-gyp": "^3.4.0",
+    "node-sass": "^4.5.3",
     "opn": "^4.0.2",
     "ora": "^0.3.0",
     "sass": "^0.5.0",

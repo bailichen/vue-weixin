@@ -223,7 +223,7 @@
 			this.getUserInfo();
 			userWord().then((res) => {
 				console.log(res)
-				this.conversine=res
+				this.conversine=[...res]
 				console.log(this.conversine)
 			});	
 		},
@@ -240,6 +240,7 @@
 		beforeDestroy(){
             clearTimeout(this.timer);
             console.log(this.conversine)
+            this.conversine = [];
             console.log(1)
         },
 		methods:{
