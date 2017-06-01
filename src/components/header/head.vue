@@ -122,7 +122,7 @@
 				this.addthing=false;
 			},
 			goBackThing(){
-				this.$route.path == '/dialogue/conversation' ? this.$router.push('/dialogue') : window.history.go(-1);
+				this.$route.path == '/singlechat' ? this.$router.push('/dialogue') : window.history.go(-1);
 			},
 			refreshPage(){//点击头部刷新页面
 				this.$emit('refreshPage');

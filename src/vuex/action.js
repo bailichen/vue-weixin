@@ -1,6 +1,6 @@
 //处理数据
 
-import {userInfo, dialog} from 'src/service/getData'
+import {userInfo, dialog, userWord} from 'src/service/getData'
 import {GET_USERINFO, SAVE_BEGINDIALOGUE} from './mutation-types.js'
 
 export default {

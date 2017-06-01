@@ -17,7 +17,7 @@
 			<!-- 对话列表 -->
 			<section class="conversation">
 				<ul>
-					<router-link to="/dialogue/conversation" tag="li" v-for="item in contactList" @click.native="refreshInfor(item)">
+					<router-link to="/singlechat" tag="li" v-for="item in contactList" @click.native="refreshInfor(item)">
 						<div class="imgwipe">
 							<i class="redicon_num" v-if="newinfor">
 							1
@@ -42,7 +42,7 @@
 			<!-- 群聊 -->
 			<section class="conversation">
 				<ul>
-					<router-link to="/dialogue/conversation" tag="li">
+					<router-link to="/singlechat" tag="li">
 						<div class="imgwipe">
 							<i class="redicon_num" v-if="newinfor">1</i>
 							<i class="redicon" v-if="newtext"></i>
@@ -102,8 +102,8 @@
 </template>
 
 <script>
-	import headTop from '../../components/header/head'
-	import footGuide from '../../components/footer/foot'
+	import headTop from 'src/components/header/head'
+	import footGuide from 'src/components/footer/foot'
 	import {dialog} from 'src/service/getData'
 	import {mapState,mapActions,mapMutations} from 'vuex'
 	export default{
@@ -125,6 +125,9 @@
 		},
 		created(){
 			this.getDialog();
+		},
+		beforeDestroy(){
+			
 		},
 		beforeMount(){
 			
@@ -189,7 +192,7 @@
 	}
 </script>
 <style lang="scss" scoped>
-	@import "../../style/public";
+	@import "src/style/public";
 	.router-show-enter-active,.router-show-leave-active{
 		transition: all .4s;
 	}

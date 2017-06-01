@@ -1,5 +1,5 @@
 <template>
-	<section class="child_page">
+	<section>
 		<head-top :crossover="chatname">
 			<section class="coversPart" slot="person">
 				<router-link to='' class="person_link">
@@ -12,24 +12,24 @@
 		<section class="coversation">
 			<section class="coversationlist" @click="bottomHide">
 				<ul>
-					<li v-for="item in infor.Messageblob">
-						<!-- 对方 -->
-						<div class="other">
-							<img :src="infor.headurl" alt="" @click="enlargeImg(infor.headurl)">
+					<!-- 对方 -->
+					<li v-for="item in conversine">
+						<div class="other" :class="{mysay : item.sendobject ==0 }">
+							<img :src="item.headurl" alt="" @click="enlargeImg(item.headurl)">
 							<div class="whatsay">
 								<div class="whatsay_svg">
 									<svg>
-										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#trigon-left"></use>
+										<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="item.sendobject ==0 ? '#trigon-right' : '#trigon-left'"></use>
 									</svg>
 								</div>
-								<div class="whatsay_text" @dblclick="">
-									{{item}}
+								<div class="whatsay_text">
+									{{item.Messageblob}}
 								</div>
 							</div>
 						</div>
 					</li>
-					<li v-for="item in userInfo.Messageblob">
-						<!-- 自己 -->
+					<!-- 自己 -->
+					<!-- <li v-for="item in userInfo.Messageblob">
 						<div class="other mysay">
 							<img :src="userInfo.headurl" alt="" @click="enlargeImg(userInfo.headurl)">
 							<div class="whatsay">
@@ -43,7 +43,7 @@
 								</div>
 							</div>
 						</div>
-					</li>
+					</li> -->
 				</ul>
 			</section>
 		</section>
@@ -189,8 +189,9 @@
 
 <script>
 	import headTop from 'src/components/header/head';
-	//import IScroll from 'src/config/iscroll.js'
-	import {mapState, mapActions,} from 'vuex'
+	import {mapState, mapActions,} from 'vuex';
+	import {userWord} from 'src/service/getData'
+	import {imgurl} from 'src/config/env';
 	import 'src/config/swiper.min.js' 
 	import 'src/style/swiper.min.css'
 	export default{ 
@@ -205,22 +206,14 @@
 				enlargehides:false,
 				enlargeShow:false,
 				enlarge:false,
-				timer:null
+				timer:null,
+				conversine:[],		//对话列表
 			}
 		},
 		created(){
 
 		},
 		mounted(){
-			//初始化IScroll
-			// new IScroll('.coversationlist',{
-			// 	click:true,
-			// 	scrollbars:false,
-			// 	//mouseWheel: true,  //侦听鼠标滚轮事件
-			// 	//fadeScrollbars: true, //滚动条淡入淡出方式
-			// 	probeType:2,//滚动条的灵敏性设置
-			// 	bounce:true,//是否反弹效果
-			// });	
 			//初始化swiper
 			new Swiper('.swiper-container', {
 		        pagination: '.swiper-pagination',
@@ -228,6 +221,11 @@
 		    });
 			this.chatname=this.infor.remarks ? this.infor.remarks : this.infor.petname;
 			this.getUserInfo();
+			userWord().then((res) => {
+				console.log(res)
+				this.conversine=res
+				console.log(this.conversine)
+			});	
 		},
 		components:{
 			headTop,
@@ -240,11 +238,13 @@
 			
 		},
 		beforeDestroy(){
-            clearTimeout(this.timer)
+            clearTimeout(this.timer);
+            console.log(this.conversine)
+            console.log(1)
         },
 		methods:{
 			...mapActions([
-                'getUserInfo'
+                'getUserInfo',
             ]),
 			whatInput(){
 				if(this.inputmessage){
@@ -264,7 +264,13 @@
 				this.clickmore=false;
 			},
 			clickSend(){
-				this.userInfo.Messageblob.push(this.inputmessage)
+				this.conversine.push({
+					"wxid":"xulianjie442154157",
+					"headurl":imgurl+'chen.jpg',
+					"sendobject":0,
+					"Messageblob":this.inputmessage,
+				});
+				console.log(this.conversine)
 				this.inputmessage='';
 				this.light=false;
 			},
@@ -287,23 +293,14 @@
 	}
 </script>
 <style lang="scss" scoped>
-	@import "../../../style/public";
+	@import "src/style/public";
 	.router-show-enter-active,.router-show-leave-active{
 		transition: all .4s;
 	}
 	.router-show-enter,.router-show-leave{
 		transform:translateX(100%)
 	}
-	.child_page{
-		position: absolute;
-		width:100%;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		z-index: 203;
-		background-color: #ebebeb;
-	}
+
 	.coversPart{
 		@include topcenter;
 		right:0.5973333333rem;

@@ -1,7 +1,7 @@
 import App from '../APP'
  
 const dialogue = r => require.ensure([], () => r(require('../frames/dialogue/dialogue')), 'dialogue')
-const conversation = r => require.ensure([], () => r(require('../frames/dialogue/conversation/conversation')), 'conversation')
+const singlechat = r => require.ensure([], () => r(require('../frames/conversation/singlechat')), 'singlechat')
 const addressbook = r => require.ensure([], () => r(require('../frames/addressbook/addressbook')), 'addressbook')
 const details = r => require.ensure([], () => r(require('../frames/addressbook/details/details')), 'details')
 const more = r => require.ensure([], () => r(require('../frames/addressbook/details/more/more')), 'more')
@@ -36,13 +36,8 @@ export default[{
 	component:App,
 	children: [
 		{path: '', redirect: '/dialogue'},   //地址为空时跳转dialogue页面
-		{path: '/dialogue', component: dialogue, //对话列表页
-			children: [
-				{path: '/dialogue/conversation',
-				component: conversation,
-				},		//对话详情页
-			],
-		},	
+		{path: '/dialogue', component: dialogue, },//对话列表页
+		{path: '/singlechat',component: singlechat,},		//单人对话详情页	
 		{path: '/addressbook', component: addressbook,
 			children: [
 				{

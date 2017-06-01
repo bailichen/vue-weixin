@@ -51,7 +51,7 @@
 				</div>
 			</div> 
 			<div class="sendmessage"><!--  -->
-				<router-link to='/dialogue/conversation' class="send" @click.native="enterdDialogue">
+				<router-link to='/singlechat' class="send" @click.native="enterdDialogue">
 					发消息
 				</router-link>
 			</div>
@@ -77,13 +77,14 @@
 		mounted(){
 			
 			this.gallery=this.infor.gallery;
+
 		},
 		components:{
 			headTop,
 		},
 		computed:{
 			...mapState([
-			    "infor", "contactList", 
+			    "infor", "contactList", "conversine"
 			]),
 			
 		},
