@@ -78,7 +78,7 @@
 							</svg>
 						</div>
 					</div>
-					<div class="useid" :class="{'useid_border' : borderColortwo}">
+					<!-- <div class="useid" :class="{'useid_border' : borderColortwo}">
 						<div class="mark">密码</div>
 						<div class="input_mark"><input type="password" placeholder="密码(随便输入)" maxlength="16" @input="inpuCode" v-model="inputcode" @click="accountsCode" /></div>
 						<div class="svg_close" v-if="code" @click="clearCode">
@@ -86,7 +86,7 @@
 								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use>
 							</svg>
 						</div>
-					</div>
+					</div> -->
 					<div class="login_botton" @click="loginSuccess"> 
 						登 录
 					</div>
@@ -106,6 +106,8 @@
 	import footGuide from 'src/components/footer/foot'
 	import {dialog} from 'src/service/getData'
 	import {mapState,mapActions,mapMutations} from 'vuex'
+	import fetch from 'src/config/fetch'
+
 	export default{
 		data(){
 			return{
@@ -125,6 +127,7 @@
 		},
 		created(){
 			this.getDialog();
+			this.initData()
 		},
 		beforeDestroy(){
 			
@@ -152,6 +155,17 @@
             ...mapMutations([
 				"SAVE_MESSAGE","LOGIN_COVER"
 			]),
+			async initData(){
+				try{
+					const res = await fetch('/user/info')
+					if (res.status !== 200) {
+						this.LOGIN_COVER(true)
+					}
+				}catch(err){
+					console.log('获取用户信息失败', err)
+					this.LOGIN_COVER(true)
+				}
+			},
             refreshInfor(item){
             	this.SAVE_MESSAGE(item)
             },
@@ -177,16 +191,18 @@
             	this.inputcode="";
             	this.code=false;
             },
-            loginSuccess(){
+            async loginSuccess(){
             	if(this.inputaccounts){
             		this.consumer=true;
-            		clearTimeout(this.timer);
-            		this.timer=setTimeout(()=>{
-            			this.LOGIN_COVER(false);
-            		},400)
-            		
+            		try{
+						const res = await fetch('/user/login', {username: this.inputaccounts})
+						if (res.status == 200) {
+							this.LOGIN_COVER(false)
+						}
+					}catch(err){
+						console.log('获取用户信息失败', err)
+					}
             	}
-            	
             }
 		}
 	}

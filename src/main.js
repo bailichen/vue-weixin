@@ -6,6 +6,12 @@ import './style/public.scss'
 import './config/rem'
 import FastClick from 'fastclick'
 
+var socket = io('http://cangdu.org:8003');
+socket.emit('chat', {user_id: 2, content: 'ddfsfsfsdf'});
+socket.on('chat', function (data) {
+	console.log(data);
+});
+
 Vue.use(VueRouter)
 const router = new VueRouter({
 	routes,
