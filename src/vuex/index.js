@@ -16,7 +16,7 @@ const state = {
 	newImg: '',				//主题图片地址
 	imagestatus: false,
 	firendwarn: true,		//朋友圈提示红色按钮
-	consumerthing: true,		//登录弹窗显隐
+	consumerthing: false,		//登录弹窗显隐
 	
 }
 

@@ -194,6 +194,8 @@
 	import {imgurl} from 'src/config/env';
 	import 'src/config/swiper.min.js' 
 	import 'src/style/swiper.min.css'
+	import fetch from 'src/config/fetch'
+
 	export default{ 
 		data(){
 			return{
@@ -239,9 +241,6 @@
 		},
 		beforeDestroy(){
             clearTimeout(this.timer);
-            console.log(this.conversine)
-            this.conversine = [];
-            console.log(1)
         },
 		methods:{
 			...mapActions([
@@ -264,23 +263,31 @@
 			inputBottomHide(){
 				this.clickmore=false;
 			},
-			clickSend(){
+			async clickSend(){
 				this.conversine.push({
 					"wxid":"xulianjie442154157",
 					"headurl":imgurl+'chen.jpg',
 					"sendobject":0,
 					"Messageblob":this.inputmessage,
 				});
-				console.log(this.conversine)
-				this.inputmessage='';
 				this.light=false;
+				try{
+					const res = await fetch('/robot/question', {question: this.inputmessage})
+					this.inputmessage='';
+					if (res.status == 200) {
+						console.log(res.content)
+					}else{
+						throw new Error(res)
+					}
+				}catch(err){
+					console.log('获取机器人聊天信息失败', err);
+				}
 			},
 			enlargeImg(enlargeImg){
 				this.enlargeurl=enlargeImg;
 				this.enlarge=true;
 				this.enlargeShow=true;
 				this.enlargehides=false;
-				
 			},
 			enlargeHide(){
 				clearTimeout(this.timer)
