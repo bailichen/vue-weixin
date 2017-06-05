@@ -6,15 +6,16 @@
 
 ###底部导航
 
-<img src="http://cangdu.org/files/images/nav.gif" width="416" height="737"/>
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/nav.gif" width="416" height="737"/>
+
 ###通讯录
-<img src="http://cangdu.org/files/images/addressbook.gif" width="416" height="737"/>
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/addressbook.gif" width="416" height="737"/>
 
 ###发现
-<img src="http://cangdu.org/files/images/find.png" width="416" height="737"/>
 
-###朋友圈
-<img src="http://cangdu.org/files/images/find.png" width="416" height="737"/>
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/find.png" width="416" height="737"/>
+
 
 # 目标功能
 - [x] 微信 
