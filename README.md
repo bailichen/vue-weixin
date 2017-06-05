@@ -2,6 +2,20 @@
 ### 利用vue2+vuex写一个模仿微信app的单页面应用
 使用SVG格式构建页面icon图
 
+# 页面部分截图
+
+###底部导航
+
+<img src="http://cangdu.org/files/images/nav.gif" width="416" height="737"/>
+###通讯录
+<img src="http://cangdu.org/files/images/addressbook.gif" width="416" height="737"/>
+
+###发现
+<img src="http://cangdu.org/files/images/find.png" width="416" height="737"/>
+
+###朋友圈
+<img src="http://cangdu.org/files/images/find.png" width="416" height="737"/>
+
 # 目标功能
 - [x] 微信 
 - [x] 通讯录 
