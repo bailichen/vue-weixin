@@ -17,11 +17,17 @@
 <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/find.png" width="300" height="530"/>
 
 ###朋友圈
+
 ######上传图片
+
 <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/shangchuan.gif" width="300" height="530"/>
+
 ######点赞
+
 <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/like.gif" width="300" height="530"/>
+
 ######评论
+
 <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/commont.gif" width="300" height="530"/>
 
 
