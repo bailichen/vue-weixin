@@ -16,6 +16,11 @@
 
 <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/find.png" width="416" height="737"/>
 
+###朋友圈
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/firendcircle.gif" width="416" height="737"/>
+
+
 
 # 目标功能
 - [x] 微信 
@@ -28,9 +33,10 @@
 - [x] 聊天
 - [x] widows 微信已登录
 - [x] 搜索页
-- [x] 对话页、对话功能
+- [ ] 对话页、对话功能
 - [ ] 对话功能
 - [x] 朋友圈
+- [x] 朋友圈点赞、评论
 - [x] 个人中心
 - [x] 详细资料
 - [x] 更多
