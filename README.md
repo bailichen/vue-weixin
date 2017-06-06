@@ -17,8 +17,9 @@
 <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/find.png" width="416" height="737"/>
 
 ###朋友圈
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/firendcircle.gif" width="416" height="737"/>
+上传图片<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/shangchuan.gif" width="416" height="737"/>
+点赞<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/like.gif" width="416" height="737"/>
+评论<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/commont.gif" width="416" height="737"/>
 
 
 

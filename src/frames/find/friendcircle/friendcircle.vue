@@ -272,7 +272,7 @@
 	.friend_wipe{
 		width:100%;
 		padding-bottom:3rem;
-		height:33rem;
+		//height:33rem;
 		background-color: #f8f8f8;
 		overflow:auto;  
 		.friend{
