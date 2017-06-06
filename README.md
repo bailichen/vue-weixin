@@ -6,20 +6,23 @@
 
 ###底部导航
 
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/nav.gif" width="416" height="737"/>
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/nav.gif" width="300" height="530"/>
 
 ###通讯录
 
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/addressbook.gif" width="416" height="737"/>
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/addressbook.gif" width="300" height="530"/>
 
 ###发现
 
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/find.png" width="416" height="737"/>
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/find.png" width="300" height="530"/>
 
 ###朋友圈
-上传图片<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/shangchuan.gif" width="416" height="737"/>
-点赞<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/like.gif" width="416" height="737"/>
-评论<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/commont.gif" width="416" height="737"/>
+######上传图片
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/shangchuan.gif" width="300" height="530"/>
+######点赞
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/like.gif" width="300" height="530"/>
+######评论
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/commont.gif" width="300" height="530"/>
 
 
 
