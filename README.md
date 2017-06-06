@@ -74,8 +74,9 @@
 |   |-- frames                       // 页面组件
 |       |-- search                 	 // 搜索页面
 |       |-- dialogue                 // 微信首页(对话列表页)
-|			|--conversation			           //	对话详情页
-|       |-- addressbook              // 通讯录
+|			  |--conversation			           //	对话详情页
+|			      |--singlechat			          //单人对话
+|       |-- addressbook              // 通讯录
 |         |-- details                // 详细资料
 |           |-- more                 // 更多
 |       |-- find                     // 发现
