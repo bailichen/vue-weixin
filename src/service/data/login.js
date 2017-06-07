@@ -21,7 +21,7 @@
 import {imgurl} from 'src/config/env';
 
 export const userInfo = {
-	"wxid":"xulianjie442154157",
+	"wxid":"812571880",
 	"headurl":imgurl+'chen.jpg',
 	"petname":"徐连杰",
 	"sex":1,

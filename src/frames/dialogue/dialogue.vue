@@ -42,13 +42,12 @@
 			<!-- 群聊 -->
 			<section class="conversation">
 				<ul>
-					<router-link to="/singlechat" tag="li">
+					<router-link to="/groupchat" tag="li">
 						<div class="imgwipe">
 							<i class="redicon_num" v-if="newinfor">1</i>
 							<i class="redicon" v-if="newtext"></i>
 							<div class="imgstyle imgstyletwo">
-								<img src="../../images/cangdu.jpg" alt="">
-								<img src="../../images/yabao.jpg" alt="">
+								<img :src="item.headurl" alt="" v-for="item in groupHead">
 							</div>
 						</div>
 						<div class="infordetail">
@@ -57,7 +56,7 @@
 								<span class="right">12:07</span>
 							</div>
 							<div class="infordetail_bot ellipsis">
-								好呀好呀
+								地点
 							</div>
 						</div>
 					</router-link>
@@ -78,15 +77,6 @@
 							</svg>
 						</div>
 					</div>
-					<!-- <div class="useid" :class="{'useid_border' : borderColortwo}">
-						<div class="mark">密码</div>
-						<div class="input_mark"><input type="password" placeholder="密码(随便输入)" maxlength="16" @input="inpuCode" v-model="inputcode" @click="accountsCode" /></div>
-						<div class="svg_close" v-if="code" @click="clearCode">
-							<svg fill="#c3c3c3">
-								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#close"></use>
-							</svg>
-						</div>
-					</div> -->
 					<div class="login_botton" @click="loginSuccess"> 
 						登 录
 					</div>
@@ -104,8 +94,8 @@
 <script>
 	import headTop from 'src/components/header/head'
 	import footGuide from 'src/components/footer/foot'
-	import {dialog} from 'src/service/getData'
 	import {mapState,mapActions,mapMutations} from 'vuex'
+	import {groupChat} from 'src/service/getData'
 	import fetch from 'src/config/fetch'
 
 	export default{
@@ -122,11 +112,11 @@
 				borderColor:true,		//下边框颜色
 				borderColortwo: false,
 				timer:null,	
+				groupHead:[],
 
 			}
 		},
 		created(){
-			this.getDialog();
 			this.initData()
 		},
 		beforeDestroy(){
@@ -136,7 +126,9 @@
 			
 		},
 		mounted(){	
-			this.dialogList = this.contactList
+			groupChat().then( (res) =>{
+				this.groupHead=res.grouphead
+			})
 		},
 		components:{
 			headTop,
@@ -149,9 +141,7 @@
 			
 		},
 		methods:{
-			...mapActions([
-                'getDialog'
-            ]),
+			
             ...mapMutations([
 				"SAVE_MESSAGE","LOGIN_COVER"
 			]),
@@ -376,6 +366,7 @@
 							.imgstyletwo{
 								img{
 									width: 33.33%;
+									height:33.33%;
 									flex-grow:0;
 								}
 							}

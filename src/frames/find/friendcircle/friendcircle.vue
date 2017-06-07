@@ -2,8 +2,8 @@
 	<section class="child_page">
 		<head-top crossover="朋友圈" clickrefresh="friendcicle" @refreshPage="freshPage"></head-top>
 		<section class="friend_wipe" ref="friend">
-			<section class="friend" >
-				<div class="theme" >
+			<section class="friend">
+				<div class="theme">
 					<div class="themeinit" @click="exportInput"></div>
 					<div :class="{shoowimg : !imagestatus}" @click="exportInput">
 						<img :src="newImg" id="imgSrc" ref="imgSrc" class="imgSrc"  />
@@ -49,21 +49,24 @@
 											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#comment"></use>
 										</svg>
 										<div class="discuss" v-if="item.criticism" :class="{discusshow : item.reviewshow, discusshide : item.reviewhide}">
-											<div >
-												<svg fill="#fff">
+											<div @click="supportThing(item)" >
+												<svg fill="#fff" :class="{surportdiv : likediv}">
 													<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#like"></use>
 												</svg>
-												<span>赞</span>
+												<span ref="suporttext">{{item.suporthtml}}</span>
 											</div>
-											<div>
+											<div @click="criticismThing(item)">
 												<svg fill="#fff">
 													<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#discuss"></use>
 												</svg>
 												<span>评论</span>
 											</div>
+
 										</div>
 									</div>
+
 								</div>
+								
 								<div class="retext" v-show = "item.like.length >0 || item.comment.length > 0">
 									<svg class="retext_trigon" fill="#efefef">
 										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#trigon"></use>
@@ -83,9 +86,17 @@
 									</div>
 								</div>
 							</div>
+							
 						</li>
 					</ul>
 				</div>
+				<!-- 评论 -->
+				<section class="criticism" v-if="criticismstate">
+					<div class="criticism_con">
+						<textarea name="" id="" cols="30" rows="10" v-model="textareaVlue" @input="inputCriticism"></textarea>
+						<span :class="{notempty:changeinput}" @click="commentSend">发送</span>
+					</div>
+				</section>
 			</section>
 		</section>
 	</section>	
@@ -107,18 +118,27 @@
 				/*reviewshow:false,		//评论的弹层显示时的动画
 				reviewhide:false,		//评论的弹层消失时的动画
 				criticism:false,		//评论的弹层是否显示
-				flag:true,				//点击判断*/
+				flag:true,				//点击判断
+				suporthtml:"赞",			*/
 				timer:null,				//定时器
+				timers:null,			//点赞定时器
 				bordercss:true,			//点赞的下边框
 				likenum:true,			//点赞的人数
 				circleData:[],
+				likediv:false,			//点击时svg图放大
+				textareaVlue:'',		//评论输入的内容
+				changeinput:false,		//控制发送按钮状态的改变
+				criticismstate:false,	//评论显隐
+				itemlist:{},			//点击当前的li
+
 			}
 		},
 		created(){
 
 		},
 		beforeDestroy(){
-            clearTimeout(this.timer) 
+            clearTimeout(this.timer);
+            clearTimeout(this.timers); 
         },
 		mounted(){
 			//上传图片并展示图片（无剪裁功能）
@@ -176,19 +196,55 @@
 				},1000)
 				item.flag=true;
 			},
-			showDiscuss(item){
+			showDiscuss(item){ //点击评论按钮点赞与评论出现
 				if(item.flag){
 					this.commentShow(item)
 				}else{
 					this.commentHide(item);
 				}
 			},
-			freshPage(){
+			freshPage(){//点击头部页面滚动到顶部
 				animate(this.$refs.friend,{scrollTop:0})
 			},
-			personInfor(){
-				this.SAVE_MESSAGE(this.userInfo)
-				this.$router.push('/addressbook/details')
+			personInfor(){//点击头像进入个人资料页
+				this.SAVE_MESSAGE(this.userInfo);
+				this.$router.push('/addressbook/details');
+			},
+			supportThing(item){//点赞
+				this.likediv=true;
+				clearTimeout(this.timers);
+				this.timers=setTimeout(()=>{
+					this.likediv=false;
+				},200);
+				this.commentHide(item);
+				if(item.suporthtml == "赞"){
+					item.suporthtml="取消";
+					item.like.push(this.userInfo.petname)
+				}else{
+					item.suporthtml="赞";
+					item.like.pop();
+				}
+			},
+			criticismThing(item){//评论
+				this.itemlist={};
+				this.itemlist=item;
+				this.criticismstate=true;
+				this.commentHide(item);
+			},
+			inputCriticism(){//文本框是否为空
+				this.textareaVlue ? this.changeinput=true : this.changeinput=false;
+			},
+			commentSend(){//评论点击发送
+				if(this.textareaVlue){
+					this.itemlist.comment.push({
+						wxid:this.userInfo.wxid,
+						petname:this.userInfo.petname,
+						commentext:this.textareaVlue
+					})
+				}
+				this.criticismstate=false;
+				this.textareaVlue='';
+				this.changeinput=false;
 			}
 		}
 	}
@@ -209,12 +265,15 @@
 	.refresh{
 		position: absolute;
 		@include widthHeight(12rem,2rem);
+
 		background:#fff;
 		left:2rem;
 	}
 	.friend_wipe{
 		width:100%;
-		height:30rem;
+		padding-bottom:3rem;
+		//height:33rem;
+		background-color: #f8f8f8;
 		overflow:auto;  
 		.friend{
 			padding-top:2.06933rem;
@@ -413,6 +472,9 @@
 										div:first-child{
 											border-right:2px solid #2f3336;
 										}
+										.surportdiv{
+											animation: pulse 0.5s;
+										}
 									}
 									.discusshow{
 										animation: flipInX 1s 1 ease-in-out both;
@@ -424,7 +486,6 @@
 								}
 							}
 							.retext{
-								
 								margin-top:0.128rem;
 								.retext_trigon{
 									display:block;
@@ -444,8 +505,12 @@
 										float:left;
 										margin-right:0.2133333333rem;
 										@include sizeColor(0.512rem,#8792b0);
+										i{
+											@include sizeColor(0.512rem,#8792b0);
+										}
 									}
 									span:last-child{
+										@include sizeColor(0.512rem,#8792b0);
 										i{
 											display:none;
 										}
@@ -477,6 +542,45 @@
 					}
 				}
 
+			}
+			.criticism{
+				position: fixed;
+				left:0;
+				z-index:10;
+				bottom:0;
+				width:100%;
+				background:#ebebeb;
+				.criticism_con{
+					padding:0.4266666667rem 0.64rem;
+					@include justify(space-between);
+					textarea{
+						display:block;
+						width:12rem;
+						height:1.5rem;
+						max-height:3.2rem;
+						border:0;
+						border-bottom:2px solid #18ae17;
+						resize:none;
+						@include sizeColor(0.64rem,#333);
+						line-height:0.768rem;
+						background:none;
+						padding-top:0.32rem;
+					}
+					span{
+						display:block;
+						width:1.8rem;
+						@include sizeColor(0.5546666667rem,#d2d2d2);
+						border:1px solid #d7d7d7;
+						text-align:center;
+						border-radius:5px;
+						line-height:1.3653333333rem;
+					}
+					.notempty{
+						background:#18ae17;
+						color:#fff;
+						border-color:#3e8d3e;
+					}
+				}
 			}
 		}
 	}
@@ -531,6 +635,22 @@
 	    -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
 	    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
 	    opacity: 0;
+	  }
+	}
+	@keyframes pulse {
+	  from {
+	    -webkit-transform: scale3d(1, 1, 1);
+	    transform: scale3d(1, 1, 1);
+	  }
+
+	  50% {
+	    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+	    transform: scale3d(1.1, 1.1, 1.1);
+	  }
+
+	  100% {
+	    -webkit-transform: scale3d(1, 1, 1);
+	    transform: scale3d(1, 1, 1);
 	  }
 	}
 </style>

@@ -10,12 +10,40 @@
 *like:点赞
 *comment:评论
 *
+*reviewshow:	评论的弹层显示时的动画
+*reviewhide: 	评论的弹层消失时的动画
+*criticism:		评论的弹层是否显示
+*flag:			点击判断
+*suporthtml:	赞
+*
+*
+*
+*
+*
 *
 */
 
 import {imgurl} from 'src/config/env';
 export const circle= [
 	{
+		"wxid":"chenchangsheng",
+		"headurl":imgurl+'chenchangsheng.jpg',
+		"petname":"陈长生",
+		"sex":0,
+		"remarks":"",
+		"statements":"逆天改命",
+		"time":"20分钟前",
+		"postimage":[
+			
+		],
+		"like":['楚乔',"嗯",],
+		"comment":[],
+		"reviewshow":false,		
+		"reviewhide":false,		
+		"criticism":false,		
+		"flag":true,			
+		"suporthtml":"赞",		
+	},{
 		"wxid":"xulianjie442154157",
 		"headurl":imgurl+'chen.jpg',
 		"petname":"徐连杰",
@@ -43,29 +71,13 @@ export const circle= [
 				"commentext":"披荆斩棘",
 			},
 		],
-		"reviewshow":false,		//评论的弹层显示时的动画
-		"reviewhide":false,		//评论的弹层消失时的动画
-		"criticism":false,		//评论的弹层是否显示
-		"flag":true,			//点击判断
+		"reviewshow":false,		
+		"reviewhide":false,		
+		"criticism":false,		
+		"flag":true,			
+		"suporthtml":"赞",		
 	},
-	{
-		"wxid":"chenchangsheng",
-		"headurl":imgurl+'chenchangsheng.jpg',
-		"petname":"陈长生",
-		"sex":0,
-		"remarks":"",
-		"statements":"逆天改命",
-		"time":"20分钟前",
-		"postimage":[
-			
-		],
-		"like":['楚乔',"嗯",],
-		"comment":[],
-		"reviewshow":false,		//评论的弹层显示时的动画
-		"reviewhide":false,		//评论的弹层消失时的动画
-		"criticism":false,		//评论的弹层是否显示
-		"flag":true,			//点击判断
-	},
+	
 	{
 		"wxid":"chenyuan",
 		"headurl":imgurl+'chenyuan.jpg',
@@ -92,10 +104,11 @@ export const circle= [
 				"commentext":"披荆斩棘",
 			},
 		],
-		"reviewshow":false,		//评论的弹层显示时的动画
-		"reviewhide":false,		//评论的弹层消失时的动画
-		"criticism":false,		//评论的弹层是否显示
-		"flag":true,			//点击判断
+		"reviewshow":false,		
+		"reviewhide":false,		
+		"criticism":false,		
+		"flag":true,			
+		"suporthtml":"赞",		
 	},
 	{
 		"wxid":"shugeuifei",
@@ -123,10 +136,11 @@ export const circle= [
 				"commentext":"披荆斩棘",
 			},
 		],
-		"reviewshow":false,		//评论的弹层显示时的动画
-		"reviewhide":false,		//评论的弹层消失时的动画
-		"criticism":false,		//评论的弹层是否显示
-		"flag":true,			//点击判断
+		"reviewshow":false,		
+		"reviewhide":false,		
+		"criticism":false,		
+		"flag":true,			
+		"suporthtml":"赞",		
 	},
 ]
 

@@ -23,7 +23,7 @@
 							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#QRcode"></use>
 						</svg>
 						<div v-else>
-							<img src="../../images/tao.jpg" alt="">
+							<img :src="newGetImage" alt="">
 							<i class="redicon" v-if="firendwarn"></i>
 						</div>
 					</div>
@@ -130,7 +130,8 @@
 <script>
 	import {userInfo} from 'src/service/getData'
 	import {imgurl} from 'src/config/env';
-	import {mapState,mapMutations} from 'vuex'
+	import {mapState,mapMutations} from 'vuex';
+	import {circle} from 'src/service/getData' 
 	export default{
 		data(){
 			return{
@@ -141,6 +142,7 @@
 				reminderhide:false,		//隐藏时的动画
 				gifSrc:'',
 				timer:null,
+				newGetImage:'',			//朋友圈动态第一个头像
 			}
 		},
 		props: ['mepart',],
@@ -156,7 +158,12 @@
 			});
 		},
 		mounted(){
-			
+			circle().then( (res) =>{
+				for(let i=0; i < res.length; i++){
+					this.newGetImage=res[0].headurl;
+					return
+				}
+			})
 		},
 		components:{
 			
@@ -277,10 +284,15 @@
 					position: relative;
 					@include widthHeight(1.6rem,1.6rem);
 					@include align;
-					img{
-						display:block;
-						@include widthHeight(100%,100%);
+					div{
+						@include widthHeight(1.6rem,1.6rem);
+						overflow: hidden;
+						img{
+							display:block;
+							@include widthHeight(100%,100%);
+						}
 					}
+					
 					.redicon{
 						position: absolute;
 						right:-0.21rem;

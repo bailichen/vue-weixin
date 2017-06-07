@@ -2,6 +2,36 @@
 ### 利用vue2+vuex写一个模仿微信app的单页面应用
 使用SVG格式构建页面icon图
 
+# 页面部分截图
+
+### 底部导航
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/nav.gif" width="300" height="530"/>
+
+### 通讯录
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/addressbook.gif" width="300" height="530"/>
+
+### 发现
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/find.png" width="300" height="530"/>
+
+### 朋友圈
+
+###### 上传图片
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/shangchuan.gif" width="300" height="530"/>
+
+###### 点赞
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/like.gif" width="300" height="530"/>
+
+###### 评论
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/commont.gif" width="300" height="530"/>
+
+
+
 # 目标功能
 - [x] 微信 
 - [x] 通讯录 
@@ -13,9 +43,12 @@
 - [x] 聊天
 - [x] widows 微信已登录
 - [x] 搜索页
-- [x] 对话页、对话功能
-- [ ] 对话功能
+- [x] 对话页
+- [x] 对话功能
+- [x] 单人机器人智能对话页
+- [ ] 群聊
 - [x] 朋友圈
+- [x] 朋友圈点赞、评论
 - [x] 个人中心
 - [x] 详细资料
 - [x] 更多
@@ -39,7 +72,6 @@
 |       |-- footer                   // 底部微信导航
 |       |-- header                 	 // 头部公共组件
 |       |-- findandMe                // 发现和我 共同的模块的列表
-|       |-- enlarge                  //放大头像图片
 |
 |   |-- config                       // 基本配置
 |       |-- env.js                   // 环境切换配置
@@ -53,8 +85,9 @@
 |   |-- frames                       // 页面组件
 |       |-- search                 	 // 搜索页面
 |       |-- dialogue                 // 微信首页(对话列表页)
-|			|--conversation			           //	对话详情页
-|       |-- addressbook              // 通讯录
+|			  |--conversation			           //	对话详情页
+|			      |--singlechat			          //单人对话
+|       |-- addressbook              // 通讯录
 |         |-- details                // 详细资料
 |           |-- more                 // 更多
 |       |-- find                     // 发现
