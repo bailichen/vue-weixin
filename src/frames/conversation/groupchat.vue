@@ -179,6 +179,7 @@
 	import 'src/config/swiper.min.js' 
 	import 'src/style/swiper.min.css'
 	import fetch from 'src/config/fetch'
+	const socket = io('http://cangdu.org:8003');
 
 	export default{ 
 		data(){
@@ -210,6 +211,10 @@
 				this.gropname=res.petname;
 				this.groupconversine=[...res.grouphead];
 			});	
+			socket.on('chat', function (data) {
+				console.log(data);
+				
+			});
 		},
 		components:{
 			headTop,
@@ -222,6 +227,7 @@
 		},
 		beforeDestroy(){
             clearTimeout(this.timer);
+            socket.removeAllListeners()
         },
 		methods:{
 			...mapActions([
@@ -254,12 +260,8 @@
 				});
 				
 				this.light=false;
-				var socket = io('http://cangdu.org:8003');
+				
 				socket.emit('chat', {user_id: 2, content: this.inputmessage});
-				socket.on('chat', function (data) {
-					console.log(data);
-					
-				});
 				this.inputmessage='';
 				
 			},
