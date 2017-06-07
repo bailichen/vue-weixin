@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<head-top :crossover="chatname">
+		<head-top :crossover="gropname">
 			<section class="coversPart" slot="person">
 				<router-link to='' class="person_link">
 					<svg fill="#fff" class="icon-search">
@@ -13,7 +13,7 @@
 			<section class="coversationlist" @click="bottomHide">
 				<ul>
 					<!-- 对方 -->
-					<li v-for="item in conversine">
+					<li v-for="item in groupconversine">
 						<div class="other" :class="{mysay : item.sendobject !== 1 }">
 							<img :src="item.headurl" alt="" @click="enlargeImg(item.headurl)">
 							<div class="whatsay">
@@ -174,7 +174,7 @@
 <script>
 	import headTop from 'src/components/header/head';
 	import {mapState, mapActions,} from 'vuex';
-	import {userWord} from 'src/service/getData'
+	import {groupChat} from 'src/service/getData'
 	import {imgurl} from 'src/config/env';
 	import 'src/config/swiper.min.js' 
 	import 'src/style/swiper.min.css'
@@ -183,17 +183,17 @@
 	export default{ 
 		data(){
 			return{
-				inputmessage:'',//输入的文本内容
-				light:false,	//输入框不为空时，input下边框变色
+				inputmessage:'',	//输入的文本内容
+				light:false,		//输入框不为空时，input下边框变色
 				clickmore:false,	//点击加号底部显示、隐藏
-				chatname:'',		//聊天名字
+				gropname:'',		//聊天名字
 				ifme:false,			//发消息的对象是否是自己
 				enlargeurl:'',		//头像地址
 				enlargehides:false,
 				enlargeShow:false,
 				enlarge:false,
 				timer:null,
-				conversine:[],		//对话列表
+				groupconversine:[],		//对话列表
 			}
 		},
 		created(){
@@ -205,10 +205,10 @@
 		        pagination: '.swiper-pagination',
 		        loop: false,
 		    });
-			this.chatname=this.infor.remarks ? this.infor.remarks : this.infor.petname;
 			this.getUserInfo();
-			userWord().then((res) => {
-				this.conversine=[...res]
+			groupChat().then((res) => {
+				this.gropname=res.petname;
+				this.groupconversine=[...res.grouphead];
 			});	
 		},
 		components:{
@@ -219,7 +219,6 @@
 			...mapState([
 			    "infor", "userInfo", 
 			]),
-			
 		},
 		beforeDestroy(){
             clearTimeout(this.timer);
@@ -246,26 +245,23 @@
 				this.clickmore=false;
 			},
 			async clickSend(){
-				this.conversine.push({
+				
+				this.groupconversine.push({
 					"wxid":"xulianjie442154157",
 					"headurl":imgurl+'chen.jpg',
 					"sendobject":0,
 					"Messageblob":this.inputmessage,
 				});
 				
-				try{
-					const res = await fetch('/robot/question', {question: this.inputmessage})
-					this.inputmessage='';
-					this.light=false;
-					if (res.status == 200) {
-						this.infor.Messageblob=res.content
-						this.conversine.push(this.infor)
-					}else{
-						throw new Error(res)
-					}
-				}catch(err){
-					alert('获取机器人聊天信息失败', err);
-				}
+				this.light=false;
+				var socket = io('http://cangdu.org:8003');
+				socket.emit('chat', {user_id: 2, content: this.inputmessage});
+				socket.on('chat', function (data) {
+					console.log(data);
+					
+				});
+				this.inputmessage='';
+				
 			},
 			enlargeImg(enlargeImg){
 				this.enlargeurl=enlargeImg;

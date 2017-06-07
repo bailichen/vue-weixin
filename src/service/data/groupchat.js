@@ -6,7 +6,7 @@
 *headurl:头像图片地址
 *petname:昵称	
 *remarks:备注
-*whoSay:说话内容
+*Messageblob:说话内容
 *
 *
 */
@@ -19,20 +19,32 @@ export const groupchat={
 			"headurl":imgurl+'chenchangsheng.jpg',
 			"petname":"陈长生",
 			"remarks":"",
-			"whoSay":"今天下雨",
+			"Messageblob":"今天下雨",
+			"sendobject":1,
 		},
 		{
 			"wxid":"xulianjie442154157",
 			"headurl":imgurl+'chen.jpg',
 			"petname":"徐连杰",
-			"whoSay":"今天下雨",
+			"Messageblob":"今天下雨",
+			"sendobject":1,
 		},
 		{
-			"wxid":"mengfeng",
-			"headurl":imgurl+'mengfeng.jpg',
-			"petname":"蒙枫",
+			"wxid":"achuqiao",
+			"headurl":imgurl+'chuqiao.jpg',
+			"petname":"a楚乔",
+			"remarks":"楚乔",
+			"sendobject":1,
+			"Messageblob":"嗯",
+		},
+		{
+			"wxid":"caiawei",
+			"headurl":imgurl+'caiwei.jpg',
+			"petname":"采薇",
 			"remarks":"",
-			"whoSay":"今天下雨",
+			"phone":"13000000000",
+			"sendobject":1,
+			"Messageblob":"一发型师在给一个女客人做头发的时候把她脸给烫伤了，后来经过协商。。。。他把她给娶了。。。",
 		}
 	]
 }

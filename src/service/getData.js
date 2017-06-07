@@ -7,6 +7,8 @@ import * as fcricle from './data/friendcircle'
 import * as collectData from './data/collect'
 import * as bursetData from './data/burse'
 import * as albumData from './data/album'
+import * as groupData from './data/groupchat'
+
 
 const setpromise = data => {
 	return new Promise((resolve, reject) => {
@@ -17,6 +19,8 @@ const setpromise = data => {
 export const searchList = () => setpromise(searchField.search)		//搜索页6个字段列表
 export const contactList = () => setpromise(contact.contacts)		//通讯录列表
 export const dialog = () => setpromise(dialoglist.dialog)			//对话列表页数据
+export const groupChat = () => setpromise(groupData.groupchat)			//对话列表页数据
+
 export const userInfo = () => setpromise(login.userInfo)			//获取用户信息
 export const userWord = () => setpromise(usersay.userWord)			//获取用户信息
 
