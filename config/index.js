@@ -22,13 +22,13 @@ module.exports = {
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
         context: [ //代理路径
-            '/shopping',
-            '/v1',
-            '/v2',
-            '/v3',
-            '/v4',
+            // '/shopping',
+            // '/v1',
+            // '/v2',
+            // '/v3',
+            // '/v4',
         ],
-        proxypath: 'https://mainsite-restapi.ele.me',
+       // proxypath: 'https://mainsite-restapi.ele.me',//代理路径
         // CSS Sourcemaps off by default because relative paths are "buggy"
         // with this option, according to the CSS-Loader README
         // (https://github.com/webpack/css-loader#sourcemaps)

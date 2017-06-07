@@ -10,7 +10,12 @@
 
 ### 通讯录
 
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/addressbook.gif" width="300" height="530"/>
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/addressbook.jpg" width="300" height="530"/>
+
+### 单人聊天、群聊
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/singlechat.gif" width="300" height="530" alt="">
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/groupchat.gif" width="300" height="530" alt="">
 
 ### 发现
 

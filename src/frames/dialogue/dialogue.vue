@@ -365,8 +365,8 @@
 							}
 							.imgstyletwo{
 								img{
-									width: 33.33%;
-									height:33.33%;
+									width: 50%;
+									height:50%;
 									flex-grow:0;
 								}
 							}

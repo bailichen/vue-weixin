@@ -194,6 +194,8 @@
 				enlarge:false,
 				timer:null,
 				conversine:[],		//对话列表
+				robotCont:'',
+				newInfo:{}
 			}
 		},
 		created(){
@@ -259,7 +261,12 @@
 					this.light=false;
 					if (res.status == 200) {
 						this.infor.Messageblob=res.content
-						this.conversine.push(this.infor)
+						this.conversine.push({
+							"wxid":this.infor.wxid,
+							"headurl":this.infor.headurl,
+							"sendobject":this.infor.sendobject,
+							"Messageblob":res.content,
+						});
 					}else{
 						throw new Error(res)
 					}
