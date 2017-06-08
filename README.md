@@ -92,12 +92,18 @@
 |       |-- dialogue                 // 微信首页(对话列表页)
 |			  |--conversation			           //	对话详情页
 |			      |--singlechat			          //单人对话
+|			      |--groupchat			          //群聊
 |       |-- addressbook              // 通讯录
 |         |-- details                // 详细资料
 |           |-- more                 // 更多
 |       |-- find                     // 发现
 |         |-- firendcircle            // 朋友圈
+|         |-- miniapps               // 小程序子页面
 |       |-- me                     	 // 我
+|       	|-- cardbag               // 卡包
+|       	|-- collect               // 我的收藏
+|       	|--personaldetails        // 个人信息
+|       	|-- photoalblum            // 我的相册
 |       	|-- settings               // 设置
 |       		|-- detailset             
 |       			|-- newmessage        // 新消息提醒
