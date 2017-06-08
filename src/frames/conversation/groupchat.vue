@@ -9,8 +9,9 @@
 				</router-link>
 			</section>
 		</head-top>
-		<section class="coversation" ref="groupHeight" >
+		<section class="coversation" ref="groupHeight" @touchmove='loadMore'>
 			<section class="coversationlist">
+				<div class="underscore" v-if="underscore">————&nbsp;我是有底线的&nbsp;————</div>
 				<ul>
 					<!--  群聊-->
 					<li v-for="item in groupconversine" >
@@ -29,7 +30,6 @@
 						</div>
 					</li>
 				</ul>
-				<div class="underscore" v-if="underscore">————&nbsp;我是有底线的&nbsp;————</div>
 			</section>
 		</section>
 		<div class="load" v-if="loadStatus">
@@ -248,7 +248,6 @@
 			socket.on('chat', function (data) {
 				console.log(data);
 			});
-			window.addEventListener('scroll', this.loadMore);
 		},
 		components:{
 			headTop,
@@ -260,7 +259,7 @@
 		},
 		beforeDestroy(){
             clearTimeout(this.timer);
-            socket.removeAllListeners()
+            socket.removeAllListeners();
         },
 		methods:{
 			...mapActions([
@@ -268,25 +267,37 @@
             ]),
             async groupList(offset){
             	const groupData = await fetch('/chat/history',{"offset":this.offset, "limit":20} )
-            	this.loadStatus=false;
             	for(let i=0; i<groupData.history.length; i++){
             		this.imgS='';
-            		this.imgS=Math.ceil(Math.random()*20);//随机图片
+            		this.imgS=Math.ceil(Math.random()*2);//随机图片
             		groupData.history[i].avatar=imgurl+this.imgS+'.jpg';
             	}
             	if(groupData.status == 200){
-            		this.groupconversine = [...this.groupconversine,...groupData.history]
+            		this.groupconversine = [...groupData.history, ...this.groupconversine]
             	}
             	if(groupData.history.length < 20){
             		this.underscore=true;
             	}
+        		this.$nextTick(() => {
+            		this.loadStatus=false;
+        			if (offset == 0) {
+            			window.scrollTo(0, this.$refs.groupHeight.offsetHeight - window.innerHeight)
+        			}else{
+        				const scrollPosition = this.$refs.groupHeight.offsetHeight - this.lastPageHeight;
+        				window.scrollTo(0,scrollPosition)
+        			}
+        			this.lastPageHeight = this.$refs.groupHeight.offsetHeight;
+        		})
             },
             loadMore(){
+            	if (this.loadStatus || this.underscore) {
+            		return
+            	}
             	this.scroll = document.body.scrollTop;
-            	if(this.scroll >= this.$refs.groupHeight.offsetHeight - window.innerHeight){
+            	if(this.scroll == 0){
+            		this.loadStatus=true;
             		this.offset+=20;
             		this.groupList(this.offset);
-            		this.loadStatus=true;
             	}
             },
 			whatInput(){

@@ -17,7 +17,6 @@ const photoalbum = r => require.ensure([], () => r(require('../frames/me/photoal
 const collect = r => require.ensure([], () => r(require('../frames/me/collect/collect')), 'collect')
 const wallet = r => require.ensure([], () => r(require('../frames/me/wallet/wallet')), 'wallet')
 const cardbag = r => require.ensure([], () => r(require('../frames/me/cardbag/cardbag')), 'cardbag')
-const face = r => require.ensure([], () => r(require('../frames/me/face/face')), 'face')
 
 const computer = r => require.ensure([], () => r(require('../frames/computer/computer')), 'computer')
 const transfer = r => require.ensure([], () => r(require('../frames/transfer/transfer')), 'transfer')
