@@ -47,7 +47,7 @@
 							<i class="redicon_num" v-if="newinfor">1</i>
 							<i class="redicon" v-if="newtext"></i>
 							<div class="imgstyle imgstyletwo">
-								<img :src="item.headurl" alt="" v-for="item in groupHead">
+								<img :src="item.avatar" alt="" v-for="item in groupHead">
 							</div>
 						</div>
 						<div class="infordetail">
@@ -128,7 +128,8 @@
 		mounted(){	
 			groupChat().then( (res) =>{
 				this.groupHead=res.grouphead
-			})
+			});
+			
 		},
 		components:{
 			headTop,

@@ -19,7 +19,7 @@
 							<div class="whatsay">
 								<div class="whatsay_svg">
 									<svg>
-										<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="item.sendobject ==0 ? '#trigon-right' : '#trigon-left'"></use>
+										<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="item.sendobject !== 1 ? '#trigon-right' : '#trigon-left'"></use>
 									</svg>
 								</div>
 								<div class="whatsay_text">
@@ -212,6 +212,7 @@
 			userWord().then((res) => {
 				this.conversine=[...res]
 			});	
+
 		},
 		components:{
 			headTop,

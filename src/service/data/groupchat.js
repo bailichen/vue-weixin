@@ -12,39 +12,39 @@
 */
 import {imgurl} from 'src/config/env';
 export const groupchat={
-	"petname":"开饭啦~",
+	"petname":"微信交流群~",
 	"grouphead":[
 		{
-			"wxid":"chenchangsheng",
-			"headurl":imgurl+'chenchangsheng.jpg',
+			"username":"chenchangsheng",
+			"avatar":imgurl+'chenchangsheng.jpg',
 			"petname":"陈长生",
 			"remarks":"",
-			"Messageblob":"今天下雨",
+			"content":"今天下雨",
 			"sendobject":1,
 		},
 		{
-			"wxid":"xulianjie442154157",
-			"headurl":imgurl+'chen.jpg',
+			"username":"xulianjie442154157",
+			"avatar":imgurl+'chen.jpg',
 			"petname":"徐连杰",
-			"Messageblob":"今天下雨",
+			"content":"今天下雨",
 			"sendobject":1,
 		},
 		{
-			"wxid":"achuqiao",
-			"headurl":imgurl+'chuqiao.jpg',
+			"username":"achuqiao",
+			"avatar":imgurl+'chuqiao.jpg',
 			"petname":"a楚乔",
 			"remarks":"楚乔",
 			"sendobject":1,
-			"Messageblob":"嗯",
+			"content":"嗯",
 		},
 		{
-			"wxid":"caiawei",
-			"headurl":imgurl+'caiwei.jpg',
+			"username":"caiawei",
+			"avatar":imgurl+'caiwei.jpg',
 			"petname":"采薇",
 			"remarks":"",
 			"phone":"13000000000",
 			"sendobject":1,
-			"Messageblob":"一发型师在给一个女客人做头发的时候把她脸给烫伤了，后来经过协商。。。。他把她给娶了。。。",
+			"content":"一发型师在给一个女客人做头发的时候把她脸给烫伤了，后来经过协商。。。。他把她给娶了。。。",
 		}
 	]
 }
