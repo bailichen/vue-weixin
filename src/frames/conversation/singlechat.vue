@@ -255,10 +255,10 @@
 					"sendobject":0,
 					"Messageblob":this.inputmessage,
 				});
-				
+				const inputmessage = this.inputmessage;
+				this.inputmessage='';
 				try{
-					const res = await fetch('/robot/question', {question: this.inputmessage})
-					this.inputmessage='';
+					const res = await fetch('/robot/question', {question: inputmessage})
 					this.light=false;
 					if (res.status == 200) {
 						this.infor.Messageblob=res.content
