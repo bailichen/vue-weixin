@@ -9,28 +9,54 @@
 				</router-link>
 			</section>
 		</head-top>
-		<section class="coversation">
-			<section class="coversationlist" @click="bottomHide">
+		<section class="coversation" ref="groupHeight" >
+			<section class="coversationlist">
 				<ul>
-					<!-- 对方 -->
-					<li v-for="item in groupconversine">
-						<div class="other" :class="{mysay : item.sendobject !== 1 }">
-							<img :src="item.headurl" alt="" @click="enlargeImg(item.headurl)">
+					<!--  群聊-->
+					<li v-for="item in groupconversine" >
+						<div class="other" :class="{mysay : item.sendobject == 0 }">
+							<img :src="item.avatar" alt="" @click="enlargeImg(item.avatar)">
 							<div class="whatsay">
 								<div class="whatsay_svg">
 									<svg>
-										<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="item.sendobject ==0 ? '#trigon-right' : '#trigon-left'"></use>
+										<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="item.sendobject == 0 ? '#trigon-right' : '#trigon-left'"></use>
 									</svg>
 								</div>
 								<div class="whatsay_text">
-									{{item.Messageblob}}
+									{{item.content}}
 								</div>
 							</div>
 						</div>
 					</li>
 				</ul>
+				<div class="underscore" v-if="underscore">————&nbsp;我是有底线的&nbsp;————</div>
 			</section>
 		</section>
+		<div class="load" v-if="loadStatus">
+			<div class="loadnbg"></div>
+			<div class="loading">
+				<div class="spinner">
+					<div class="spinner-container container1">
+						<div class="circle1"></div>
+						<div class="circle2"></div>
+						<div class="circle3"></div>
+						<div class="circle4"></div>
+					</div>
+					<div class="spinner-container container2">
+						<div class="circle1"></div>
+						<div class="circle2"></div>
+						<div class="circle3"></div>
+						<div class="circle4"></div>
+					</div>
+					<div class="spinner-container container3">
+						<div class="circle1"></div>
+						<div class="circle2"></div>
+						<div class="circle3"></div>
+						<div class="circle4"></div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<footer :class=" {footshow : clickmore}">
 			<section class="foot_top">
 				<div>
@@ -174,7 +200,7 @@
 <script>
 	import headTop from 'src/components/header/head';
 	import {mapState, mapActions,} from 'vuex';
-	import {groupChat} from 'src/service/getData'
+	import {groupChat} from 'src/service/getData';
 	import {imgurl} from 'src/config/env';
 	import 'src/config/swiper.min.js' 
 	import 'src/style/swiper.min.css'
@@ -195,10 +221,16 @@
 				enlarge:false,
 				timer:null,
 				groupconversine:[],		//对话列表
+				offset:0,
+				imgS:'',
+				scroll:'',
+				loadStatus:false,	//加载
+				underscore:false,	//底线
+				
 			}
 		},
 		created(){
-
+			
 		},
 		mounted(){
 			//初始化swiper
@@ -207,18 +239,19 @@
 		        loop: false,
 		    });
 			this.getUserInfo();
+			this.groupList(this.offset);
+			this.loadStatus=true;
 			groupChat().then((res) => {
 				this.gropname=res.petname;
 				this.groupconversine=[...res.grouphead];
 			});	
 			socket.on('chat', function (data) {
 				console.log(data);
-				
 			});
+			window.addEventListener('scroll', this.loadMore);
 		},
 		components:{
 			headTop,
-
 		},
 		computed:{
 			...mapState([
@@ -233,6 +266,29 @@
 			...mapActions([
                 'getUserInfo',
             ]),
+            async groupList(offset){
+            	const groupData = await fetch('/chat/history',{"offset":this.offset, "limit":20} )
+            	this.loadStatus=false;
+            	for(let i=0; i<groupData.history.length; i++){
+            		this.imgS='';
+            		this.imgS=Math.ceil(Math.random()*20);//随机图片
+            		groupData.history[i].avatar=imgurl+this.imgS+'.jpg';
+            	}
+            	if(groupData.status == 200){
+            		this.groupconversine = [...this.groupconversine,...groupData.history]
+            	}
+            	if(groupData.history.length < 20){
+            		this.underscore=true;
+            	}
+            },
+            loadMore(){
+            	this.scroll = document.body.scrollTop;
+            	if(this.scroll >= this.$refs.groupHeight.offsetHeight - window.innerHeight){
+            		this.offset+=20;
+            		this.groupList(this.offset);
+            		this.loadStatus=true;
+            	}
+            },
 			whatInput(){
 				if(this.inputmessage){
 					this.light=true;
@@ -240,7 +296,6 @@
 					this.light=false;
 				}
 			},
-
 			bottomShow(){
 				this.clickmore=true;
 			},
@@ -254,9 +309,9 @@
 				
 				this.groupconversine.push({
 					"wxid":"xulianjie442154157",
-					"headurl":imgurl+'chen.jpg',
+					"avatar":imgurl+'chen.jpg',
 					"sendobject":0,
-					"Messageblob":this.inputmessage,
+					"content":this.inputmessage,
 				});
 				
 				this.light=false;
@@ -290,7 +345,137 @@
 	.router-show-enter,.router-show-leave{
 		transform:translateX(100%)
 	}
+	
 
+	.load{
+		position: fixed;
+		z-index:100;
+		width:100%;
+		height:100%;
+		top:0;
+		.loadnbg{
+			position: fixed;
+			width:100%;
+			height:100%;
+			top:0;
+			background:#000;
+			opacity: 0;
+		}
+		.loading{
+			display:block;
+			@include center;
+			
+		}
+	}
+	.spinner {
+	  width: 80px;
+	  height: 80px;
+	  position: relative;
+	}
+	 
+	.container1 > div, .container2 > div, .container3 > div {
+	  width: 16px;
+	  height: 16px;
+	  background-color: #46C01B;
+	 
+	  border-radius: 100%;
+	  position: absolute;
+	  -webkit-animation: bouncedelay 1s infinite ease-in-out;
+	  animation: bouncedelay 1s infinite ease-in-out;
+	  -webkit-animation-fill-mode: both;
+	  animation-fill-mode: both;
+	}
+	 
+	.spinner .spinner-container {
+	  position: absolute;
+	  width: 100%;
+	  height: 100%;
+	}
+	 
+	.container2 {
+	  -webkit-transform: rotateZ(45deg);
+	  transform: rotateZ(45deg);
+	}
+	 
+	.container3 {
+	  -webkit-transform: rotateZ(90deg);
+	  transform: rotateZ(90deg);
+	}
+	 
+	.circle1 { top: 0; left: 0; }
+	.circle2 { top: 0; right: 0; }
+	.circle3 { right: 0; bottom: 0; }
+	.circle4 { left: 0; bottom: 0; }
+	 
+	.container2 .circle1 {
+	  -webkit-animation-delay: -1.1s;
+	  animation-delay: -1.1s;
+	}
+	 
+	.container3 .circle1 {
+	  -webkit-animation-delay: -1.0s;
+	  animation-delay: -1.0s;
+	}
+	 
+	.container1 .circle2 {
+	  -webkit-animation-delay: -0.9s;
+	  animation-delay: -0.9s;
+	}
+	 
+	.container2 .circle2 {
+	  -webkit-animation-delay: -0.8s;
+	  animation-delay: -0.8s;
+	}
+	 
+	.container3 .circle2 {
+	  -webkit-animation-delay: -0.7s;
+	  animation-delay: -0.7s;
+	}
+	 
+	.container1 .circle3 {
+	  -webkit-animation-delay: -0.6s;
+	  animation-delay: -0.6s;
+	}
+	 
+	.container2 .circle3 {
+	  -webkit-animation-delay: -0.5s;
+	  animation-delay: -0.5s;
+	}
+	 
+	.container3 .circle3 {
+	  -webkit-animation-delay: -0.4s;
+	  animation-delay: -0.4s;
+	}
+	 
+	.container1 .circle4 {
+	  -webkit-animation-delay: -0.3s;
+	  animation-delay: -0.3s;
+	}
+	 
+	.container2 .circle4 {
+	  -webkit-animation-delay: -0.2s;
+	  animation-delay: -0.2s;
+	}
+	 
+	.container3 .circle4 {
+	  -webkit-animation-delay: -0.1s;
+	  animation-delay: -0.1s;
+	}
+	 
+	@-webkit-keyframes bouncedelay {
+	  0%, 80%, 100% { -webkit-transform: scale(0.0) }
+	  40% { -webkit-transform: scale(1.0) }
+	}
+	 
+	@keyframes bouncedelay {
+	  0%, 80%, 100% {
+	    transform: scale(0.0);
+	    -webkit-transform: scale(0.0);
+	  } 40% {
+	    transform: scale(1.0);
+	    -webkit-transform: scale(1.0);
+	  }
+	}
 	.coversPart{
 		@include topcenter;
 		right:0.5973333333rem;
@@ -310,11 +495,11 @@
 		.coversationlist{
 			position: relative;
 			padding:0 .32rem;
+			padding-bottom:2.6rem;
 			overflow:auto;
 			margin:0 auto;
 			ul{
 				padding-top:.4rem;
-				padding-bottom:2.2rem;
 				width:15.4rem;
 				top:0;
 				li{
@@ -371,7 +556,12 @@
 					}
 				}
 			}
-			
+			.underscore{
+				padding-top:0.2rem;
+				
+				text-align:center;
+				@include sizeColor(0.5546666667rem,#999);
+			}
 		}
 	}
 	footer{

@@ -10,7 +10,12 @@
 
 ### 通讯录
 
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/addressbook.gif" width="300" height="530"/>
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/addressbook.jpg" width="300" height="530"/>
+
+### 单人聊天、群聊
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/singlechat.gif" width="300" height="530" alt="">
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/groupchat.gif" width="300" height="530" alt="">
 
 ### 发现
 
@@ -46,7 +51,7 @@
 - [x] 对话页
 - [x] 对话功能
 - [x] 单人机器人智能对话页
-- [ ] 群聊
+- [x] 群聊
 - [x] 朋友圈
 - [x] 朋友圈点赞、评论
 - [x] 个人中心
@@ -87,12 +92,18 @@
 |       |-- dialogue                 // 微信首页(对话列表页)
 |			  |--conversation			           //	对话详情页
 |			      |--singlechat			          //单人对话
+|			      |--groupchat			          //群聊
 |       |-- addressbook              // 通讯录
 |         |-- details                // 详细资料
 |           |-- more                 // 更多
 |       |-- find                     // 发现
 |         |-- firendcircle            // 朋友圈
+|         |-- miniapps               // 小程序子页面
 |       |-- me                     	 // 我
+|       	|-- cardbag               // 卡包
+|       	|-- collect               // 我的收藏
+|       	|--personaldetails        // 个人信息
+|       	|-- photoalblum            // 我的相册
 |       	|-- settings               // 设置
 |       		|-- detailset             
 |       			|-- newmessage        // 新消息提醒

@@ -19,7 +19,7 @@
 							<div class="whatsay">
 								<div class="whatsay_svg">
 									<svg>
-										<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="item.sendobject ==0 ? '#trigon-right' : '#trigon-left'"></use>
+										<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="item.sendobject !== 1 ? '#trigon-right' : '#trigon-left'"></use>
 									</svg>
 								</div>
 								<div class="whatsay_text">
@@ -194,6 +194,8 @@
 				enlarge:false,
 				timer:null,
 				conversine:[],		//对话列表
+				robotCont:'',
+				newInfo:{}
 			}
 		},
 		created(){
@@ -210,6 +212,7 @@
 			userWord().then((res) => {
 				this.conversine=[...res]
 			});	
+
 		},
 		components:{
 			headTop,
@@ -259,8 +262,12 @@
 					this.light=false;
 					if (res.status == 200) {
 						this.infor.Messageblob=res.content
-						this.conversine.push(this.infor)
-						console.log(this.infor)
+						this.conversine.push({
+							"wxid":this.infor.wxid,
+							"headurl":this.infor.headurl,
+							"sendobject":this.infor.sendobject,
+							"Messageblob":res.content,
+						});
 					}else{
 						throw new Error(res)
 					}
