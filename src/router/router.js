@@ -121,9 +121,6 @@ export default[{
 				{
 					path:'/me/wallet',component : wallet,		//钱包
 				},
-				{
-					path:'/me/face',component : face,		//表情
-				},
 			]
 		},	//我
 		{path: '/computer', component: computer},	//电脑登录
