@@ -333,9 +333,9 @@ W:[
 ],
 X:[	
 	{
-		"wxid":"xulianjie442154157",
+		"wxid":"812571880",
 		"headurl":imgurl+'chen.jpg',
-		"petname":"徐连杰",
+		"petname":"百里辰",
 		"sex":1,
 		"sdasd":"披荆斩棘",
 		"phone":"15800319949",

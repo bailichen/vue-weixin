@@ -150,7 +150,8 @@
 				try{
 					const res = await fetch('/user/info')
 					if (res.status !== 200) {
-						this.LOGIN_COVER(true)
+						this.consumerthing=
+						this.LOGIN_COVER(false)
 					}
 				}catch(err){
 					console.log('获取用户信息失败', err)
