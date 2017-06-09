@@ -19,7 +19,6 @@
 ### 群聊
 
 <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/groupchat.gif" width="300" height="530" alt="">
->>>>>>> 9bef1af42bec9c4e2bcaf9e31a79589c730cc6db
 
 ### 发现
 
