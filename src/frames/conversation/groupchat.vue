@@ -266,7 +266,6 @@
             ]),
             async groupList(offset){
             	const groupData = await fetch('/chat/history',{"offset":this.offset, "limit":20} )
-            	console.log(groupData)
             	if(groupData.status == 200){
 	            	for(let i=0; i<groupData.history.length; i++){
 	            		this.imgS='';
