@@ -266,20 +266,28 @@
             ]),
             async groupList(offset){
             	const groupData = await fetch('/chat/history',{"offset":this.offset, "limit":20} )
-            	if(groupData.status == 200){
-	            	for(let i=0; i<groupData.history.length; i++){
-	            		this.imgS='';
-	            		this.imgS=Math.ceil(Math.random()*2);//随机图片
-	            		groupData.history[i].avatar=imgurl+this.imgS+'.jpg';
-	            	}
-            		this.groupconversine = [...groupData.history, ...this.groupconversine]
-            	}
             	if(groupData.history.length < 20){
             		this.underscore=true;
             	}
+            	if(groupData.status == 200){
+	            	for(let i=0; i<groupData.history.length; i++){
+	            		if(!groupData.history[i].content){//清空空数据
+	            			/*this.imgS='';
+	            			this.imgS=Math.ceil(Math.random()*2);//随机图片
+	            			groupData.history[i].avatar=imgurl+this.imgS+'.jpg';*/
+	            			groupData.history.splice(i,1);
+	            			i=i-1
+	            		}
+	            		
+	            	}
+	            	console.log(groupData.history)
+            		this.groupconversine = [...groupData.history, ...this.groupconversine]
+            	}
+            	
         		this.$nextTick(() => {
             		this.loadStatus=false;
         			if (offset == 0) {
+
             			window.scrollTo(0, this.$refs.groupHeight.offsetHeight - window.innerHeight)
         			}else{
         				const scrollPosition = this.$refs.groupHeight.offsetHeight - this.lastPageHeight;
@@ -328,7 +336,6 @@
 				
 				socket.emit('chat', {user_id: 2, content: this.inputmessage});
 				this.inputmessage='';
-				
 			},
 			enlargeImg(enlargeImg){
 				this.enlargeurl=enlargeImg;

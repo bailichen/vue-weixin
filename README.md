@@ -19,7 +19,7 @@
 ### 群聊
 
 <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/groupchat.gif" width="300" height="530" alt="">
->>>>>>> 9bef1af42bec9c4e2bcaf9e31a79589c730cc6db
+
 
 ### 发现
 
@@ -39,7 +39,20 @@
 
 <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/commont.gif" width="300" height="530"/>
 
+### 个人资料
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/infor.png" width="300" height="530"/>  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/photo.png" width="300" height="530"/>
 
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/collect.png" width="300" height="530"/>  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/card.png" width="300" height="530"/>
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/cardbag.png" width="300" height="530"/>  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/set.png" width="300" height="530"/>
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/newmess.png" width="300" height="530"/>  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/notrao.png" width="300" height="530"/>
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/chatset.png" width="300" height="530"/>  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/priat.png" width="300" height="530"/>
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/tongyong.png" width="300" height="530"/>  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/aboutwx.png" width="300" height="530"/>
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/login.png" width="300" height="530"/> 
 
 # 目标功能
 - [x] 微信 
