@@ -147,8 +147,9 @@
 				"SAVE_MESSAGE","LOGIN_COVER"
 			]),
 			async initData(){
+				const user_id = localStorage.getItem('user_id')
 				try{
-					const res = await fetch('/user/info')
+					const res = await fetch('/user/info', {user_id})
 					if (res.status !== 200) {
 						this.LOGIN_COVER(true)
 					}
@@ -188,6 +189,7 @@
             		try{
 						const res = await fetch('/user/login', {username: this.inputaccounts})
 						if (res.status == 200) {
+							localStorage.setItem('user_id',res.user_info.id.toString())
 							this.LOGIN_COVER(false)
 						}
 					}catch(err){

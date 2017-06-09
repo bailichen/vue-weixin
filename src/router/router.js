@@ -18,7 +18,6 @@ const collect = r => require.ensure([], () => r(require('../frames/me/collect/co
 const wallet = r => require.ensure([], () => r(require('../frames/me/wallet/wallet')), 'wallet')
 const cardbag = r => require.ensure([], () => r(require('../frames/me/cardbag/cardbag')), 'cardbag')
 
-
 const computer = r => require.ensure([], () => r(require('../frames/computer/computer')), 'computer')
 const transfer = r => require.ensure([], () => r(require('../frames/transfer/transfer')), 'transfer')
 const settings = r => require.ensure([], () => r(require('../frames/me/settings/settings')), 'settings')
