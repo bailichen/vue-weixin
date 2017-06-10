@@ -152,7 +152,6 @@
 |   |-- vuex                         // vuex的状态管理
 |       |-- modules                  // 加载各种store模块
 |       |-- action.js                // 配置根actions
-|       |-- getters.js               // 配置根getters
 |       |-- index.js                 // 引用vuex，创建store
 |       |-- mutation-types.js        // 定义常量muations名
 |       |-- mutations.js             // 配置根mutations
