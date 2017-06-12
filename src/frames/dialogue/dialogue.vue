@@ -95,7 +95,7 @@
 	import headTop from 'src/components/header/head'
 	import footGuide from 'src/components/footer/foot'
 	import {mapState,mapActions,mapMutations} from 'vuex'
-	import {groupChat} from 'src/service/getData'
+	import {groupChat, userInfo, login} from 'src/service/getData'
 	import fetch from 'src/config/fetch'
 
 	export default{
@@ -149,7 +149,7 @@
 			async initData(){
 				const user_id = localStorage.getItem('user_id')
 				try{
-					const res = await fetch('/user/info', {user_id})
+					const res = await userInfo(user_id)
 					if (res.status !== 200) {
 						this.LOGIN_COVER(true)
 					}
@@ -187,7 +187,7 @@
             	if(this.inputaccounts){
             		this.consumer=true;
             		try{
-						const res = await fetch('/user/login', {username: this.inputaccounts})
+						const res = await login({username: this.inputaccounts})
 						if (res.status == 200) {
 							localStorage.setItem('user_id',res.user_info.id.toString())
 							this.LOGIN_COVER(false)

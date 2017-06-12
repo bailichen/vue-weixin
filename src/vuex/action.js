@@ -9,6 +9,7 @@ export default {
 		commit,
 		state
 	}){
+		const user_id = localStorage.getItem('user_id')
 		let useData = await userInfo()
 		commit(GET_USERINFO,useData)
 	},

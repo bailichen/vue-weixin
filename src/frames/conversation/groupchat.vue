@@ -205,7 +205,7 @@
 	import 'src/config/swiper.min.js' 
 	import 'src/style/swiper.min.css'
 	import fetch from 'src/config/fetch'
-	const socket = io('http://cangdu.org:8003');
+	const socket = io('http://localhost:8003');
 
 	export default{ 
 		data(){
@@ -241,10 +241,10 @@
 			this.getUserInfo();
 			this.groupList(this.offset);
 			this.loadStatus=true;
-			groupChat().then((res) => {
-				this.gropname=res.petname;
-				this.groupconversine=[...res.grouphead];
-			});	
+			// groupChat().then((res) => {
+			// 	this.gropname=res.petname;
+			// 	this.groupconversine=[...res.grouphead];
+			// });	
 			socket.on('chat', function (data) {
 				console.log(data);
 			});
@@ -317,17 +317,17 @@
 				this.clickmore=false;
 			},
 			async clickSend(){
-				
+				console.log(this.userInfo)
 				this.groupconversine.push({
 					"wxid":"xulianjie442154157",
-					"avatar":imgurl+'chen.jpg',
+					"avatar":imgurl+this.userInfo.avatar,
 					"sendobject":0,
 					"content":this.inputmessage,
 				});
 				
 				this.light=false;
 				
-				socket.emit('chat', {user_id: 2, content: this.inputmessage});
+				socket.emit('chat', {user_id: this.userInfo.id, content: this.inputmessage});
 				this.inputmessage='';
 				
 			},
