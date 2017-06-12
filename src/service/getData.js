@@ -7,6 +7,7 @@ import * as collectData from './data/collect'
 import * as bursetData from './data/burse'
 import * as albumData from './data/album'
 import * as groupData from './data/groupchat'
+import * as chatmoreData from './data/chatmore'
 import fetch from '../config/fetch.js'
 
 
@@ -28,4 +29,6 @@ export const circle = () => setpromise(fcricle.circle);				//获取朋友圈信�
 export const collect = () => setpromise(collectData.collect);		//获取收藏数据
 export const burse = () => setpromise(bursetData.burse);				//获取我的钱包数据
 export const album = () => setpromise(albumData.album);				//获取我的钱包数据
-export const login = () => fetch('/user/login', data)			//登陆
+export const chatData = () => setpromise(chatmoreData.chatmore);		//获取聊天页面轮播数据
+export const login = data => fetch('/user/login', data);			//登陆
+export const getHistory = data => fetch('/chat/history', data);			//聊天记录

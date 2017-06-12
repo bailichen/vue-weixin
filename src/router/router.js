@@ -3,6 +3,8 @@ import App from '../APP'
 const dialogue = r => require.ensure([], () => r(require('../frames/dialogue/dialogue')), 'dialogue')
 const singlechat = r => require.ensure([], () => r(require('../frames/conversation/singlechat')), 'singlechat')
 const groupchat = r => require.ensure([], () => r(require('../frames/conversation/groupchat')), 'groupchat')
+const chatmessage = r => require.ensure([], () => r(require('../frames/conversation/chatmessage/chatmessage')), 'chatmessage')
+const groupchatmessage = r => require.ensure([], () => r(require('../frames/conversation/chatmessage/groupchatmessage')), 'groupchatmessage')
 
 const addressbook = r => require.ensure([], () => r(require('../frames/addressbook/addressbook')), 'addressbook')
 const details = r => require.ensure([], () => r(require('../frames/addressbook/details/details')), 'details')
@@ -38,8 +40,27 @@ export default[{
 	children: [
 		{path: '', redirect: '/dialogue'},   //地址为空时跳转dialogue页面
 		{path: '/dialogue', component: dialogue, },//对话列表页
-		{path: '/singlechat',component: singlechat,},		//单人对话详情页	
-		{path: '/groupchat',component: groupchat,},			//群聊	
+		{
+			path: '/singlechat',
+			component: singlechat,
+			children:[
+				{
+					path: '/singlechat/chatmessage',
+					component: chatmessage,
+				}
+			]
+
+		},		//单人对话详情页	
+		{
+			path: '/groupchat',
+			component: groupchat,
+			children: [
+				{
+					path: '/groupchat/groupchatmessage',
+					component: groupchatmessage,
+				}
+			]
+		},			//群聊	
 		{path: '/addressbook', component: addressbook,
 			children: [
 				{
@@ -121,10 +142,7 @@ export default[{
 				{
 					path:'/me/wallet',component : wallet,		//钱包
 				},
-				{
-					path:'/me/face',component : face,		//表情
-				},
-			]
+ 			]
 		},	//我
 		{path: '/computer', component: computer},	//电脑登录
 		{path: '/transfer', component: transfer},	//文件传送助手

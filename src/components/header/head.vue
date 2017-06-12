@@ -135,7 +135,7 @@
 	header{
 		@include widthHeight(100%,2.06933rem);
 		background:$black;
-		z-index:10;
+		z-index:200;
 		color:#fff;
 		position: fixed;
 		.logoPart{

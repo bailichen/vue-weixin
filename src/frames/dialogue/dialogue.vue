@@ -144,14 +144,16 @@
 		methods:{
 			
             ...mapMutations([
-				"SAVE_MESSAGE","LOGIN_COVER"
+				"SAVE_MESSAGE","LOGIN_COVER" ,'GET_USERINFO'
 			]),
 			async initData(){
-				const user_id = localStorage.getItem('user_id')
 				try{
+					const user_id = localStorage.getItem('user_id')
 					const res = await userInfo(user_id)
 					if (res.status !== 200) {
 						this.LOGIN_COVER(true)
+					}else{
+						this.GET_USERINFO(res.user_info)
 					}
 				}catch(err){
 					console.log('获取用户信息失败', err)
@@ -184,16 +186,18 @@
             	this.code=false;
             },
             async loginSuccess(){
+
             	if(this.inputaccounts){
             		this.consumer=true;
             		try{
 						const res = await login({username: this.inputaccounts})
 						if (res.status == 200) {
-							localStorage.setItem('user_id',res.user_info.id.toString())
+							this.GET_USERINFO(res.user_info)
 							this.LOGIN_COVER(false)
 						}
 					}catch(err){
-						console.log('获取用户信息失败', err)
+						console.log('注册失败', err)
+						this.LOGIN_COVER(true)
 					}
             	}
             }

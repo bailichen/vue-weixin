@@ -23,9 +23,9 @@ export const groupchat={
 			"sendobject":1,
 		},
 		{
-			"username":"xulianjie442154157",
+			"username":"812571880",
 			"avatar":imgurl+'chen.jpg',
-			"petname":"徐连杰",
+			"petname":"百里辰",
 			"content":"今天下雨",
 			"sendobject":1,
 		},
