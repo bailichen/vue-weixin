@@ -2,9 +2,9 @@
 	<section>
 		<head-top :crossover="gropname">
 			<section class="coversPart" slot="person">
-				<router-link to='' class="person_link">
+				<router-link to='/groupchat/groupchatmessage' class="person_link">
 					<svg fill="#fff" class="icon-search">
-					    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#person"></use>
+					    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#doubleperson"></use>
 					</svg>	
 				</router-link>
 			</section>
@@ -84,100 +84,16 @@
 			<section class="foot_bottom">
 	    		<div class="swiper-container">
 			        <div class="swiper-wrapper">
-			            <div class="swiper-slide">
+			            <div class="swiper-slide" v-for="(value,item) in chatData">
 		            		<ul class="clear">
-		            			<li>
+		            			<li v-for="value in value">
 		            				<div class="swiper_svg">
 			            				<svg fill="#7a8187">
-			            					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#personimg"></use>
+			            					<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="value.chatSvgid"></use>
 			            				</svg>
 		            				</div>
 		            				<div class="swiper_text">
-		            					相册
-		            				</div>
-		            			</li>
-		            			<li>
-		            				<div class="swiper_svg">
-			            				<svg fill="#7a8187">
-			            					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shot"></use>
-			            				</svg>
-		            				</div>
-		            				<div class="swiper_text">
-		            					拍摄
-		            				</div>
-		            			</li>
-		            			<li>
-		            				<div class="swiper_svg">
-			            				<svg fill="#7a8187">
-			            					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#camera"></use>
-			            				</svg>
-		            				</div>
-		            				<div class="swiper_text">
-		            					视频聊天
-		            				</div>
-		            			</li>
-		            			<li>
-		            				<div class="swiper_svg">
-			            				<svg fill="#7a8187" style="width:1.3rem;height:1.8rem;">
-			            					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#positions"></use>
-			            				</svg>
-		            				</div>
-		            				<div class="swiper_text">
-		            					位置
-		            				</div>
-		            			</li>
-		            			<li>
-		            				<div class="swiper_svg">
-			            				<svg fill="#7a8187" style="width:0.9386666667rem;height:1.152rem;">
-			            					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#redbag"></use>
-			            				</svg>
-		            				</div>
-		            				<div class="swiper_text">
-		            					红包
-		            				</div>
-		            			</li>
-		            			<li>
-		            				<div class="swiper_svg">
-			            				<svg fill="#7a8187">
-			            					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#banktransfer"></use>
-			            				</svg>
-		            				</div>
-		            				<div class="swiper_text">
-		            					转账
-		            				</div>
-		            			</li>
-		            			<li>
-		            				<div class="swiper_svg">
-			            				<svg fill="#7a8187">
-			            					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#person"></use>
-			            				</svg>
-		            				</div>
-		            				<div class="swiper_text">
-		            					名片
-		            				</div>
-		            			</li>
-		            			<li>
-		            				<div class="swiper_svg">
-			            				<svg fill="#7a8187">
-			            					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#voiceinput"></use>
-			            				</svg>
-		            				</div>
-		            				<div class="swiper_text">
-		            					语音输入
-		            				</div>
-		            			</li>
-		            		</ul>
-			            </div>
-			            <div class="swiper-slide">
-		            		<ul class="clear">
-		            			<li>
-		            				<div class="swiper_svg">
-			            				<svg fill="#7a8187" style="width:1.152rem;height:1.2586666667rem;">
-			            					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#wxcollect"></use>
-			            				</svg>
-		            				</div>
-		            				<div class="swiper_text">
-		            					我的收藏
+		            					{{value.chatSvgname}}
 		            				</div>
 		            			</li>
 		            		</ul>
@@ -200,13 +116,12 @@
 <script>
 	import headTop from 'src/components/header/head';
 	import {mapState, mapActions,} from 'vuex';
-	import {groupChat} from 'src/service/getData';
+	import {groupChat, chatData} from 'src/service/getData';
 	import {imgurl} from 'src/config/env';
 	import 'src/config/swiper.min.js' 
 	import 'src/style/swiper.min.css'
 	import fetch from 'src/config/fetch'
 	const socket = io('http://cangdu.org:8003');
-
 	export default{ 
 		data(){
 			return{
@@ -226,6 +141,7 @@
 				scroll:'',
 				loadStatus:false,	//加载
 				underscore:false,	//底线
+				chatData:{},
 				
 			}
 		},
@@ -233,11 +149,7 @@
 			
 		},
 		mounted(){
-			//初始化swiper
-			new Swiper('.swiper-container', {
-		        pagination: '.swiper-pagination',
-		        loop: false,
-		    });
+			
 			this.getUserInfo();
 			this.groupList(this.offset);
 			this.loadStatus=true;
@@ -248,6 +160,15 @@
 			socket.on('chat', function (data) {
 				console.log(data);
 			});
+			chatData().then((res) => {
+				this.chatData=res;
+			}).then(()=>{
+					//初始化swiper
+					new Swiper('.swiper-container', {
+				        pagination: '.swiper-pagination',
+				        loop: false,
+				    });
+			})
 		},
 		components:{
 			headTop,
@@ -267,20 +188,27 @@
             ]),
             async groupList(offset){
             	const groupData = await fetch('/chat/history',{"offset":this.offset, "limit":20} )
-            	for(let i=0; i<groupData.history.length; i++){
-            		this.imgS='';
-            		this.imgS=Math.ceil(Math.random()*2);//随机图片
-            		groupData.history[i].avatar=imgurl+this.imgS+'.jpg';
-            	}
-            	if(groupData.status == 200){
-            		this.groupconversine = [...groupData.history, ...this.groupconversine]
-            	}
             	if(groupData.history.length < 20){
             		this.underscore=true;
             	}
+            	if(groupData.status == 200){
+	            	for(let i=0; i<groupData.history.length; i++){
+	            		if(!groupData.history[i].content){//清空空数据
+	            			/*this.imgS='';
+	            			this.imgS=Math.ceil(Math.random()*2);//随机图片
+	            			groupData.history[i].avatar=imgurl+this.imgS+'.jpg';*/
+	            			groupData.history.splice(i,1);
+	            			i=i-1
+	            		}
+	            		
+	            	}
+            		this.groupconversine = [...groupData.history, ...this.groupconversine]
+            	}
+            	
         		this.$nextTick(() => {
             		this.loadStatus=false;
         			if (offset == 0) {
+
             			window.scrollTo(0, this.$refs.groupHeight.offsetHeight - window.innerHeight)
         			}else{
         				const scrollPosition = this.$refs.groupHeight.offsetHeight - this.lastPageHeight;
@@ -329,7 +257,6 @@
 				
 				socket.emit('chat', {user_id: 2, content: this.inputmessage});
 				this.inputmessage='';
-				
 			},
 			enlargeImg(enlargeImg){
 				this.enlargeurl=enlargeImg;
@@ -357,7 +284,6 @@
 		transform:translateX(100%)
 	}
 	
-
 	.load{
 		position: fixed;
 		z-index:100;
@@ -689,7 +615,6 @@
 		background:#000000;
 		top:0;
 		z-index:100;
-
 		img{
 			display:block;
 			width:100%;
@@ -715,49 +640,40 @@
 	  from {
 	    opacity: 0;
 	  }
-
 	  100% {
 	    opacity: 1;
 	  }
 	}
-
 	@keyframes fadeIn {
 	  from {
 	    opacity: 0;
 	  }
-
 	  100% {
 	    opacity: 1;
 	  }
 	}
-
 	@-webkit-keyframes zoomOut {
 	  from {
 	    opacity: 1;
 	  }
-
 	  50% {
 	    opacity: 0;
 	    -webkit-transform: scale3d(.3, .3, .3);
 	    transform: scale3d(.3, .3, .3);
 	  }
-
 	  100% {
 	    opacity: 0;
 	  }
 	}
-
 	@keyframes zoomOut {
 	  from {
 	    opacity: 1;
 	  }
-
 	  50% {
 	    opacity: 0;
 	    -webkit-transform: scale3d(.3, .3, .3);
 	    transform: scale3d(.3, .3, .3);
 	  }
-
 	  100% {
 	    opacity: 0;
 	  }

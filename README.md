@@ -2,39 +2,6 @@
 ### 利用vue2+vuex写一个模仿微信app的单页面应用
 使用SVG格式构建页面icon图
 
-# 页面部分截图
-
-### 底部导航
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/nav.gif" width="300" height="530"/>
-
-### 通讯录
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/addressbook.jpg" width="300" height="530"/>
-
-### 单人聊天、群聊
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/singlechat.gif" width="300" height="530" alt=""><img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/groupchat.gif" width="300" height="530" alt=""><img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/chatwo.gif" width="300" height="530" alt="">
-
-### 发现
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/find.png" width="300" height="530"/>
-
-### 朋友圈
-
-###### 上传图片
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/shangchuan.gif" width="300" height="530"/>
-
-###### 点赞
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/like.gif" width="300" height="530"/>
-
-###### 评论
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/commont.gif" width="300" height="530"/>
-
-
 
 # 目标功能
 - [x] 微信 
@@ -65,6 +32,62 @@
 - [x] 登录
 
 
+
+# 页面部分截图
+
+### 底部导航
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/nav.gif" width="300" height="530"/>
+
+### 通讯录
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/addressbook.jpg" width="300" height="530"/>
+
+### 单人聊天
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/chatwo.gif" width="300" height="530" alt="">  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/singlechat.gif" width="300" height="530" alt="">
+
+### 群聊
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/groupchat.gif" width="300" height="530" alt="">
+
+
+### 发现
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/find.png" width="300" height="530"/>
+
+### 朋友圈
+
+###### 上传图片
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/shangchuan.gif" width="300" height="530"/>
+
+###### 点赞
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/like.gif" width="300" height="530"/>
+
+###### 评论
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/commont.gif" width="300" height="530"/>
+
+### 个人资料
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/infor.png" width="300" height="530"/>  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/photo.png" width="300" height="530"/>
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/collect.png" width="300" height="530"/>  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/card.png" width="300" height="530"/>
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/cardbag.png" width="300" height="530"/>  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/set.png" width="300" height="530"/>
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/newmess.png" width="300" height="530"/>  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/notrao.png" width="300" height="530"/>
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/chatset.png" width="300" height="530"/>  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/priat.png" width="300" height="530"/>
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/tongyong.png" width="300" height="530"/>  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/aboutwx.png" width="300" height="530"/>
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/login.png" width="300" height="530"/> 
+
+
+
+
 # 项目布局
 ```
 |-- build                            // webpack配置文件
@@ -90,6 +113,7 @@
 |       |-- search                 	 // 搜索页面
 |       |-- dialogue                 // 微信首页(对话列表页)
 |			  |--conversation			           //	对话详情页
+|			      |--chatmessage			           //聊天信息
 |			      |--singlechat			          //单人对话
 |			      |--groupchat			          //群聊
 |       |-- addressbook              // 通讯录
@@ -134,7 +158,6 @@
 |   |-- vuex                         // vuex的状态管理
 |       |-- modules                  // 加载各种store模块
 |       |-- action.js                // 配置根actions
-|       |-- getters.js               // 配置根getters
 |       |-- index.js                 // 引用vuex，创建store
 |       |-- mutation-types.js        // 定义常量muations名
 |       |-- mutations.js             // 配置根mutations

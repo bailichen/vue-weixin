@@ -23,7 +23,7 @@ import {imgurl} from 'src/config/env';
 export const userInfo = {
 	"wxid":"812571880",
 	"headurl":imgurl+'chen.jpg',
-	"petname":"徐连杰",
+	"petname":"百里辰",
 	"sex":1,
 	"sdasd":"逆天改命",
 	"phone":"15800319949",

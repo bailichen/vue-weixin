@@ -44,9 +44,9 @@ export const circle= [
 		"flag":true,			
 		"suporthtml":"赞",		
 	},{
-		"wxid":"xulianjie442154157",
+		"wxid":"812571880",
 		"headurl":imgurl+'chen.jpg',
-		"petname":"徐连杰",
+		"petname":"百里辰",
 		"sex":1,
 		"remarks":"",
 		"statements":"身边总有几个这样的朋友，第一次遇见斯斯文文的，熟识之后会发与不知道是哪个精神病院放出来的。",

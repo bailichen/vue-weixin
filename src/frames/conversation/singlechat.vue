@@ -2,7 +2,7 @@
 	<section>
 		<head-top :crossover="chatname">
 			<section class="coversPart" slot="person">
-				<router-link to='' class="person_link">
+				<router-link to='/singlechat/chatmessage' class="person_link">
 					<svg fill="#fff" class="icon-search">
 					    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#person"></use>
 					</svg>	
@@ -58,104 +58,20 @@
 			<section class="foot_bottom">
 	    		<div class="swiper-container">
 			        <div class="swiper-wrapper">
-			            <div class="swiper-slide">
-		            		<ul class="clear">
-		            			<li>
-		            				<div class="swiper_svg">
-			            				<svg fill="#7a8187">
-			            					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#personimg"></use>
-			            				</svg>
-		            				</div>
-		            				<div class="swiper_text">
-		            					相册
-		            				</div>
-		            			</li>
-		            			<li>
-		            				<div class="swiper_svg">
-			            				<svg fill="#7a8187">
-			            					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shot"></use>
-			            				</svg>
-		            				</div>
-		            				<div class="swiper_text">
-		            					拍摄
-		            				</div>
-		            			</li>
-		            			<li>
-		            				<div class="swiper_svg">
-			            				<svg fill="#7a8187">
-			            					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#camera"></use>
-			            				</svg>
-		            				</div>
-		            				<div class="swiper_text">
-		            					视频聊天
-		            				</div>
-		            			</li>
-		            			<li>
-		            				<div class="swiper_svg">
-			            				<svg fill="#7a8187" style="width:1.3rem;height:1.8rem;">
-			            					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#positions"></use>
-			            				</svg>
-		            				</div>
-		            				<div class="swiper_text">
-		            					位置
-		            				</div>
-		            			</li>
-		            			<li>
-		            				<div class="swiper_svg">
-			            				<svg fill="#7a8187" style="width:0.9386666667rem;height:1.152rem;">
-			            					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#redbag"></use>
-			            				</svg>
-		            				</div>
-		            				<div class="swiper_text">
-		            					红包
-		            				</div>
-		            			</li>
-		            			<li>
-		            				<div class="swiper_svg">
-			            				<svg fill="#7a8187">
-			            					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#banktransfer"></use>
-			            				</svg>
-		            				</div>
-		            				<div class="swiper_text">
-		            					转账
-		            				</div>
-		            			</li>
-		            			<li>
-		            				<div class="swiper_svg">
-			            				<svg fill="#7a8187">
-			            					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#person"></use>
-			            				</svg>
-		            				</div>
-		            				<div class="swiper_text">
-		            					名片
-		            				</div>
-		            			</li>
-		            			<li>
-		            				<div class="swiper_svg">
-			            				<svg fill="#7a8187">
-			            					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#voiceinput"></use>
-			            				</svg>
-		            				</div>
-		            				<div class="swiper_text">
-		            					语音输入
-		            				</div>
-		            			</li>
-		            		</ul>
-			            </div>
-			            <div class="swiper-slide">
-		            		<ul class="clear">
-		            			<li>
-		            				<div class="swiper_svg">
-			            				<svg fill="#7a8187" style="width:1.152rem;height:1.2586666667rem;">
-			            					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#wxcollect"></use>
-			            				</svg>
-		            				</div>
-		            				<div class="swiper_text">
-		            					我的收藏
-		            				</div>
-		            			</li>
-		            		</ul>
-			            </div>
+           	            <div class="swiper-slide" v-for="(value,item) in chatData">
+                       		<ul class="clear">
+                       			<li v-for="value in value">
+                       				<div class="swiper_svg">
+           	            				<svg fill="#7a8187">
+           	            					<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="value.chatSvgid"></use>
+           	            				</svg>
+                       				</div>
+                       				<div class="swiper_text">
+                       					{{value.chatSvgname}}
+                       				</div>
+                       			</li>
+                       		</ul>
+           	            </div>
 			        </div>
 			        <div class="swiper-pagination"></div>
 			    </div>
@@ -174,7 +90,7 @@
 <script>
 	import headTop from 'src/components/header/head';
 	import {mapState, mapActions,} from 'vuex';
-	import {userWord} from 'src/service/getData'
+	import {userWord, chatData} from 'src/service/getData'
 	import {imgurl} from 'src/config/env';
 	import 'src/config/swiper.min.js' 
 	import 'src/style/swiper.min.css'
@@ -195,18 +111,23 @@
 				timer:null,
 				conversine:[],		//对话列表
 				robotCont:'',
-				newInfo:{}
+				newInfo:{},
+				chatData:{},
 			}
 		},
 		created(){
 
 		},
 		mounted(){
-			//初始化swiper
-			new Swiper('.swiper-container', {
-		        pagination: '.swiper-pagination',
-		        loop: false,
-		    });
+		    chatData().then((res) => {
+		    	this.chatData=res;
+		    }).then(()=>{
+	    		//初始化swiper
+	    		new Swiper('.swiper-container', {
+	    	        pagination: '.swiper-pagination',
+	    	        loop: false,
+	    	    });
+		    })
 			this.chatname=this.infor.remarks ? this.infor.remarks : this.infor.petname;
 			this.getUserInfo();
 			userWord().then((res) => {
