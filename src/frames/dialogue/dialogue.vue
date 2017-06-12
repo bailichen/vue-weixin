@@ -126,7 +126,6 @@
 			
 		},
 		mounted(){	
-			console.log(this.consumerthing)
 			groupChat().then( (res) =>{
 				this.groupHead=res.grouphead
 			});
