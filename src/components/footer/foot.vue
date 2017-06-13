@@ -63,7 +63,7 @@
 				</section>
 				<section class="li_text" :class="$route.path.indexOf('me') !== -1 ? 'colortext' : 'color' " >我</section>
 			</router-link>
-		</ul>
+		</ul>	
 	</div>
 </template>
 

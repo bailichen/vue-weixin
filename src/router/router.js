@@ -61,7 +61,7 @@ export default[{
 				}
 			]
 		},			//群聊	
-		{path: '/addressbook', component: addressbook,
+		{path: '/addressbook', component: addressbook, mate:{ keepAlive: true},
 			children: [
 				{
 					path: '/addressbook/details',

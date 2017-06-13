@@ -5,14 +5,14 @@
 				<div class="find_wipe">
 					<div class="findlist_left">
 						<section class="findlist_svg " :class="{'findlist_svg_me' : $route.path.indexOf('me') !== -1}">
-							<img :src="userInfo.headurl" alt="" v-if="pathUrl">
+							<img :src="userHeader" alt="" v-if="pathUrl">
 							<svg v-else>
 								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#friendcircle"></use>
 							</svg>
 						</section>
 						<section class="me_name" v-if="pathUrl">
-							<div>{{userInfo.petname}}</div>
-							<div>微信号：{{userInfo.wxid}}</div>
+							<div>{{userInfo.name}}</div>
+							<div>微信号：{{userInfo.name}}</div>
 						</section>
 						<section class="findlist_text" v-else>
 							朋友圈
@@ -130,12 +130,12 @@
 <script>
 	import {userInfo} from 'src/service/getData'
 	import {imgurl} from 'src/config/env';
-	import {mapState,mapMutations} from 'vuex';
+	import {mapState,mapActions,mapMutations} from 'vuex';
 	import {circle} from 'src/service/getData' 
 	export default{
 		data(){
 			return{
-				pathUrl:this.$route.path.indexOf("me") !== -1,
+				pathUrl : this.$route.path.indexOf("me") !== -1,
 				userInfo:{},			//用户信息
 				alertreminder:false,	//弹出层是否显示
 				remindershow:false,		//显示时的动画
@@ -143,21 +143,24 @@
 				gifSrc:'',
 				timer:null,
 				newGetImage:'',			//朋友圈动态第一个头像
+				userHeader:''			//用户头像
 			}
 		},
 		props: ['mepart',],
 		created(){
+
 			this.gifSrc=imgurl+'reminder.gif';
 		},
 		beforeDestroy(){
             clearTimeout(this.timer) 
         },
 		beforeMount(){
-			userInfo().then((res) => {
-				this.userInfo = res
-			});
+			this.getUserInfo();
 		},
 		mounted(){
+			this.userInfo=this.userInfo;
+			this.userHeader=imgurl + this.userInfo.avatar
+			console.log(this.userHeader)
 			circle().then( (res) =>{
 				for(let i=0; i < res.length; i++){
 					this.newGetImage=res[0].headurl;
@@ -170,10 +173,13 @@
 		},
 		computed:{
 			...mapState([
-				'firendwarn', 
+				'firendwarn', 'userInfo'
 			]),
 		},
 		methods:{
+			...mapActions([
+                'getUserInfo',
+            ]),
 			 ...mapMutations([
 				"CHANGE_RED",
 			]),
