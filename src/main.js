@@ -18,7 +18,7 @@ const router = new VueRouter({
 	mode:'history',  //路由模式
 	strict: process.env.NODE_ENV !== 'production',
 	scrollBehavior (to, from, savedPosition) {
-		alert(1)
+		
 		if(savedPosition){
 			console.log(1)
 			return savedPosition

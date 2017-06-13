@@ -11,6 +11,7 @@
 		</head-top>
 		<section class="coversation">
 			<section class="coversationlist" @click="bottomHide">
+				<div class="underscore">————&nbsp;我是机器人小辰，现在我们可以聊天了&nbsp;————</div>
 				<ul>
 					<!-- 对方 -->
 					<li v-for="item in conversine">
@@ -113,6 +114,7 @@
 				robotCont:'',
 				newInfo:{},
 				chatData:{},
+				userInfoData:{}
 			}
 		},
 		created(){
@@ -130,8 +132,11 @@
 		    })
 			this.chatname=this.infor.remarks ? this.infor.remarks : this.infor.petname;
 			this.getUserInfo();
+			console.log(this.userInfo)
+			this.userInfoData=this.userInfo
+			console.log(this.userInfoData.avatar)
 			userWord().then((res) => {
-				this.conversine=[...res]
+				//this.conversine=[...res]
 			});	
 
 		},
@@ -146,6 +151,7 @@
 			
 		},
 		beforeDestroy(){
+			alert(1)
             clearTimeout(this.timer);
         },
 		methods:{
@@ -172,7 +178,7 @@
 			async clickSend(){
 				this.conversine.push({
 					"wxid":"xulianjie442154157",
-					"headurl":imgurl+'chen.jpg',
+					"headurl":imgurl+this.userInfoData.avatar,
 					"sendobject":0,
 					"Messageblob":this.inputmessage,
 				});
@@ -182,6 +188,7 @@
 					const res = await fetch('/robot/question', {question: inputmessage})
 					this.light=false;
 					if (res.status == 200) {
+						console.log(res.content)
 						this.infor.Messageblob=res.content
 						this.conversine.push({
 							"wxid":this.infor.wxid,
@@ -243,6 +250,11 @@
 			padding:0 .32rem;
 			overflow:auto;
 			margin:0 auto;
+			.underscore{
+				padding-top:0.2rem;
+				text-align:center;
+				@include sizeColor(0.5546666667rem,#999);
+			}
 			ul{
 				padding-top:.4rem;
 				padding-bottom:2.2rem;

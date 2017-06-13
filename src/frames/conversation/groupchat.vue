@@ -15,12 +15,12 @@
 				<ul>
 					<!--  群聊-->
 					<li v-for="item in groupconversine" >
-						<div class="other" :class="{mysay : item.sendobject == 0 }">
+						<div class="other" :class="{mysay : item.user_id == userInfo.id }">
 							<img :src="imgurl + item.avatar" alt="" @click="enlargeImg(item.avatar)">
 							<div class="whatsay">
 								<div class="whatsay_svg">
 									<svg>
-										<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="item.sendobject == 0 ? '#trigon-right' : '#trigon-left'"></use>
+										<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="item.user_id == userInfo.id ? '#trigon-right' : '#trigon-left'"></use>
 									</svg>
 								</div>
 								<div class="whatsay_text">
@@ -143,13 +143,13 @@
 				underscore:false,	//底线
 				chatData:{},
 				imgurl,
+				userId:'',
 			}
 		},
 		created(){
 			
 		},
 		mounted(){
-			
 			this.getUserInfo();
 			this.groupList(this.offset);
 			this.loadStatus=true;
@@ -158,7 +158,7 @@
 				//this.groupconversine=[...res.grouphead];
 			});	
 			socket.on('chat', function (data) {
-				console.log(data);
+				//console.log(data);
 			});
 			chatData().then((res) => {
 				this.chatData=res;
@@ -179,6 +179,7 @@
 			]),
 		},
 		beforeDestroy(){
+			alert(1)
             clearTimeout(this.timer);
             socket.removeAllListeners();
         },
@@ -193,23 +194,21 @@
             	}
             	if(groupData.status == 200){
 	            	for(let i=0; i<groupData.history.length; i++){
-	            		if(!groupData.history[i].content){//清空空数据
-	            			/*this.imgS='';
-	            			this.imgS=Math.ceil(Math.random()*2);//随机图片
-	            			groupData.history[i].avatar=imgurl+this.imgS+'.jpg';*/
+	            		
+	            		if(!groupData.history[i].content){//清空 空 数据
 	            			groupData.history.splice(i,1);
 	            			i=i-1
 	            		}
 	            	}
             		this.groupconversine = [...groupData.history, ...this.groupconversine]
             	}
-            	
         		this.$nextTick(() => {
             		this.loadStatus=false;
         			if (offset == 0) {
-
+        				this.underscore=false;
             			window.scrollTo(0, this.$refs.groupHeight.offsetHeight - window.innerHeight)
         			}else{
+
         				const scrollPosition = this.$refs.groupHeight.offsetHeight - this.lastPageHeight;
         				window.scrollTo(0,scrollPosition)
         			}
@@ -225,6 +224,8 @@
             		this.loadStatus=true;
             		this.offset+=20;
             		this.groupList(this.offset);
+            	}else{
+            		this.underscore=false;
             	}
             },
 			whatInput(){
@@ -249,11 +250,16 @@
 					"avatar":this.userInfo.avatar,
 					"sendobject":0,
 					"content":this.inputmessage,
+					"user_id":this.userInfo.id,
 				});
 				
 				this.light=false;
 				socket.emit('chat', {user_id: this.userInfo.id, content: this.inputmessage});
 				this.inputmessage='';
+				this.$nextTick(()=>{
+					window.scrollTo(0,this.$refs.groupHeight.offsetHeight-window.innerHeight)
+				})
+				
 			},
 			enlargeImg(enlargeImg){
 				this.enlargeurl=enlargeImg;
