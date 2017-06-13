@@ -16,7 +16,7 @@
 					<!--  群聊-->
 					<li v-for="item in groupconversine" >
 						<div class="other" :class="{mysay : item.sendobject == 0 }">
-							<img :src="item.avatar" alt="" @click="enlargeImg(item.avatar)">
+							<img :src="imgurl + item.avatar" alt="" @click="enlargeImg(item.avatar)">
 							<div class="whatsay">
 								<div class="whatsay_svg">
 									<svg>
@@ -116,7 +116,7 @@
 <script>
 	import headTop from 'src/components/header/head';
 	import {mapState, mapActions,} from 'vuex';
-	import {groupChat, chatData} from 'src/service/getData';
+	import {groupChat, chatData, getHistory} from 'src/service/getData';
 	import {imgurl} from 'src/config/env';
 	import 'src/config/swiper.min.js' 
 	import 'src/style/swiper.min.css'
@@ -142,7 +142,7 @@
 				loadStatus:false,	//加载
 				underscore:false,	//底线
 				chatData:{},
-				
+				imgurl,
 			}
 		},
 		created(){
@@ -153,10 +153,10 @@
 			this.getUserInfo();
 			this.groupList(this.offset);
 			this.loadStatus=true;
-			groupChat().then((res) => {
-				this.gropname=res.petname;
-				this.groupconversine=[...res.grouphead];
-			});	
+			// groupChat().then((res) => {
+			// 	this.gropname=res.petname;
+			// 	this.groupconversine=[...res.grouphead];
+			// });	
 			socket.on('chat', function (data) {
 				console.log(data);
 			});
@@ -187,7 +187,7 @@
                 'getUserInfo',
             ]),
             async groupList(offset){
-            	const groupData = await fetch('/chat/history',{"offset":this.offset, "limit":20} )
+            	const groupData = await getHistory({"offset":this.offset, "limit":20} )
             	if(groupData.history.length < 20){
             		this.underscore=true;
             	}
@@ -245,17 +245,15 @@
 				this.clickmore=false;
 			},
 			async clickSend(){
-				
 				this.groupconversine.push({
 					"wxid":"xulianjie442154157",
-					"avatar":imgurl+'chen.jpg',
+					"avatar":this.userInfo.avatar,
 					"sendobject":0,
 					"content":this.inputmessage,
 				});
 				
 				this.light=false;
-				
-				socket.emit('chat', {user_id: 2, content: this.inputmessage});
+				socket.emit('chat', {user_id: this.userInfo.id, content: this.inputmessage});
 				this.inputmessage='';
 			},
 			enlargeImg(enlargeImg){
@@ -495,7 +493,6 @@
 			}
 			.underscore{
 				padding-top:0.2rem;
-				
 				text-align:center;
 				@include sizeColor(0.5546666667rem,#999);
 			}

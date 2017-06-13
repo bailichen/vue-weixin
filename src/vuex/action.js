@@ -9,8 +9,9 @@ export default {
 		commit,
 		state
 	}){
-		let useData = await userInfo()
-		commit(GET_USERINFO,useData)
+		const user_id = localStorage.getItem('user_id')
+		let res = await userInfo()
+		commit(GET_USERINFO,res.user_info)
 	},
 	 async getDialog({
 	 	commit,

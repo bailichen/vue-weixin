@@ -95,7 +95,7 @@
 	import headTop from 'src/components/header/head'
 	import footGuide from 'src/components/footer/foot'
 	import {mapState,mapActions,mapMutations} from 'vuex'
-	import {groupChat} from 'src/service/getData'
+	import {groupChat, userInfo, login} from 'src/service/getData'
 	import fetch from 'src/config/fetch'
 
 	export default{
@@ -144,13 +144,16 @@
 		methods:{
 			
             ...mapMutations([
-				"SAVE_MESSAGE","LOGIN_COVER"
+				"SAVE_MESSAGE","LOGIN_COVER" ,'GET_USERINFO'
 			]),
 			async initData(){
 				try{
-					const res = await fetch('/user/info')
+					const user_id = localStorage.getItem('user_id')
+					const res = await userInfo(user_id)
 					if (res.status !== 200) {
 						this.LOGIN_COVER(true)
+					}else{
+						this.GET_USERINFO(res.user_info)
 					}
 				}catch(err){
 					console.log('获取用户信息失败', err)
@@ -187,12 +190,13 @@
             	if(this.inputaccounts){
             		this.consumer=true;
             		try{
-						const res = await fetch('/user/login', {username: this.inputaccounts})
+						const res = await login({username: this.inputaccounts})
 						if (res.status == 200) {
+							this.GET_USERINFO(res.user_info)
 							this.LOGIN_COVER(false)
 						}
 					}catch(err){
-						console.log('获取用户信息失败', err)
+						console.log('注册失败', err)
 						this.LOGIN_COVER(true)
 					}
             	}
