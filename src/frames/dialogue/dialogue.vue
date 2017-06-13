@@ -94,6 +94,7 @@
 <script>
 	import headTop from 'src/components/header/head'
 	import footGuide from 'src/components/footer/foot'
+	import {imgurl} from 'src/config/env';
 	import {mapState,mapActions,mapMutations} from 'vuex'
 	import {groupChat, userInfo, login} from 'src/service/getData'
 	import fetch from 'src/config/fetch'
@@ -113,7 +114,6 @@
 				borderColortwo: false,
 				timer:null,	
 				groupHead:[],
-
 			}
 		},
 		created(){
@@ -127,7 +127,8 @@
 		},
 		mounted(){	
 			groupChat().then( (res) =>{
-				this.groupHead=res.grouphead
+				this.groupHead=[...res.grouphead]
+				
 			});
 			
 		},

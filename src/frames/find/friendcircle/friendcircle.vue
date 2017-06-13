@@ -10,9 +10,9 @@
 					</div>
 					<div class="themetext" :class="{shoowimg : imagestatus}">轻触更换主题照片</div>
 					<div class="personImg">
-						<div class="personame">{{userInfo.petname}}</div>
+						<div class="personame">{{userInfo.name}}</div>
 						<div class="headimg" @click="personInfor">
-							<img :src="userInfo.headurl" alt="">
+							<img :src="userHeader" alt="">
 						</div>
 					</div>
 				</div>
@@ -61,7 +61,6 @@
 												</svg>
 												<span>评论</span>
 											</div>
-
 										</div>
 									</div>
 
@@ -106,6 +105,7 @@
 	import headTop from 'src/components/header/head'
 	import uploadPreview from 'src/config/uploadPreview.js' 
 	import {animate} from 'src/config/mUtils' 
+	import {imgurl} from 'src/config/env';
 	import {circle} from 'src/service/getData' 
 	import {mapState, mapActions, mapMutations} from 'vuex'
 	export default{
@@ -130,6 +130,8 @@
 				changeinput:false,		//控制发送按钮状态的改变
 				criticismstate:false,	//评论显隐
 				itemlist:{},			//点击当前的li
+				userInfo:{},			//用户信息
+				userHeader:''			//用户头像
 
 			}
 		},
@@ -141,6 +143,8 @@
             clearTimeout(this.timers); 
         },
 		mounted(){
+			this.userInfo=this.userInfo;
+			this.userHeader=imgurl + this.userInfo.avatar
 			//上传图片并展示图片（无剪裁功能）
 			new uploadPreview({
 				UpBtn: "input_file",

@@ -5,15 +5,15 @@
 			<section class="privacy_top">
 				<div class="privacy_child">
 					<span>头像</span>
-					<img :src="userInfo.headurl" alt="">
+					<img :src="userHeader" alt="">
 				</div>
 				<div class="privacy_child">
 					<span>昵称</span>
-					<span>{{userInfo.petname}}</span>
+					<span>{{userInfo.name}}</span>
 				</div>
 				<div class="privacy_child">
 					<span>微信号</span>
-					<span>{{userInfo.wxid}}</span>
+					<span>{{userInfo.name}}</span>
 				</div>
 				<div class="privacy_child">
 					<span>二维码名片</span>
@@ -46,18 +46,21 @@
 
 <script>
 	import headTop from 'src/components/header/head'
+	import {imgurl} from 'src/config/env';
 	import {mapState, mapActions} from 'vuex'
 	export default{
 		data(){
 			return{
-				
+				userInfo:{},			//用户信息
+				userHeader:''			//用户头像
 			}
 		},
 		created(){ 
 			this.getUserInfo();
 		},
 		mounted(){
-			
+			this.userInfo=this.userInfo;
+			this.userHeader=imgurl + this.userInfo.avatar
 		},
 		components:{
 			headTop,

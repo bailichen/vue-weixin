@@ -200,7 +200,6 @@
 	            			groupData.history.splice(i,1);
 	            			i=i-1
 	            		}
-	            		
 	            	}
             		this.groupconversine = [...groupData.history, ...this.groupconversine]
             	}

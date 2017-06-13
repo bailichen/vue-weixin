@@ -30,5 +30,5 @@ export const collect = () => setpromise(collectData.collect);		//获取收藏数
 export const burse = () => setpromise(bursetData.burse);				//获取我的钱包数据
 export const album = () => setpromise(albumData.album);				//获取我的钱包数据
 export const chatData = () => setpromise(chatmoreData.chatmore);		//获取聊天页面轮播数据
-export const login = data => fetch('/user/login', data);			//登陆
+export const login = data => fetch('/user/login', data);				//登陆
 export const getHistory = data => fetch('/chat/history', data);			//聊天记录
