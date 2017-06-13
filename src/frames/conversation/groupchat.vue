@@ -104,7 +104,7 @@
 			</section>
 		</footer>
 		<section class="enlarge" v-if="enlarge" @click="enlargeHide" :class="{'movein-animate' : enlargeShow, 'moveout-animate-leave' : enlargehides}" >
-			<img :src="enlargeurl" alt="">
+			<img :src="imgurl + enlargeurl" alt="">
 		</section>
 		<transition name="router-show">
 		    <router-view></router-view>
@@ -153,21 +153,21 @@
 			this.getUserInfo();
 			this.groupList(this.offset);
 			this.loadStatus=true;
-			// groupChat().then((res) => {
-			// 	this.gropname=res.petname;
-			// 	this.groupconversine=[...res.grouphead];
-			// });	
+			groupChat().then((res) => {
+				this.gropname=res.petname;
+				//this.groupconversine=[...res.grouphead];
+			});	
 			socket.on('chat', function (data) {
 				console.log(data);
 			});
 			chatData().then((res) => {
 				this.chatData=res;
 			}).then(()=>{
-					//初始化swiper
-					new Swiper('.swiper-container', {
-				        pagination: '.swiper-pagination',
-				        loop: false,
-				    });
+				//初始化swiper
+				new Swiper('.swiper-container', {
+			        pagination: '.swiper-pagination',
+			        loop: false,
+			    });
 			})
 		},
 		components:{

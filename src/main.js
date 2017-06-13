@@ -14,15 +14,21 @@ const router = new VueRouter({
 	mode:'hash',  //路由模式
 	strict: process.env.NODE_ENV !== 'production',
 	scrollBehavior (to, from, savedPosition) {
+		alert(1)
 		if(savedPosition){
+			console.log(1)
 			return savedPosition
 		} else {
-			if(from.meta.keepAlive){
-				from.meta.savedPosition = document.body.scrollTop;
-			}
 			return {x:0,y:to.meta.savedPosition || 0}
 		}
 	}
+})
+
+router.beforeEach((to, from, next) => {
+	if(from.meta.keepAlive){
+		from.meta.savedPosition = document.body.scrollTop;
+	}
+	next()
 })
 
 new Vue({
