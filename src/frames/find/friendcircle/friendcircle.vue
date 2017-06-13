@@ -115,11 +115,6 @@
 				imageSrc:false,			//显示的是图片还是文字
 				afterclcik:true,		//点击显示上传图片的input
 				releaseimgnum:true,		//上传的图片数是否大于1
-				/*reviewshow:false,		//评论的弹层显示时的动画
-				reviewhide:false,		//评论的弹层消失时的动画
-				criticism:false,		//评论的弹层是否显示
-				flag:true,				//点击判断
-				suporthtml:"赞",			*/
 				timer:null,				//定时器
 				timers:null,			//点赞定时器
 				bordercss:true,			//点赞的下边框
@@ -130,7 +125,7 @@
 				changeinput:false,		//控制发送按钮状态的改变
 				criticismstate:false,	//评论显隐
 				itemlist:{},			//点击当前的li
-				userInfo:{},			//用户信息
+				userInfoData:{},			//用户信息
 				userHeader:''			//用户头像
 
 			}
@@ -143,8 +138,8 @@
             clearTimeout(this.timers); 
         },
 		mounted(){
-			this.userInfo=this.userInfo;
-			this.userHeader=imgurl + this.userInfo.avatar
+			this.userInfoData=this.userInfo;
+			this.userHeader=imgurl + this.userInfoData.avatar
 			//上传图片并展示图片（无剪裁功能）
 			new uploadPreview({
 				UpBtn: "input_file",
@@ -211,7 +206,7 @@
 				animate(this.$refs.friend,{scrollTop:0})
 			},
 			personInfor(){//点击头像进入个人资料页
-				this.SAVE_MESSAGE(this.userInfo);
+				this.SAVE_MESSAGE(this.userInfoData);
 				this.$router.push('/addressbook/details');
 			},
 			supportThing(item){//点赞
@@ -223,7 +218,7 @@
 				this.commentHide(item);
 				if(item.suporthtml == "赞"){
 					item.suporthtml="取消";
-					item.like.push(this.userInfo.petname)
+					item.like.push(this.userInfoData.name)
 				}else{
 					item.suporthtml="赞";
 					item.like.pop();
@@ -241,8 +236,8 @@
 			commentSend(){//评论点击发送
 				if(this.textareaVlue){
 					this.itemlist.comment.push({
-						wxid:this.userInfo.wxid,
-						petname:this.userInfo.petname,
+						wxid:this.userInfoData.id,
+						petname:this.userInfoData.name,
 						commentext:this.textareaVlue
 					})
 				}

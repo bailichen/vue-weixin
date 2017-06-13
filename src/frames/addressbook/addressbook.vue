@@ -73,14 +73,8 @@
 		</section>
 		<section class="peoplenum">{{peoplenum}}位联系人</section>
 		<foot-guide></foot-guide>
-
 		<transition name="router-show">
-			<keep-alive>
-				<router-view v-if="$route.meta.keepAlive"></router-view>
-			</keep-alive>
-		</transition>
-		<transition name="router-show">		
-			<router-view v-if="!$route.meta.keepAlive"></router-view>
+			<router-view></router-view>
 		</transition>
 	</section>	
 </template>
@@ -106,6 +100,7 @@
 			})
 		},
 		mounted(){
+			
 			
 		},
 		components:{
@@ -142,7 +137,7 @@
 			]),
 			detailMessage(item){
 				this.SAVE_MESSAGE(item);
-			}
+			},
 		}
 	}
 </script>
