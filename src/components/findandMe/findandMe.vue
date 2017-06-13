@@ -136,7 +136,6 @@
 		data(){
 			return{
 				pathUrl : this.$route.path.indexOf("me") !== -1,
-				userInfo:{},			//用户信息
 				alertreminder:false,	//弹出层是否显示
 				remindershow:false,		//显示时的动画
 				reminderhide:false,		//隐藏时的动画
@@ -158,7 +157,6 @@
 			this.getUserInfo();
 		},
 		mounted(){
-			this.userInfo=this.userInfo;
 			this.userHeader=imgurl + this.userInfo.avatar
 			console.log(this.userHeader)
 			circle().then( (res) =>{
