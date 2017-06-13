@@ -6,12 +6,16 @@ import './style/public.scss'
 import './config/rem'
 import FastClick from 'fastclick'
 
-
+if ('addEventListener' in document) {
+  document.addEventListener('DOMContentLoaded', function() {
+    FastClick.attach(document.body);
+  }, false);
+}
 
 Vue.use(VueRouter)
 const router = new VueRouter({
 	routes,
-	mode:'hash',  //路由模式
+	mode:'history',  //路由模式
 	strict: process.env.NODE_ENV !== 'production',
 	scrollBehavior (to, from, savedPosition) {
 		alert(1)
@@ -22,6 +26,12 @@ const router = new VueRouter({
 			return {x:0,y:to.meta.savedPosition || 0}
 		}
 	}
+})
+router.beforeEach((to, from, next) => {
+  	if(from.meta.keepAlive){
+		from.meta.savedPosition = document.body.scrollTop;
+	}
+  	next()
 })
 
 router.beforeEach((to, from, next) => {
@@ -35,9 +45,3 @@ new Vue({
 	router,
 	store,
 }).$mount("#weixin")
-
-if ('addEventListener' in document) {
-  document.addEventListener('DOMContentLoaded', function() {
-    FastClick.attach(document.body);
-  }, false);
-}
