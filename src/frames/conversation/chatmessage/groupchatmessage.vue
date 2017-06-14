@@ -10,7 +10,7 @@
 			</ul>
 		</section>
 		<section class="chat">
-			<ul>
+			<ul class="groupChat_ul">
 				<li>
 					<div>群聊名称</div>
 					<div class="voice-music">{{gropname}}</div>
@@ -110,6 +110,8 @@
 		right: 0;
 		bottom: 0;
 		z-index: 203;
+    	overflow-y: scroll;
+    	-webkit-overflow-scrolling:touch;
 		background-color: #ebebeb;
 	}
 	.groupchat{
