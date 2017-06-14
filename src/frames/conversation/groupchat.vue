@@ -158,8 +158,14 @@
 				this.gropname=res.petname;
 				//this.groupconversine=[...res.grouphead];
 			});	
+<<<<<<< HEAD
 			socket.on('chat', function (data) {
 				console.log(data);//聊天返回内容
+=======
+			socket.on('chat', (data) => {
+				console.log(data);//聊天返回内容
+				this.groupconversine.push(data)
+>>>>>>> fcb41450fc1df1587f1bc4e289ffae3bb2df400a
 			});
 			chatData().then((res) => {
 				this.chatData=res;
@@ -272,13 +278,13 @@
 				this.clickmore=false;
 			},
 			async clickSend(){
-				this.groupconversine.push({
-					"wxid":"xulianjie442154157",
-					"avatar":this.userInfo.avatar,
-					"sendobject":0,
-					"content":this.inputmessage,
-					"user_id":this.userInfo.id,
-				});
+				// this.groupconversine.push({
+				// 	"wxid":"xulianjie442154157",
+				// 	"avatar":this.userInfo.avatar,
+				// 	"sendobject":0,
+				// 	"content":this.inputmessage,
+				// 	"user_id":this.userInfo.id,
+				// });
 				
 				this.light=false;
 				socket.emit('chat', {user_id: this.userInfo.id, content: this.inputmessage});
