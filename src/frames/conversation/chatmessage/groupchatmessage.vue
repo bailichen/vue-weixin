@@ -5,7 +5,7 @@
 			<ul class="groupchat_ul clear">
 				<li v-for="item in allPeople">
 					<img :src="imgurl + item.avatar" alt="">
-					<span class="ellipsis">{{item.username}}</span>
+					<span class="ellipsis">{{item.name}}</span>
 				</li>
 			</ul>
 		</section>
@@ -13,7 +13,7 @@
 			<ul>
 				<li>
 					<div>群聊名称</div>
-					<div class="voice-music">开饭啦~</div>
+					<div class="voice-music">{{gropname}}</div>
 				</li>
 				<li>
 					<div>群公告</div>
@@ -56,34 +56,39 @@
 <script>
 	import headTop from 'src/components/header/head';
 	import {mapState} from 'vuex';
+	import {allgroup,groupChat} from 'src/service/getData';
 	import {imgurl} from 'src/config/env';
 	export default{
 		data(){
 			return{
-				allPeople:[]
+				allPeople:[],
+				imgurl:imgurl,
+				gropname:''
 			}
 		},
 		created(){
 
 		},
 		computed:{
-			...mapState([
-			    "allgroup"
-			]),
+			
 		},
 		mounted(){
-			this.$nextTick(()=>{
-				console.log(this.allgroup)
-			})
-			
-			//this.allPeople=this.allGroup
+			allgroup().then((res)=>{
+				if(res.status == 200){
+					this.allPeople=res.users
+				}else{
+					alert("获取数据失败，请检查网络是否正常！")
+				}
+				
+			});
+			groupChat().then((res) => {
+				this.gropname=res.petname;
+				//this.groupconversine=[...res.grouphead];
+			});	
 		},
 
 		components:{
 			headTop,
-		},
-		computed:{
-			
 		},
 		methods:{
 
@@ -121,11 +126,12 @@
 				img{
 					display:block;
 					width:2.048rem;
-					width:2.048rem;
+					height:2.048rem;
 				}
 				span{
 					display:block;
 					width:2.048rem;
+					line-height:.7rem;
 					font-size:0.5333333333rem;
 					color:#666;
 					text-align:center;

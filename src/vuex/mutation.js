@@ -16,52 +16,51 @@ import {
 
 export default {
 	//记录是否电脑静音
-	[RECORD_MUTE](status,mutestatus){
-		status.mute=mutestatus;
+	[RECORD_MUTE](state,mutestatus){
+		state.mute=mutestatus;
 	},
 	//是否电脑登录
-	[COMPUTER_SHOW](status, computerstatus){
-		status.computershow=computerstatus;
+	[COMPUTER_SHOW](state, computerstatus){
+		state.computershow=computerstatus;
 	},
 	//保存联系人信息
-	[SAVE_MESSAGE](status, infor){
-		status.infor={};
-		status.infor=infor;
+	[SAVE_MESSAGE](state, infor){
+		state.infor={};
+		state.infor=infor;
 	},
 	//获取的数据先保存
-	[SAVE_BEGINDIALOGUE](status, arrayData){
-		status.contactList = arrayData;
+	[SAVE_BEGINDIALOGUE](state, arrayData){
+		state.contactList = arrayData;
 	},
 	//增加对话人列表
-	[SAVE_DIALOGUE](status, obj){
-		status.contactList=[obj, ...status.contactList];
+	[SAVE_DIALOGUE](state, obj){
+		state.contactList=[obj, ...state.contactList];
 		
 		//数组去重
-		const newArr = new Set(status.contactList);
-		status.contactList = [...newArr];	
+		const newArr = new Set(state.contactList);
+		state.contactList = [...newArr];	
 	},
 	//获取用户信息
-	[GET_USERINFO](status,userInfo){
-		status.userInfo=userInfo
+	[GET_USERINFO](state,userInfo){
+		state.userInfo=userInfo
 	},
 	//上传主题图片
-	[SAVE_THEMIMG](status,{
+	[SAVE_THEMIMG](state,{
 		newImg,
 		imagestatus
 	}){
-		status.newImg=newImg;
-		status.imagestatus=imagestatus
+		state.newImg=newImg;
+		state.imagestatus=imagestatus
 	},
 	//改变朋友圈红色提醒显隐
-	[CHANGE_RED](status,firendwarn){
-		status.firendwarn=firendwarn;
+	[CHANGE_RED](state,firendwarn){
+		state.firendwarn=firendwarn;
 	},
-	[LOGIN_COVER](status,consumerthing){
-		status.consumerthing=consumerthing;
+	[LOGIN_COVER](state,consumerthing){
+		state.consumerthing=consumerthing;
 	},
 	//获取所有群聊人信息
-	[GET_ALLGROUP](status,allgroup){
-		status.allgroup=allgroup
-		console.log(status.allgroup)
+	[GET_ALLGROUP](state,allgroup){
+		state.allgroup=allgroup
 	}
 }

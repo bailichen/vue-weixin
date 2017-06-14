@@ -144,7 +144,7 @@
 				chatData:{},
 				imgurl,
 				userId:'',
-				allgroup:[],	//所有群聊信息
+				allgroups:[],	//所有群聊信息
 			}
 		},
 		created(){
@@ -159,7 +159,7 @@
 				//this.groupconversine=[...res.grouphead];
 			});	
 			socket.on('chat', function (data) {
-				//console.log(data);
+				//console.log(data);//聊天返回内容
 			});
 			chatData().then((res) => {
 				this.chatData=res;
@@ -176,7 +176,7 @@
 		},
 		computed:{
 			...mapState([
-			    "infor", "userInfo","allGroup"
+			    "infor", "userInfo","allgroup"
 			]),
 		},
 		beforeDestroy(){
@@ -208,8 +208,8 @@
 	            	}
             		this.groupconversine = [...groupData.history, ...this.groupconversine]
 
-            		this.allgroup=[...this.groupconversine]
-					Array.prototype.unique = function(){//去重
+            		this.allgroups=[...this.groupconversine]
+					Array.prototype.unique = function(){//数组去重
 						var res = [this[0]];
 						for(var l = 1; l < this.length; l++){
 							var repeat = false;
@@ -225,9 +225,8 @@
 						}
 						return res;
 					}
-					var arr = this.allgroup;
+					var arr = this.allgroups;
 					this.GET_ALLGROUP(arr.unique())//保存所有人数据信息
-					console.log(this.allgroup)
 					
             	}
         		this.$nextTick(() => {

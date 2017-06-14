@@ -4,8 +4,8 @@
 		<section class="groupchat">
 			<ul class="groupchat_ul clear">
 				<li>
-					<img src="../../../images/a.jpg" alt="">
-					<span class="ellipsis">百里辰</span>
+					<img :src="this.infor.headurl" alt="">
+					<span class="ellipsis">{{this.infor.remark ? this.infor.remark : this.infor.petname}}</span>
 				</li>
 			</ul>
 		</section>
@@ -32,15 +32,6 @@
 					<div>表情管理</div>
 				</li>
 			</ul>
-			<h1 class="chatrecord">聊天记录</h1>
-			<ul>
-				<li>
-					<div>聊天记录迁移</div>
-				</li>
-				<li>
-					<div>清空聊天记录</div>
-				</li>
-			</ul>
 		</section>
 		<transition name="router-show">
 		    <router-view></router-view>
@@ -50,6 +41,7 @@
 
 <script>
 	import headTop from 'src/components/header/head'
+	import {mapState, mapActions, mapMutations} from 'vuex';
 	export default{
 		data(){
 			return{
@@ -59,14 +51,16 @@
 		created(){
 
 		},
+		computed:{
+			...mapState([
+			    "infor", "userInfo","allgroup"
+			]),
+		},
 		mounted(){
-			
+			console.log(this.infor)
 		},
 		components:{
 			headTop,
-		},
-		computed:{
-			
 		},
 		methods:{
 
