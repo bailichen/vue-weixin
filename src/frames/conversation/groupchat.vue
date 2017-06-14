@@ -160,7 +160,10 @@
 			});	
 			socket.on('chat', (data) => {
 				console.log(data);//聊天返回内容
-				this.groupconversine.push(data)
+				this.groupconversine.push(data);
+				this.$nextTick(()=>{
+					window.scrollTo(0,this.$refs.groupHeight.offsetHeight-window.innerHeight)
+				})
 			});
 			chatData().then((res) => {
 				this.chatData=res;
