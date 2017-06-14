@@ -91,6 +91,8 @@
 
 # 项目布局
 
+```
+
 ├── README.md 										// webpack配置文件
 ├── build											// 项目打包路径
 ├── config      									// 上线项目文件，放在服务器即可正常访问
@@ -194,4 +196,7 @@
 │       └── mutation.js 							// 配置根mutations
 └── tree.md
 
+
 36 directories, 133 files
+
+```
