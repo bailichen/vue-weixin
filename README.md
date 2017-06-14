@@ -114,6 +114,8 @@
 |       |-- dialogue                 // 微信首页(对话列表页)
 |			  |--conversation			           //	对话详情页
 |			      |--chatmessage			           //聊天信息
+|			        |--chatmessage			           //单人聊天信息
+|			        |--groupchatmessage			       //群聊聊天信息
 |			      |--singlechat			          //单人对话
 |			      |--groupchat			          //群聊
 |       |-- addressbook              // 通讯录
