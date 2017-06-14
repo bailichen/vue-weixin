@@ -159,7 +159,7 @@
 				//this.groupconversine=[...res.grouphead];
 			});	
 			socket.on('chat', function (data) {
-				//console.log(data);//聊天返回内容
+				console.log(data);//聊天返回内容
 			});
 			chatData().then((res) => {
 				this.chatData=res;
