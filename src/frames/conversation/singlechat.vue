@@ -9,8 +9,9 @@
 				</router-link>
 			</section>
 		</head-top>
-		<section class="coversation">
+		<section class="coversation" ref="singleHeight">
 			<section class="coversationlist" @click="bottomHide">
+				<div class="underscore">————&nbsp;我是机器人小辰，现在我们可以聊天了&nbsp;————</div>
 				<ul>
 					<!-- 对方 -->
 					<li v-for="item in conversine">
@@ -113,6 +114,7 @@
 				robotCont:'',
 				newInfo:{},
 				chatData:{},
+				userInfoData:{}
 			}
 		},
 		created(){
@@ -130,18 +132,17 @@
 		    })
 			this.chatname=this.infor.remarks ? this.infor.remarks : this.infor.petname;
 			this.getUserInfo();
+			this.userInfoData=this.userInfo
 			userWord().then((res) => {
-				this.conversine=[...res]
+				//this.conversine=[...res]
 			});	
-
 		},
 		components:{
 			headTop,
-
 		},
 		computed:{
 			...mapState([
-			    "infor", "userInfo", 
+			    "infor", "userInfo",
 			]),
 			
 		},
@@ -172,12 +173,15 @@
 			async clickSend(){
 				this.conversine.push({
 					"wxid":"xulianjie442154157",
-					"headurl":imgurl+this.userInfo.avatar,
+					"headurl":imgurl+this.userInfoData.avatar,
 					"sendobject":0,
 					"Messageblob":this.inputmessage,
 				});
 				const inputmessage = this.inputmessage;
 				this.inputmessage='';
+				this.$nextTick(()=>{
+					window.scrollTo(0,this.$refs.singleHeight.offsetHeight-window.innerHeight)
+				})
 				try{
 					const res = await fetch('/robot/question', {question: inputmessage})
 					this.light=false;
@@ -189,6 +193,9 @@
 							"sendobject":this.infor.sendobject,
 							"Messageblob":res.content,
 						});
+						this.$nextTick(()=>{
+							window.scrollTo(0,this.$refs.singleHeight.offsetHeight-window.innerHeight)
+						})
 					}else{
 						throw new Error(res)
 					}
@@ -243,6 +250,11 @@
 			padding:0 .32rem;
 			overflow:auto;
 			margin:0 auto;
+			.underscore{
+				padding-top:0.2rem;
+				text-align:center;
+				@include sizeColor(0.5546666667rem,#999);
+			}
 			ul{
 				padding-top:.4rem;
 				padding-bottom:2.2rem;

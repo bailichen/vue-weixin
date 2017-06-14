@@ -158,7 +158,6 @@
 		},
 		mounted(){
 			this.userHeader=imgurl + this.userInfo.avatar
-			console.log(this.userHeader)
 			circle().then( (res) =>{
 				for(let i=0; i < res.length; i++){
 					this.newGetImage=res[0].headurl;

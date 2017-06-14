@@ -9,4 +9,5 @@ export const ENLARGE_HEAD = 'ENLARGE_HEAD'
 export const SAVE_THEMIMG = 'SAVE_THEMIMG'
 export const CHANGE_RED = 'CHANGE_RED'
 export const LOGIN_COVER = 'LOGIN_COVER'
+export const GET_ALLGROUP = 'GET_ALLGROUP'
 

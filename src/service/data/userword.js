@@ -2,6 +2,7 @@
 
 
 import {imgurl} from 'src/config/env';
+
 export const userWord=[
 	{
 		"wxid":"812571880",
