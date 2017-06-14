@@ -115,7 +115,7 @@
 
 <script>
 	import headTop from 'src/components/header/head';
-	import {mapState, mapActions,} from 'vuex';
+	import {mapState, mapActions, mapMutations} from 'vuex';
 	import {groupChat, chatData, getHistory} from 'src/service/getData';
 	import {imgurl} from 'src/config/env';
 	import 'src/config/swiper.min.js' 
@@ -144,6 +144,7 @@
 				chatData:{},
 				imgurl,
 				userId:'',
+				allgroup:[],	//所有群聊信息
 			}
 		},
 		created(){
@@ -175,7 +176,7 @@
 		},
 		computed:{
 			...mapState([
-			    "infor", "userInfo", 
+			    "infor", "userInfo","allGroup"
 			]),
 		},
 		beforeDestroy(){
@@ -187,20 +188,47 @@
 			...mapActions([
                 'getUserInfo',
             ]),
+            ...mapMutations([
+                'GET_ALLGROUP',
+            ]),
             async groupList(offset){
             	const groupData = await getHistory({"offset":this.offset, "limit":20} )
             	if(groupData.history.length < 20){
             		this.underscore=true;
             	}
             	if(groupData.status == 200){
+
 	            	for(let i=0; i<groupData.history.length; i++){
 	            		
 	            		if(!groupData.history[i].content){//清空 空 数据
 	            			groupData.history.splice(i,1);
 	            			i=i-1
 	            		}
+
 	            	}
             		this.groupconversine = [...groupData.history, ...this.groupconversine]
+
+            		this.allgroup=[...this.groupconversine]
+					Array.prototype.unique = function(){//去重
+						var res = [this[0]];
+						for(var l = 1; l < this.length; l++){
+							var repeat = false;
+							for(var j = 0; j < res.length; j++){
+								if(this[l].user_id == res[j].user_id){
+									repeat = true;
+									break;
+								}
+							}
+							if(!repeat){
+								res.push(this[l]);
+							}
+						}
+						return res;
+					}
+					var arr = this.allgroup;
+					this.GET_ALLGROUP(arr.unique())//保存所有人数据信息
+					console.log(this.allgroup)
+					
             	}
         		this.$nextTick(() => {
             		this.loadStatus=false;

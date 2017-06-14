@@ -1,44 +1,49 @@
 <template>
 	<section class="child_page">
-		<head-top crossover="聊天信息(3)"></head-top>
+		<head-top crossover="聊天信息"></head-top>
 		<section class="groupchat">
 			<ul class="groupchat_ul clear">
-				<li>
-					<img src="../../../images/a.jpg" alt="">
-					<span class="ellipsis">百里辰</span>
+				<li v-for="item in allPeople">
+					<img :src="imgurl + item.avatar" alt="">
+					<span class="ellipsis">{{item.username}}</span>
 				</li>
 			</ul>
 		</section>
 		<section class="chat">
 			<ul>
 				<li>
-					<div>使用听筒播放语音</div>
+					<div>群聊名称</div>
+					<div class="voice-music">开饭啦~</div>
+				</li>
+				<li>
+					<div>群公告</div>
+				</li>
+				
+			</ul>
+			<ul>
+				<li>
+					<div>查看聊天记录</div>
+				</li>
+				<li>
+					<div>消息免打扰</div>
 					<div class="push-button">
 						<input class='tgl tgl-light' id='new' type='checkbox'>
 						<label class='tgl-btn' for='new'></label>
 					</div>
 				</li>
 				<li>
-					<div>回车键发送信息</div>
+					<div>置顶聊天</div>
 					<div class="push-button">
 						<input class='tgl tgl-light' id='video' type='checkbox' checked="checked">
 						<label class='tgl-btn' for='video'></label>
 					</div>
 				</li>
 				<li>
-					<div>聊天背景</div>
-				</li>
-				<li>
-					<div>表情管理</div>
-				</li>
-			</ul>
-			<h1 class="chatrecord">聊天记录</h1>
-			<ul>
-				<li>
-					<div>聊天记录迁移</div>
-				</li>
-				<li>
-					<div>清空聊天记录</div>
+					<div>保存到通讯录</div>
+					<div class="push-button">
+						<input class='tgl tgl-light' id='video' type='checkbox' checked="checked">
+						<label class='tgl-btn' for='video'></label>
+					</div>
 				</li>
 			</ul>
 		</section>
@@ -49,19 +54,31 @@
 </template>
 
 <script>
-	import headTop from 'src/components/header/head'
+	import headTop from 'src/components/header/head';
+	import {mapState} from 'vuex';
+	import {imgurl} from 'src/config/env';
 	export default{
 		data(){
 			return{
-				
+				allPeople:[]
 			}
 		},
 		created(){
 
 		},
-		mounted(){
-			
+		computed:{
+			...mapState([
+			    "allgroup"
+			]),
 		},
+		mounted(){
+			this.$nextTick(()=>{
+				console.log(this.allgroup)
+			})
+			
+			//this.allPeople=this.allGroup
+		},
+
 		components:{
 			headTop,
 		},
@@ -82,7 +99,7 @@
 		transform:translateX(100%)
 	}
 	.child_page{
-		position: absolute;
+		position: fixed;
 		top: 0;
 		left: 0;
 		right: 0;
@@ -137,11 +154,8 @@
 				@include sizeColor(0.64rem,#333);
 				@include justify;
 				align-items:center;
-				.push-button{
-					
-				}
 				.voice-music{
-					@include sizeColor(0.512rem,#9c9c9c);
+					@include sizeColor(0.6rem,#9c9c9c);
 				}
 			}
 			li:last-child{

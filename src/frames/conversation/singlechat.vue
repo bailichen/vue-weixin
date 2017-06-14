@@ -136,14 +136,13 @@
 			userWord().then((res) => {
 				//this.conversine=[...res]
 			});	
-
 		},
 		components:{
 			headTop,
 		},
 		computed:{
 			...mapState([
-			    "infor", "userInfo", 
+			    "infor", "userInfo",
 			]),
 			
 		},
