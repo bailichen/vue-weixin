@@ -172,7 +172,7 @@
 			async clickSend(){
 				this.conversine.push({
 					"wxid":"xulianjie442154157",
-					"headurl":imgurl+'chen.jpg',
+					"headurl":imgurl+this.userInfo.avatar,
 					"sendobject":0,
 					"Messageblob":this.inputmessage,
 				});
