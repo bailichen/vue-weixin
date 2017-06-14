@@ -90,202 +90,108 @@
 
 
 # 项目布局
-```
-|-- build                            // webpack配置文件
-|-- config                           // 项目打包路径
-|-- weixin                           // 上线项目文件，放在服务器即可正常访问
-|
-|-- src                              // 源码目录
-|   |-- components                   // 组件
-|       |-- footer                   // 底部微信导航
-|       |-- header                 	 // 头部公共组件
-|       |-- findandMe                // 发现和我 共同的模块的列表
-|
-|   |-- config                       // 基本配置
-|       |-- env.js                   // 环境切换配置
-|       |-- fetch.js                 // 获取数据
-|       |-- mUtils.js                 // 工具
-|       |-- rem.js                   // px转换rem
-|       |-- uploadPreview.js         // 上传图片控件
-|
-|   |-- images                       // 公共图片
-|
-|   |-- frames                       // 页面组件
-|       |-- search                 	 // 搜索页面
-|       |-- dialogue                 // 微信首页(对话列表页)
-|			  |--conversation			           //	对话详情页
-|			      |--chatmessage			           //聊天信息
-|			        |--chatmessage			           //单人聊天信息
-|			        |--groupchatmessage			       //群聊聊天信息
-|			      |--singlechat			          //单人对话
-|			      |--groupchat			          //群聊
-|       |-- addressbook              // 通讯录
-|         |-- details                // 详细资料
-|           |-- more                 // 更多
-|       |-- find                     // 发现
-|         |-- firendcircle            // 朋友圈
-|         |-- miniapps               // 小程序子页面
-|       |-- me                     	 // 我
-|       	|-- cardbag               // 卡包
-|       	|-- collect               // 我的收藏
-|       	|--personaldetails        // 个人信息
-|       	|-- photoalblum            // 我的相册
-|       	|-- settings               // 设置
-|       		|-- detailset             
-|       			|-- newmessage        // 新消息提醒
-|       			|-- disturbance       // 勿扰模式
-|       			|-- chat       		  	// 聊天
-|       			|-- privacy       		// 隐私
-|       			|-- currency      		// 通用
-|       			|-- aboutwc       		// 关于微信
-|       			|-- help       		  	// 帮助与反馈
-|       			|-- login       			// 登录
-|       |-- computer                 // pc端登录
-|       |-- transfer                 // 向pc端传递文件
-|
-|   |-- plugins                      // 引用的插件
-|
-|   |-- router                       // 路由配置
-|
-|   |-- service                      // 数据交互统一调配
-|       |-- search.js                 // 搜索的分类
-|       |-- contacts.js                 // 联系人列表数据
-|       |-- dialogist.js             // 对话列表
-|       |-- login.js                  // 个人用户信息
-|       |-- friendcircle.js          // 朋友圈数据
-|       |-- album.js                // 个人相册
-|       |-- burse.js                // 钱包数据
-|       |-- collect.js              // 我的收藏
-|       |-- groupchat.js              // 群聊数据
-|
-|   |-- vuex                         // vuex的状态管理
-|       |-- modules                  // 加载各种store模块
-|       |-- action.js                // 配置根actions
-|       |-- index.js                 // 引用vuex，创建store
-|       |-- mutation-types.js        // 定义常量muations名
-|       |-- mutations.js             // 配置根mutations
-|
-|   |-- style                        // 各种样式文件
-|       |-- public.scss              // 公共样式文件、样式配置文件
-|
-|   |-- App.vue                      // 页面入口文件
-|
-|   |-- main.js                      // 程序入口文件，加载各种公共组件
-|
-|-- .babelrc                         // ES6语法编译配置
-|-- .editorconfig                    // 代码编写规格
-|-- .gitignore                       // 忽略的文件
-|-- favicon.ico                      // 页面左上角小图标
-|-- index.html                       // 入口html文件
-|-- package.json                     // 项目及工具的依赖配置文件
-|-- README.md                        // 说明 
-```
 
-```
-.
-├── README.md
-├── build
-├── config
+├── README.md 										// webpack配置文件
+├── build											// 项目打包路径
+├── config      									// 上线项目文件，放在服务器即可正常访问
 │   └── index.js
 ├── favicon.ico
 ├── index.html
 ├── package.json
 ├── printscreen
-├── src
-│   ├── App.vue
-│   ├── components
+├── src 											// 源码目录
+│   ├── App.vue 									// 页面入口文件
+│   ├── components 									// 公共组件
 │   │   ├── findandMe
-│   │   │   └── findandMe.vue
+│   │   │   └── findandMe.vue  						// 发现和我共同的模块的列表
 │   │   ├── footer
-│   │   │   └── foot.vue
+│   │   │   └── foot.vue 							// 底部微信导航
 │   │   └── header
-│   │       └── head.vue
-│   ├── config
-│   │   ├── env.js
-│   │   ├── fetch.js
-│   │   ├── iscroll.js
-│   │   ├── mUtils.js
-│   │   ├── rem.js
-│   │   ├── swiper.min.js
-│   │   └── uploadPreview.js
+│   │       └── head.vue 							// 头部公共组件
+│   ├── config 										// 基本配置
+│   │   ├── env.js 									// 环境切换配置
+│   │   ├── fetch.js 								// 获取数据
+│   │   ├── iscroll.js 								
+│   │   ├── mUtils.js 								// 工具
+│   │   ├── rem.js 									// px转换rem
+│   │   ├── swiper.min.js 							// 轮播图控件
+│   │   └── uploadPreview.js 						// 上传图片控件
 │   ├── frames
-│   │   ├── addressbook
-│   │   │   ├── addressbook.vue
+│   │   ├── addressbook 							
+│   │   │   ├── addressbook.vue 					// 通讯录
 │   │   │   └── details
-│   │   │       ├── details.vue
+│   │   │       ├── details.vue 					// 详细资料
 │   │   │       └── more
-│   │   │           └── more.vue
+│   │   │           └── more.vue 					// 更多
 │   │   ├── computer
-│   │   │   └── computer.vue
+│   │   │   └── computer.vue 						// pc端登录
 │   │   ├── conversation
 │   │   │   ├── chatmessage
-│   │   │   │   ├── chatmessage.vue
-│   │   │   │   └── groupchatmessage.vue
-│   │   │   ├── groupchat.vue
-│   │   │   └── singlechat.vue
+│   │   │   │   ├── chatmessage.vue 				// 单人聊天信息
+│   │   │   │   └── groupchatmessage.vue 			// 群聊聊天信息
+│   │   │   ├── groupchat.vue 						// 群聊
+│   │   │   └── singlechat.vue 						// 单人对话
 │   │   ├── dialogue
-│   │   │   └── dialogue.vue
+│   │   │   └── dialogue.vue 						// 微信首页(对话列表页)
 │   │   ├── find
-│   │   │   ├── find.vue
+│   │   │   ├── find.vue 							// 发现
 │   │   │   ├── friendcircle
-│   │   │   │   └── friendcircle.vue
+│   │   │   │   └── friendcircle.vue 				// 朋友圈
 │   │   │   └── miniapps
-│   │   │       └── miniapps.vue
+│   │   │       └── miniapps.vue 					// 小程序子页面
 │   │   ├── me
 │   │   │   ├── cardbag
-│   │   │   │   └── cardbag.vue
+│   │   │   │   └── cardbag.vue 					// 卡包
 │   │   │   ├── collect
-│   │   │   │   └── collect.vue
+│   │   │   │   └── collect.vue 					// 我的收藏
 │   │   │   ├── me.vue
 │   │   │   ├── personaldetails
-│   │   │   │   └── personaldetails.vue
+│   │   │   │   └── personaldetails.vue 			// 个人信息
 │   │   │   ├── photoalbum
-│   │   │   │   └── photoalbum.vue
+│   │   │   │   └── photoalbum.vue 					// 我的相册
 │   │   │   ├── settings
 │   │   │   │   ├── detailset
-│   │   │   │   │   ├── aboutwc.vue
-│   │   │   │   │   ├── chat.vue
-│   │   │   │   │   ├── currency.vue
-│   │   │   │   │   ├── disturbance.vue
-│   │   │   │   │   ├── help.vue
-│   │   │   │   │   ├── login.vue
-│   │   │   │   │   ├── newmessage.vue
-│   │   │   │   │   └── privacy.vue
-│   │   │   │   └── settings.vue
+│   │   │   │   │   ├── aboutwc.vue 				// 关于微信
+│   │   │   │   │   ├── chat.vue 					// 聊天
+│   │   │   │   │   ├── currency.vue 				// 通用
+│   │   │   │   │   ├── disturbance.vue 			// 勿扰模式
+│   │   │   │   │   ├── help.vue 					// 帮助与反馈
+│   │   │   │   │   ├── login.vue 					// 登录
+│   │   │   │   │   ├── newmessage.vue 				// 新消息提醒
+│   │   │   │   │   └── privacy.vue 				// 隐私
+│   │   │   │   └── settings.vue 					// 设置
 │   │   │   └── wallet
-│   │   │       └── wallet.vue
+│   │   │       └── wallet.vue 						// 我的钱包					
 │   │   ├── search
-│   │   │   └── search.vue
+│   │   │   └── search.vue 							// 搜索
 │   │   └── transfer
 │   │       └── transfer.vue
 │   ├── images
-│   ├── main.js
+│   ├── main.js 									// 程序入口文件，加载各种公共组件
 │   ├── router
-│   │   └── router.js
-│   ├── service
+│   │   └── router.js 								// 所有页面路由控制中心							
+│   ├── service 									
 │   │   ├── data
-│   │   │   ├── album.js
-│   │   │   ├── burse.js
+│   │   │   ├── album.js 							// 个人相册
+│   │   │   ├── burse.js 							// 钱包数据
 │   │   │   ├── chatmore.js
-│   │   │   ├── collect.js
-│   │   │   ├── contacts.js
-│   │   │   ├── dialoglist.js
-│   │   │   ├── friendcircle.js
-│   │   │   ├── groupchat.js
-│   │   │   ├── login.js
-│   │   │   ├── search.js
+│   │   │   ├── collect.js 							// 我的收藏
+│   │   │   ├── contacts.js 						// 联系人列表数据
+│   │   │   ├── dialoglist.js 						// 对话列表
+│   │   │   ├── friendcircle.js 					// 朋友圈数据
+│   │   │   ├── groupchat.js 						// 群聊数据
+│   │   │   ├── login.js 							// 个人用户信息
+│   │   │   ├── search.js 							// 搜索的分类
 │   │   │   └── userword.js
-│   │   └── getData.js
+│   │   └── getData.js 								// 数据交互统一调配
 │   ├── style
-│   │   ├── public.scss
+│   │   ├── public.scss 							//公共样式
 │   │   └── swiper.min.css
-│   └── vuex
-│       ├── action.js
-│       ├── index.js
-│       ├── mutation-types.js
-│       └── mutation.js
+│   └── vuex 										// vuex的状态管理
+│       ├── action.js 								// 配置根actions
+│       ├── index.js 								// 引用vuex，创建store
+│       ├── mutation-types.js 						// 定义常量muations名
+│       └── mutation.js 							// 配置根mutations
 └── tree.md
 
 36 directories, 133 files
-
-```
