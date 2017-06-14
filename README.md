@@ -115,6 +115,8 @@
 |       |-- dialogue                 // 微信首页(对话列表页)
 |			  |--conversation			           //	对话详情页
 |			      |--chatmessage			           //聊天信息
+|			        |--chatmessage			           //单人聊天信息
+|			        |--groupchatmessage			       //群聊聊天信息
 |			      |--singlechat			          //单人对话
 |			      |--groupchat			          //群聊
 |       |-- addressbook              // 通讯录
@@ -176,6 +178,114 @@
 |-- favicon.ico                      // 页面左上角小图标
 |-- index.html                       // 入口html文件
 |-- package.json                     // 项目及工具的依赖配置文件
-|-- README.md                        // 说明
+|-- README.md                        // 说明 
 ```
 
+```
+.
+├── README.md
+├── build
+├── config
+│   └── index.js
+├── favicon.ico
+├── index.html
+├── package.json
+├── printscreen
+├── src
+│   ├── App.vue
+│   ├── components
+│   │   ├── findandMe
+│   │   │   └── findandMe.vue
+│   │   ├── footer
+│   │   │   └── foot.vue
+│   │   └── header
+│   │       └── head.vue
+│   ├── config
+│   │   ├── env.js
+│   │   ├── fetch.js
+│   │   ├── iscroll.js
+│   │   ├── mUtils.js
+│   │   ├── rem.js
+│   │   ├── swiper.min.js
+│   │   └── uploadPreview.js
+│   ├── frames
+│   │   ├── addressbook
+│   │   │   ├── addressbook.vue
+│   │   │   └── details
+│   │   │       ├── details.vue
+│   │   │       └── more
+│   │   │           └── more.vue
+│   │   ├── computer
+│   │   │   └── computer.vue
+│   │   ├── conversation
+│   │   │   ├── chatmessage
+│   │   │   │   ├── chatmessage.vue
+│   │   │   │   └── groupchatmessage.vue
+│   │   │   ├── groupchat.vue
+│   │   │   └── singlechat.vue
+│   │   ├── dialogue
+│   │   │   └── dialogue.vue
+│   │   ├── find
+│   │   │   ├── find.vue
+│   │   │   ├── friendcircle
+│   │   │   │   └── friendcircle.vue
+│   │   │   └── miniapps
+│   │   │       └── miniapps.vue
+│   │   ├── me
+│   │   │   ├── cardbag
+│   │   │   │   └── cardbag.vue
+│   │   │   ├── collect
+│   │   │   │   └── collect.vue
+│   │   │   ├── me.vue
+│   │   │   ├── personaldetails
+│   │   │   │   └── personaldetails.vue
+│   │   │   ├── photoalbum
+│   │   │   │   └── photoalbum.vue
+│   │   │   ├── settings
+│   │   │   │   ├── detailset
+│   │   │   │   │   ├── aboutwc.vue
+│   │   │   │   │   ├── chat.vue
+│   │   │   │   │   ├── currency.vue
+│   │   │   │   │   ├── disturbance.vue
+│   │   │   │   │   ├── help.vue
+│   │   │   │   │   ├── login.vue
+│   │   │   │   │   ├── newmessage.vue
+│   │   │   │   │   └── privacy.vue
+│   │   │   │   └── settings.vue
+│   │   │   └── wallet
+│   │   │       └── wallet.vue
+│   │   ├── search
+│   │   │   └── search.vue
+│   │   └── transfer
+│   │       └── transfer.vue
+│   ├── images
+│   ├── main.js
+│   ├── router
+│   │   └── router.js
+│   ├── service
+│   │   ├── data
+│   │   │   ├── album.js
+│   │   │   ├── burse.js
+│   │   │   ├── chatmore.js
+│   │   │   ├── collect.js
+│   │   │   ├── contacts.js
+│   │   │   ├── dialoglist.js
+│   │   │   ├── friendcircle.js
+│   │   │   ├── groupchat.js
+│   │   │   ├── login.js
+│   │   │   ├── search.js
+│   │   │   └── userword.js
+│   │   └── getData.js
+│   ├── style
+│   │   ├── public.scss
+│   │   └── swiper.min.css
+│   └── vuex
+│       ├── action.js
+│       ├── index.js
+│       ├── mutation-types.js
+│       └── mutation.js
+└── tree.md
+
+36 directories, 133 files
+
+```
