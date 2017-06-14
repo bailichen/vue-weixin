@@ -61,8 +61,6 @@ export default {
 	},
 	//获取所有群聊人信息
 	[GET_ALLGROUP](state,allgroup){
-		console.log(allgroup,111)
-		state.allgroup=[...allgroup];
-		console.log(state.allgroup)
+		state.allgroup=allgroup
 	}
 }
