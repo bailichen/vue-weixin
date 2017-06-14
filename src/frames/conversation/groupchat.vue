@@ -158,14 +158,9 @@
 				this.gropname=res.petname;
 				//this.groupconversine=[...res.grouphead];
 			});	
-<<<<<<< HEAD
-			socket.on('chat', function (data) {
-				console.log(data);//聊天返回内容
-=======
 			socket.on('chat', (data) => {
 				console.log(data);//聊天返回内容
 				this.groupconversine.push(data)
->>>>>>> fcb41450fc1df1587f1bc4e289ffae3bb2df400a
 			});
 			chatData().then((res) => {
 				this.chatData=res;
