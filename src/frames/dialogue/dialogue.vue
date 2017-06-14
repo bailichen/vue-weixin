@@ -193,6 +193,7 @@
             		try{
 						const res = await login({username: this.inputaccounts})
 						if (res.status == 200) {
+							localStorage.setItem('user_id', res.user_info.id.toString())
 							this.GET_USERINFO(res.user_info)
 							this.LOGIN_COVER(false)
 						}
