@@ -180,3 +180,111 @@
 |-- README.md                        // 说明 
 ```
 
+```
+.
+├── README.md
+├── build
+├── config
+│   └── index.js
+├── favicon.ico
+├── index.html
+├── package.json
+├── printscreen
+├── src
+│   ├── App.vue
+│   ├── components
+│   │   ├── findandMe
+│   │   │   └── findandMe.vue
+│   │   ├── footer
+│   │   │   └── foot.vue
+│   │   └── header
+│   │       └── head.vue
+│   ├── config
+│   │   ├── env.js
+│   │   ├── fetch.js
+│   │   ├── iscroll.js
+│   │   ├── mUtils.js
+│   │   ├── rem.js
+│   │   ├── swiper.min.js
+│   │   └── uploadPreview.js
+│   ├── frames
+│   │   ├── addressbook
+│   │   │   ├── addressbook.vue
+│   │   │   └── details
+│   │   │       ├── details.vue
+│   │   │       └── more
+│   │   │           └── more.vue
+│   │   ├── computer
+│   │   │   └── computer.vue
+│   │   ├── conversation
+│   │   │   ├── chatmessage
+│   │   │   │   ├── chatmessage.vue
+│   │   │   │   └── groupchatmessage.vue
+│   │   │   ├── groupchat.vue
+│   │   │   └── singlechat.vue
+│   │   ├── dialogue
+│   │   │   └── dialogue.vue
+│   │   ├── find
+│   │   │   ├── find.vue
+│   │   │   ├── friendcircle
+│   │   │   │   └── friendcircle.vue
+│   │   │   └── miniapps
+│   │   │       └── miniapps.vue
+│   │   ├── me
+│   │   │   ├── cardbag
+│   │   │   │   └── cardbag.vue
+│   │   │   ├── collect
+│   │   │   │   └── collect.vue
+│   │   │   ├── me.vue
+│   │   │   ├── personaldetails
+│   │   │   │   └── personaldetails.vue
+│   │   │   ├── photoalbum
+│   │   │   │   └── photoalbum.vue
+│   │   │   ├── settings
+│   │   │   │   ├── detailset
+│   │   │   │   │   ├── aboutwc.vue
+│   │   │   │   │   ├── chat.vue
+│   │   │   │   │   ├── currency.vue
+│   │   │   │   │   ├── disturbance.vue
+│   │   │   │   │   ├── help.vue
+│   │   │   │   │   ├── login.vue
+│   │   │   │   │   ├── newmessage.vue
+│   │   │   │   │   └── privacy.vue
+│   │   │   │   └── settings.vue
+│   │   │   └── wallet
+│   │   │       └── wallet.vue
+│   │   ├── search
+│   │   │   └── search.vue
+│   │   └── transfer
+│   │       └── transfer.vue
+│   ├── images
+│   ├── main.js
+│   ├── router
+│   │   └── router.js
+│   ├── service
+│   │   ├── data
+│   │   │   ├── album.js
+│   │   │   ├── burse.js
+│   │   │   ├── chatmore.js
+│   │   │   ├── collect.js
+│   │   │   ├── contacts.js
+│   │   │   ├── dialoglist.js
+│   │   │   ├── friendcircle.js
+│   │   │   ├── groupchat.js
+│   │   │   ├── login.js
+│   │   │   ├── search.js
+│   │   │   └── userword.js
+│   │   └── getData.js
+│   ├── style
+│   │   ├── public.scss
+│   │   └── swiper.min.css
+│   └── vuex
+│       ├── action.js
+│       ├── index.js
+│       ├── mutation-types.js
+│       └── mutation.js
+└── tree.md
+
+36 directories, 133 files
+
+```

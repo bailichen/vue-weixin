@@ -18,7 +18,6 @@ const router = new VueRouter({
 	mode:'history',  //路由模式
 	strict: process.env.NODE_ENV !== 'production',
 	scrollBehavior (to, from, savedPosition) {
-		
 		if(savedPosition){
 			return savedPosition
 		} else {
@@ -31,13 +30,6 @@ router.beforeEach((to, from, next) => {
 		from.meta.savedPosition = document.body.scrollTop;
 	}
   	next()
-})
-
-router.beforeEach((to, from, next) => {
-	if(from.meta.keepAlive){
-		from.meta.savedPosition = document.body.scrollTop;
-	}
-	next()
 })
 
 new Vue({
