@@ -179,7 +179,7 @@
 			]),
 		},
 		beforeDestroy(){
-			alert(1)
+			console.log(1)
             clearTimeout(this.timer);
             socket.removeAllListeners();
         },

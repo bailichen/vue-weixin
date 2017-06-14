@@ -9,7 +9,7 @@
 				</router-link>
 			</section>
 		</head-top>
-		<section class="coversation">
+		<section class="coversation" ref="singleHeight">
 			<section class="coversationlist" @click="bottomHide">
 				<div class="underscore">————&nbsp;我是机器人小辰，现在我们可以聊天了&nbsp;————</div>
 				<ul>
@@ -132,9 +132,7 @@
 		    })
 			this.chatname=this.infor.remarks ? this.infor.remarks : this.infor.petname;
 			this.getUserInfo();
-			console.log(this.userInfo)
 			this.userInfoData=this.userInfo
-			console.log(this.userInfoData.avatar)
 			userWord().then((res) => {
 				//this.conversine=[...res]
 			});	
@@ -142,7 +140,6 @@
 		},
 		components:{
 			headTop,
-
 		},
 		computed:{
 			...mapState([
@@ -151,7 +148,6 @@
 			
 		},
 		beforeDestroy(){
-			alert(1)
             clearTimeout(this.timer);
         },
 		methods:{
@@ -184,11 +180,13 @@
 				});
 				const inputmessage = this.inputmessage;
 				this.inputmessage='';
+				this.$nextTick(()=>{
+					window.scrollTo(0,this.$refs.singleHeight.offsetHeight-window.innerHeight)
+				})
 				try{
 					const res = await fetch('/robot/question', {question: inputmessage})
 					this.light=false;
 					if (res.status == 200) {
-						console.log(res.content)
 						this.infor.Messageblob=res.content
 						this.conversine.push({
 							"wxid":this.infor.wxid,
@@ -196,6 +194,9 @@
 							"sendobject":this.infor.sendobject,
 							"Messageblob":res.content,
 						});
+						this.$nextTick(()=>{
+							window.scrollTo(0,this.$refs.singleHeight.offsetHeight-window.innerHeight)
+						})
 					}else{
 						throw new Error(res)
 					}
