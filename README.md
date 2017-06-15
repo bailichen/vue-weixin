@@ -23,7 +23,7 @@ npm run buid
 
 网址：
 
-[http://cangdu.org:8003/dialogue](http://cangdu.org:8003/dialogue)
+http://cangdu.org:8003/dialogue
 ```
 
 ##### 手机请扫描
