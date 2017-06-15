@@ -67,10 +67,6 @@ http://cangdu.org:8003/dialogue
 
 <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/nav.gif" width="300" height="530"/>
 
-### 通讯录
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/addressbook.jpg" width="300" height="530"/>
-
 ### 单人聊天
 
 <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/chatwo.gif" width="300" height="530" alt="">  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/singlechat.gif" width="300" height="530" alt="">
@@ -106,13 +102,6 @@ http://cangdu.org:8003/dialogue
 
 <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/cardbag.png" width="300" height="530"/>  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/set.png" width="300" height="530"/>
 
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/newmess.png" width="300" height="530"/>  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/notrao.png" width="300" height="530"/>
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/chatset.png" width="300" height="530"/>  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/priat.png" width="300" height="530"/>
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/tongyong.png" width="300" height="530"/>  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/aboutwx.png" width="300" height="530"/>
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/login.png" width="300" height="530"/> 
 
 # 项目布局
 
