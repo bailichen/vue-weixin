@@ -35,7 +35,7 @@ http://cangdu.org:8003/dialogue
 
 > 本项目主要用于熟悉vue2+vuex，svg的用法
 
-> 如有问题请直接在Issues中提出
+> 如有问题请直接在Issues中提出，或加qq：812571880
 
 > 如果觉得对您学习vue有点点帮助，请给我一个star吧~ ^_^
 
