@@ -33,11 +33,9 @@ http://cangdu.org:8003/dialogue
 
 ### 说明
 
-> 本项目主要用于接触vue2，是一个比较基础的vue2+vuex的项目
+> 本项目主要用于熟悉vue2+vuex，svg的用法
 
 > 如有问题请直接在Issues中提出
-
-> 特别感谢[男神苍都](https://github.com/bailicangdu)在开发过程中的指导意见，这里有非常好的开源项目 https://github.com/bailicangdu
 
 > 如果觉得对您学习vue有点点帮助，请给我一个star吧~ ^_^
 
