@@ -2,6 +2,29 @@
 ### 利用vue2+vuex写一个模仿微信app的单页面应用
 使用SVG格式构建页面icon图
 
+##### 安装依赖
+
+```
+npm install
+```
+##### 项目运行
+
+```
+npm run dev
+
+网址：
+http://localhost:8882
+```
+##### 线上
+
+```
+npm run buid
+
+网址：
+http://cangdu.org:8003/dialogue
+```
+
+
 
 # 目标功能
 - [x] 微信 
