@@ -13,6 +13,7 @@ npm install
 npm run dev
 
 网址：
+
 http://localhost:8882
 ```
 ##### 线上
@@ -21,9 +22,13 @@ http://localhost:8882
 npm run buid
 
 网址：
+
 http://cangdu.org:8003/dialogue
 ```
 
+##### 手机请扫描
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/code.png" width="300" height="300"/>
 
 
 # 目标功能

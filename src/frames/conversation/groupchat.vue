@@ -159,7 +159,7 @@
 				//this.groupconversine=[...res.grouphead];
 			});	
 			socket.on('chat', (data) => {
-				console.log(data);//聊天返回内容
+				//console.log(data);//聊天返回内容
 				this.groupconversine.push(data);
 				this.$nextTick(()=>{
 					window.scrollTo(0,this.$refs.groupHeight.offsetHeight-window.innerHeight)
