@@ -80,7 +80,6 @@ http://cangdu.org:8003/dialogue
 ### 单人聊天
 
 <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/chatwo.gif" width="300" height="530" alt="">  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/singlechat.gif" width="300" height="530" alt="">
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/single.jpg" width="300" height="530" alt="">
 
 ### 群聊
 
