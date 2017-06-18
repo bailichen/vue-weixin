@@ -10,23 +10,19 @@ npm install
 ##### 项目运行
 
 ```
-npm run dev
-
-网址：
-
-http://localhost:8882
-```
-##### 线上
+git clone https://github.com/bailichen/vue-weixin.git
+cd vue-weixin
+npm install
+npm run buid (访问线上后台系统)
+npm run dev (访问本地，运行后访问 http://localhost:8882)
 
 ```
-npm run buid
+### 效果演示
 
-网址：
+[项目演示请点击这里](http://cangdu.org:8003/dialogue)
 
-http://cangdu.org:8003/dialogue
-```
 
-##### 手机请扫描
+### 移动端扫描下方二维码
 
 <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/code.png" width="300" height="300"/>
 
