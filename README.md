@@ -30,7 +30,7 @@ npm run dev (访问本地，运行后访问 http://localhost:8882)
 
 ### 移动端扫描下方二维码
 
-![](https://github.com/bailichen/vue-weixin/raw/master/printscreen/code.png)
+![](http://images.cangdu.org/code.png)
 
 
 ### 说明
@@ -74,14 +74,14 @@ npm run dev (访问本地，运行后访问 http://localhost:8882)
 
 ### 单人聊天、群聊
 
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/singlechat.gif" width="300" height="530" alt="">  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/groupchat.gif" width="300" height="530" alt="">
+<img src="http://images.cangdu.org/singlechat.gif" width="300" height="530" alt="">  <img src="http://images.cangdu.org/groupchat.gif" width="300" height="530" alt="">
 
 
 ### 朋友圈
 
 ###### 上传图片、点赞
 
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/shangchuan.gif" width="300" height="530"/> <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/like.gif" width="300" height="530"/>
+<img src="http://images.cangdu.org/shangchuan.gif" width="300" height="530"/> <img src="http://images.cangdu.org/like.gif" width="300" height="530"/>
 
 # 项目布局
 
