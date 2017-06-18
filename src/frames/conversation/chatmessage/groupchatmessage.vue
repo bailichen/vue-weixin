@@ -2,15 +2,18 @@
 	<section class="child_page">
 		<head-top crossover="聊天信息"></head-top>
 		<section class="groupchat">
-			<ul class="groupchat_ul clear">
+			<ul class="groupchat_ul clear"  ref="groupUl" :class="{ beforeUl : notlook, afterUl : looking}">
 				<li v-for="item in allPeople">
 					<img :src="imgurl + item.avatar" alt="">
 					<span class="ellipsis">{{item.name}}</span>
 				</li>
 			</ul>
+			<div class="lookmore" v-if="lookgroup" @click="lookAll">
+				查看全部群成员
+			</div>
 		</section>
 		<section class="chat">
-			<ul class="groupChat_ul">
+			<ul>
 				<li>
 					<div>群聊名称</div>
 					<div class="voice-music">{{gropname}}</div>
@@ -18,7 +21,6 @@
 				<li>
 					<div>群公告</div>
 				</li>
-				
 			</ul>
 			<ul>
 				<li>
@@ -63,7 +65,10 @@
 			return{
 				allPeople:[],
 				imgurl:imgurl,
-				gropname:''
+				gropname:'',
+				looking:false,		//看全部
+				notlook:false,		//多出隐藏
+				lookgroup:false,	//查看全部群成员按钮
 			}
 		},
 		created(){
@@ -76,6 +81,11 @@
 			allgroup().then((res)=>{
 				if(res.status == 200){
 					this.allPeople=res.users
+					console.log(this.allPeople)
+					if(this.allPeople.length > 20){
+						this.lookgroup=true
+						this.notlook=true;
+					}
 				}else{
 					alert("获取数据失败，请检查网络是否正常！")
 				}
@@ -83,7 +93,6 @@
 			});
 			groupChat().then((res) => {
 				this.gropname=res.petname;
-				//this.groupconversine=[...res.grouphead];
 			});	
 		},
 
@@ -91,7 +100,11 @@
 			headTop,
 		},
 		methods:{
-
+			lookAll(){
+				this.notlook=false;
+				this.looking=true;
+				this.lookgroup=false;
+			}
 		}
 	}
 </script>
@@ -118,7 +131,7 @@
 		padding-top: 2.9rem;
 		background:#fff;
 		padding:2.9rem 0.8533333333rem 0;
-		ul{
+		.groupchat_ul{
 			box-sizing:border-box;
 			li{
 				float:left;
@@ -143,6 +156,19 @@
 			li:nth-of-type(5n+5){
 				margin-right:0;
 			}
+		}
+		.beforeUl{
+			max-height:14rem;
+			overflow:hidden;
+		}
+		.afterUl{
+			overflow:auto;
+			height:auto;
+		}
+		.lookmore{
+			padding:0.64rem 0 0.8533333333rem;
+			text-align:center;
+			@include sizeColor(0.64rem,#666);
 		}
 	}
 	.chat{
