@@ -11,7 +11,7 @@ vue2+vue-router+webpack+vuex+sass+svg构图+es6/7
 
 ```
 
-##### 项目运行
+## 项目运行
 
 ```
 git clone https://github.com/bailichen/vue-weixin.git
@@ -42,6 +42,7 @@ npm run dev (访问本地，运行后访问 http://localhost:8882)
 > 如果觉得对您学习vue有点点帮助，请右上角star一下吧   ^_^
 
 # 目标功能
+
 - [x] 微信 
 - [x] 通讯录 
 - [x] 发现 
