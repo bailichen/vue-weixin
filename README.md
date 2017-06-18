@@ -2,12 +2,12 @@
 
 这个项目是利用工作之余写的一个模仿微信app的单页面应用，整个项目包含27个页面，涉及实时群聊，机器人聊天，同学录，朋友圈等等，后续页面还是开发中。写这个项目主要目的是练习和熟悉vue和vuex的配合使用，利用socket.io实现实时聊天。
 
-欢迎各路大神Issuess
+欢迎各路大神Issues
 
 ## 技术栈
 
 ```
-vue2+vue-router+webpack+vuex+sass+svg构图+es6/7+socket.io+http-proxy-middleware
+vue2+vue-router+webpack+vuex+sass+svg构图+es6/7
 
 ```
 
@@ -19,8 +19,6 @@ git clone https://github.com/bailichen/vue-weixin.git
 cd vue-weixin
 
 npm install
-
-npm run buid (访问线上后台系统)
 
 npm run dev (访问本地，运行后访问 http://localhost:8882)
 
@@ -37,7 +35,7 @@ npm run dev (访问本地，运行后访问 http://localhost:8882)
 
 ### 说明
 
-> 本项目主要用于熟悉vue2+vuex，svg的用法
+> 本项目主要用于熟悉vue2+vuex的用法
 
 > 如有问题请直接在Issues中提出，或加qq：812571880
 
@@ -70,6 +68,19 @@ npm run dev (访问本地，运行后访问 http://localhost:8882)
 - [x] 购物
 - [x] 设置
 - [x] 登录
+
+# 页面部分截图
+
+### 单人聊天、群聊
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/singlechat.gif" width="300" height="530" alt="">  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/groupchat.gif" width="300" height="530" alt="">
+
+
+### 朋友圈
+
+###### 上传图片、点赞
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/shangchuan.gif" width="300" height="530"/> <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/like.gif" width="300" height="530"/>
 
 # 项目布局
 
@@ -182,20 +193,6 @@ npm run dev (访问本地，运行后访问 http://localhost:8882)
 
 ```
 
-# 页面部分截图
-
-### 单人聊天、群聊
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/singlechat.gif" width="300" height="530" alt="">  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/groupchat.gif" width="300" height="530" alt="">
 
 
-### 朋友圈
-
-###### 上传图片
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/shangchuan.gif" width="300" height="530"/>
-
-###### 点赞、评论
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/like.gif" width="300" height="530"/>  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/commont.gif" width="300" height="530"/>
 
