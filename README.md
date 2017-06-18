@@ -1,12 +1,14 @@
+## 前言
 
-### 利用vue2+vuex写一个模仿微信app的单页面应用
-使用SVG格式构建页面icon图
+这个项目是利用工作之余写的一个模仿微信app的单页面应用，整个项目包含27个页面，涉及实时群聊，机器人聊天，同学录，朋友圈等等，后续页面还是开发中。写这个项目主要目的是练习和熟悉vue和vuex的配合使用，利用socket.io实现实时聊天。
 
-##### 安装依赖
+欢迎各路大神Issuess
 
 ```
-npm install
+vue2+vue-router+webpack+vuex+sass+svg构图+es6/7+socket.io+http-proxy-middleware
+
 ```
+
 ##### 项目运行
 
 ```
@@ -23,12 +25,12 @@ npm run dev (访问本地，运行后访问 http://localhost:8882)
 ```
 ### 效果演示
 
-[项目演示请点击这里](http://cangdu.org:8003/dialogue)
+[项目演示请点击这里](http://cangdu.org:8003/dialogue) （请用chrome手机模式预览）
 
 
 ### 移动端扫描下方二维码
 
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/code.png" width="300" height="300"/>
+![](https://github.com/bailichen/vue-weixin/raw/master/printscreen/code.png)
 
 
 ### 说明
@@ -66,11 +68,6 @@ npm run dev (访问本地，运行后访问 http://localhost:8882)
 - [x] 购物
 - [x] 设置
 - [x] 登录
-
-
-
-
-
 
 # 项目布局
 
@@ -179,20 +176,15 @@ npm run dev (访问本地，运行后访问 http://localhost:8882)
 │       └── mutation.js // 配置根mutations
 └── tree.md
 
-
 36 directories, 133 files
 
 ```
 
 # 页面部分截图
 
-### 单人聊天
+### 单人聊天、群聊
 
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/chatwo.gif" width="300" height="530" alt="">  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/singlechat.gif" width="300" height="530" alt="">
-
-### 群聊
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/groupchat.gif" width="300" height="530" alt="">  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/group.jpg" width="300" height="530" alt="">
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/singlechat.gif" width="300" height="530" alt="">  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/groupchat.gif" width="300" height="530" alt="">
 
 
 ### 朋友圈
@@ -201,11 +193,7 @@ npm run dev (访问本地，运行后访问 http://localhost:8882)
 
 <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/shangchuan.gif" width="300" height="530"/>
 
-###### 点赞
+###### 点赞、评论
 
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/like.gif" width="300" height="530"/>
-
-###### 评论
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/commont.gif" width="300" height="530"/>
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/like.gif" width="300" height="530"/>  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/commont.gif" width="300" height="530"/>
 
