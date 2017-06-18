@@ -4,6 +4,8 @@
 
 欢迎各路大神Issuess
 
+## 技术栈
+
 ```
 vue2+vue-router+webpack+vuex+sass+svg构图+es6/7+socket.io+http-proxy-middleware
 
