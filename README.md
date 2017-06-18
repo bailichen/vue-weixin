@@ -69,45 +69,7 @@ http://cangdu.org:8003/dialogue
 
 
 
-# 页面部分截图
 
-### 底部导航
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/nav.gif" width="300" height="530"/>
-
-### 单人聊天
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/chatwo.gif" width="300" height="530" alt="">  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/singlechat.gif" width="300" height="530" alt="">
-
-### 群聊
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/groupchat.gif" width="300" height="530" alt="">  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/group.jpg" width="300" height="530" alt="">
-
-
-### 发现
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/find.png" width="300" height="530"/>
-
-### 朋友圈
-
-###### 上传图片
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/shangchuan.gif" width="300" height="530"/>
-
-###### 点赞
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/like.gif" width="300" height="530"/>
-
-###### 评论
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/commont.gif" width="300" height="530"/>
-
-### 个人资料
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/infor.png" width="300" height="530"/>  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/photo.png" width="300" height="530"/>
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/collect.png" width="300" height="530"/>  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/card.png" width="300" height="530"/>
-
-<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/cardbag.png" width="300" height="530"/>  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/set.png" width="300" height="530"/>
 
 
 # 项目布局
@@ -221,3 +183,29 @@ http://cangdu.org:8003/dialogue
 36 directories, 133 files
 
 ```
+
+# 页面部分截图
+
+### 单人聊天
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/chatwo.gif" width="300" height="530" alt="">  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/singlechat.gif" width="300" height="530" alt="">
+
+### 群聊
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/groupchat.gif" width="300" height="530" alt="">  <img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/group.jpg" width="300" height="530" alt="">
+
+
+### 朋友圈
+
+###### 上传图片
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/shangchuan.gif" width="300" height="530"/>
+
+###### 点赞
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/like.gif" width="300" height="530"/>
+
+###### 评论
+
+<img src="https://github.com/bailichen/vue-weixin/raw/master/printscreen/commont.gif" width="300" height="530"/>
+
