@@ -11,9 +11,13 @@ npm install
 
 ```
 git clone https://github.com/bailichen/vue-weixin.git
+
 cd vue-weixin
+
 npm install
+
 npm run buid (访问线上后台系统)
+
 npm run dev (访问本地，运行后访问 http://localhost:8882)
 
 ```
