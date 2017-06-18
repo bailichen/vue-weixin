@@ -1,8 +1,8 @@
 {
-  "name": "weixin",
+ "name": "weixin",
   "version": "1.0.0",
-  "description": "vue2-elm",
-  "author": "maguohua <1264889788@qq.com>",
+  "description": "vue2-weixin",
+  "author": "chen <812571880@qq.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
