@@ -65,7 +65,7 @@
 					</svg>
 				</div>
 				<div>
-					<input type="text" v-model="inputmessage" maxlength="100"  @input="whatInput" @click="inputBottomHide" :class="{lightborder : light}">
+					<input type="text" v-model="inputmessage" maxlength="100"  @input="whatInput" @click="inputBottomHide" :class="{lightborder : light}" @keyup.enter="enterThing">
 				</div>
 				<div>
 					<svg>
@@ -194,6 +194,7 @@
             ...mapMutations([
                 'GET_ALLGROUP',
             ]),
+
             async groupList(offset){
             	const groupData = await getHistory({"offset":this.offset, "limit":20} )
             	if(groupData.history.length < 20){
@@ -259,10 +260,15 @@
             	}
             },
 			whatInput(){
-				if(this.inputmessage){
-					this.light=true;
-				}else{
+				if(this.inputmessage.replace(/\s+/g, "") == ''){
 					this.light=false;
+				}else{
+					this.light=true;
+				}
+			},
+			enterThing(){
+				if(this.light){
+					this.clickSend()
 				}
 			},
 			bottomShow(){
@@ -275,13 +281,7 @@
 				this.clickmore=false;
 			},
 			async clickSend(){
-				// this.groupconversine.push({
-				// 	"wxid":"xulianjie442154157",
-				// 	"avatar":this.userInfo.avatar,
-				// 	"sendobject":0,
-				// 	"content":this.inputmessage,
-				// 	"user_id":this.userInfo.id,
-				// });
+	
 				
 				this.light=false;
 				socket.emit('chat', {user_id: this.userInfo.id, content: this.inputmessage});

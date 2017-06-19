@@ -40,7 +40,7 @@
 					</svg>
 				</div>
 				<div>
-					<input type="text" v-model="inputmessage" maxlength="100"  @input="whatInput" @click="inputBottomHide" :class="{lightborder : light}">
+					<input type="text" v-model="inputmessage" maxlength="100"  @input="whatInput" @click="inputBottomHide" :class="{lightborder : light}" @keyup.enter="enterThing">
 				</div>
 				<div>
 					<svg>
@@ -154,13 +154,17 @@
                 'getUserInfo',
             ]),
 			whatInput(){
-				if(this.inputmessage){
-					this.light=true;
-				}else{
+				if(this.inputmessage.replace(/\s+/g, "") == ''){
 					this.light=false;
+				}else{
+					this.light=true;
 				}
 			},
-
+			enterThing(){
+				if(this.light){
+					this.clickSend()
+				}
+			},
 			bottomShow(){
 				this.clickmore=true;
 			},
