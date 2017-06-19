@@ -151,8 +151,8 @@
 
 							const getBody = document.getElementsByTagName("body")[0];
 
-							animate(getBody,{scrollTop : listArray[i].offsetTop-52});
-							
+							animate(getBody,{scrollTop : listArray[i].offsetTop-50});
+
 						}
 					}
 					
