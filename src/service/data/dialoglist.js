@@ -22,8 +22,10 @@ import {imgurl} from 'src/config/env';
 export const dialog = [
 {
 	"wxid":"fileTransfer",
-	"headurl":imgurl+'file.jpg',
-	"petname":"文件传输助手",
-	"remarks":"文件传输助手",
+	"headurl":imgurl+'robot.jpg',
+	"petname":"机器人聊天",
+	"remarks":"机器人聊天",
+	"newmeassage":"请从通讯录的联系人进入机器人单人聊天",
+	"sendobject":1,
 },
 ]

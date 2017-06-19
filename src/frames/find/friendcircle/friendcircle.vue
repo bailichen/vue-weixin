@@ -203,7 +203,8 @@
 				}
 			},
 			freshPage(){//点击头部页面滚动到顶部
-				animate(this.$refs.friend,{scrollTop:0})
+				const getBody = document.getElementsByTagName("body")[0];
+				animate(getBody,{scrollTop:0})
 			},
 			personInfor(){//点击头像进入个人资料页
 				this.SAVE_MESSAGE(this.userInfoData);
@@ -264,16 +265,14 @@
 	.refresh{
 		position: absolute;
 		@include widthHeight(12rem,2rem);
-
 		background:#fff;
 		left:2rem;
 	}
 	.friend_wipe{
 		width:100%;
-		padding-bottom:3rem;
-		//height:33rem;
 		background-color: #f8f8f8;
-		overflow:auto;  
+		overflow:scroll;  
+		-webkit-overflow-scrolling: touch; 
 		.friend{
 			padding-top:2.06933rem;
 			background-color: #f8f8f8;

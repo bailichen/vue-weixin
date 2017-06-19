@@ -48,8 +48,8 @@
 				</ul>
 			</div>
 			<div class="contacts_bottom">
-				<ul class="contacts_bottom_ul">
-					<li v-for="(value, key, index) in manageaddress" :key="key">
+				<ul class="contacts_bottom_ul" ref="addlist">
+					<li v-for="(value, key, index) in manageaddress" :key="key" class="addlistLi" >
 						<h1>{{key}}</h1>
 						<ul>
 							<router-link to="/addressbook/details" tag="li" v-for="(item, index) in value" @click.native='detailMessage(item)'>
@@ -64,8 +64,8 @@
 					</li>
 				</ul>
 				<section class="list_guide">
-					<dl v-for="(value, index) in sortlist" :key="index">
-						<dd>{{value}}</dd>
+					<dl>
+						<dd v-for="(value, index) in sortlist" :key="index" @click="getHear(value)">{{value}}</dd>
 					</dl>
 					<p>#</p>
 				</section>
@@ -83,6 +83,7 @@
 	import headTop from 'src/components/header/head'
 	import footGuide from 'src/components/footer/foot'
 	import {contactList} from 'src/service/getData'
+	import {animate} from 'src/config/mUtils.js'
 	import {mapMutations} from 'vuex'
 	export default{
 		data(){
@@ -95,13 +96,16 @@
 			
 		},
 		beforeMount(){
-			contactList().then((res) => {
-				this.contactList=res;
-			})
+			
+			
 		},
 		mounted(){
-			
-			
+			contactList().then((res) => {
+				this.contactList=res;
+				
+				
+
+			})
 		},
 		components:{
 			headTop,
@@ -138,6 +142,22 @@
 			detailMessage(item){
 				this.SAVE_MESSAGE(item);
 			},
+			getHear(value){
+				this.atpresent=value;
+				this.$nextTick(() =>{ //滚动到通讯录分组的地方
+					const listArray = this.$refs.addlist.getElementsByClassName("addlistLi");
+					for(let i =0; i<listArray.length; i++){
+						if(listArray[i].getElementsByTagName("h1")[0].innerText == value){
+
+							const getBody = document.getElementsByTagName("body")[0];
+
+							animate(getBody,{scrollTop : listArray[i].offsetTop-50});
+
+						}
+					}
+					
+				})
+			}
 		}
 	}
 </script>
