@@ -65,7 +65,7 @@
 					</svg>
 				</div>
 				<div>
-					<input type="text" v-model="inputmessage"  @input="whatInput" @click="inputBottomHide" :class="{lightborder : light}">
+					<input type="text" v-model="inputmessage" maxlength="100"  @input="whatInput" @click="inputBottomHide" :class="{lightborder : light}">
 				</div>
 				<div>
 					<svg>
@@ -184,7 +184,6 @@
 			]),
 		},
 		beforeDestroy(){
-			console.log(1)
             clearTimeout(this.timer);
             socket.removeAllListeners();
         },
@@ -461,6 +460,7 @@
 	}
 	.coversation{
 		background-color: #ebebeb;
+		overflow-scrolling: touch; 
 		-webkit-overflow-scrolling: touch; 
 		padding-top: 2.06933rem;
 		.coversationlist{
@@ -472,6 +472,8 @@
 			ul{
 				padding-top:.4rem;
 				width:15.4rem;
+				overflow-scrolling: touch; 
+				-webkit-overflow-scrolling: touch; 
 				top:0;
 				li{
 					.other{
@@ -506,6 +508,7 @@
 								border-radius:8px;
 								@include sizeColor(0.64rem, #333);
 								line-height:0.8533333333rem;
+								word-break: break-all;
 							}
 						}
 						

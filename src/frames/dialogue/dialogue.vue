@@ -17,7 +17,7 @@
 			<!-- 对话列表 -->
 			<section class="conversation">
 				<ul>
-					<router-link to="/singlechat" tag="li" v-for="item in contactList" @click.native="refreshInfor(item)">
+					<router-link to="/singlechat" tag="li" v-for="item in dialogueList" @click.native="refreshInfor(item)">
 						<div class="imgwipe">
 							<i class="redicon_num" v-if="newinfor">
 							1
@@ -96,7 +96,7 @@
 	import footGuide from 'src/components/footer/foot'
 	import {imgurl} from 'src/config/env';
 	import {mapState,mapActions,mapMutations} from 'vuex'
-	import {groupChat, userInfo, login} from 'src/service/getData'
+	import {groupChat, userInfo, login, dialog} from 'src/service/getData'
 	import fetch from 'src/config/fetch'
 
 	export default{
@@ -114,6 +114,7 @@
 				borderColortwo: false,
 				timer:null,	
 				groupHead:[],
+				dialogueList:[]
 			}
 		},
 		created(){
@@ -123,13 +124,17 @@
 			
 		},
 		beforeMount(){
-			
+			//console.log(this.contactList)
 		},
 		mounted(){	
 			groupChat().then( (res) =>{
 				this.groupHead=[...res.grouphead]
 				
 			});
+			dialog().then((res) =>{
+				this.dialogueList=[...res]
+				this.dialogueList=[...this.contactList,...this.dialogueList]
+			})
 			
 		},
 		components:{

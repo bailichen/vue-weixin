@@ -81,7 +81,6 @@
 			allgroup().then((res)=>{
 				if(res.status == 200){
 					this.allPeople=res.users
-					console.log(this.allPeople)
 					if(this.allPeople.length > 20){
 						this.lookgroup=true
 						this.notlook=true;

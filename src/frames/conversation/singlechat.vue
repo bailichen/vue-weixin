@@ -40,7 +40,7 @@
 					</svg>
 				</div>
 				<div>
-					<input type="text" v-model="inputmessage"  @input="whatInput" @click="inputBottomHide" :class="{lightborder : light}">
+					<input type="text" v-model="inputmessage" maxlength="100"  @input="whatInput" @click="inputBottomHide" :class="{lightborder : light}">
 				</div>
 				<div>
 					<svg>
@@ -259,6 +259,8 @@
 				padding-top:.4rem;
 				padding-bottom:2.2rem;
 				width:15.4rem;
+				overflow-scrolling: touch; 
+				-webkit-overflow-scrolling: touch; 
 				top:0;
 				li{
 					.other{
@@ -293,6 +295,7 @@
 								border-radius:8px;
 								@include sizeColor(0.64rem, #333);
 								line-height:0.8533333333rem;
+								word-break: break-all;
 							}
 						}
 						

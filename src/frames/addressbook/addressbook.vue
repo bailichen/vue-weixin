@@ -49,7 +49,7 @@
 			</div>
 			<div class="contacts_bottom">
 				<ul class="contacts_bottom_ul">
-					<li v-for="(value, key, index) in manageaddress" :key="key">
+					<li v-for="(value, key, index) in manageaddress" :key="key" ref="addlist">
 						<h1>{{key}}</h1>
 						<ul>
 							<router-link to="/addressbook/details" tag="li" v-for="(item, index) in value" @click.native='detailMessage(item)'>
@@ -64,8 +64,8 @@
 					</li>
 				</ul>
 				<section class="list_guide">
-					<dl v-for="(value, index) in sortlist" :key="index">
-						<dd>{{value}}</dd>
+					<dl>
+						<dd v-for="(value, index) in sortlist" :key="index" @click="getHear(value)">{{value}}</dd>
 					</dl>
 					<p>#</p>
 				</section>
@@ -97,6 +97,7 @@
 		beforeMount(){
 			contactList().then((res) => {
 				this.contactList=res;
+				console.log(this.$refs.addlist)
 			})
 		},
 		mounted(){
@@ -138,6 +139,10 @@
 			detailMessage(item){
 				this.SAVE_MESSAGE(item);
 			},
+			getHear(value){
+				console.log(value)
+
+			}
 		}
 	}
 </script>
