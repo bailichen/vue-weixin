@@ -145,6 +145,7 @@
 				imgurl,
 				userId:'',
 				allgroups:[],	//所有群聊信息
+
 			}
 		},
 		created(){
@@ -156,10 +157,11 @@
 			this.loadStatus=true;
 			groupChat().then((res) => {
 				this.gropname=res.petname;
-				//this.groupconversine=[...res.grouphead];
 			});	
 			socket.on('chat', (data) => {
-				//console.log(data);//聊天返回内容
+				if (!data) {
+					return
+				};
 				this.groupconversine.push(data);
 				this.$nextTick(()=>{
 					window.scrollTo(0,this.$refs.groupHeight.offsetHeight-window.innerHeight)
@@ -211,7 +213,7 @@
 
 	            	}
             		this.groupconversine = [...groupData.history, ...this.groupconversine]
-
+            		console.log(this.groupconversine)
             		this.allgroups=[...this.groupconversine]
 					Array.prototype.unique = function(){//数组去重
 						var res = [this[0]];
@@ -281,11 +283,10 @@
 				this.clickmore=false;
 			},
 			async clickSend(){
-	
-				
-				this.light=false;
+				console.log(this.inputmessage)
 				socket.emit('chat', {user_id: this.userInfo.id, content: this.inputmessage});
 				this.inputmessage='';
+				this.light=false;
 				this.$nextTick(()=>{
 					window.scrollTo(0,this.$refs.groupHeight.offsetHeight-window.innerHeight)
 				})
