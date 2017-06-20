@@ -282,7 +282,6 @@
 				this.clickmore=false;
 			},
 			async clickSend(){
-				console.log(this.inputmessage)
 				socket.emit('chat', {user_id: this.userInfo.id, content: this.inputmessage});
 				this.inputmessage='';
 				this.light=false;
