@@ -65,9 +65,15 @@
 				</ul>
 				<section class="list_guide">
 					<dl>
-						<dd v-for="(value, index) in sortlist" :key="index" @click="getHear(value)">{{value}}</dd>
+						<dd v-for="(value, index) in sortlist" :key="index" @touchstart="startThing(value)" @touchend="endThing">{{value}}</dd>
 					</dl>
 					<p>#</p>
+				</section>
+				<section class="big-letter" v-if="letter">
+					<div class="letter-bg"></div>
+					<div class="letter">
+						{{atpresent}}
+					</div>
 				</section>
 			</div>
 		</section>
@@ -90,6 +96,7 @@
 			return{
 				contactList:{},		//所有通讯录列表
 				peoplenum:null,		//通讯录人数
+				letter:false,		//字母放大
 			}
 		},
 		created(){
@@ -142,7 +149,8 @@
 			detailMessage(item){
 				this.SAVE_MESSAGE(item);
 			},
-			getHear(value){
+			startThing(value){
+				this.letter=true;
 				this.atpresent=value;
 				this.$nextTick(() =>{ //滚动到通讯录分组的地方
 					const listArray = this.$refs.addlist.getElementsByClassName("addlistLi");
@@ -157,6 +165,9 @@
 					}
 					
 				})
+			},
+			endThing(){
+				this.letter=false
 			}
 		}
 	}
@@ -256,6 +267,34 @@
 				}
 				p{
 					@include sizeColor(0.54rem,#585858);
+				}
+			}
+			.big-letter{
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%); 
+				width:3.3706666667rem;
+				height:3.3706666667rem;
+				.letter-bg{
+					position: absolute;
+					top:0;
+					left:0;
+					width:3.3706666667rem;
+					height:3.3706666667rem;
+					background:#000;
+					opacity: .6;
+					border-radius:5px;
+				}
+				.letter{
+					position: relative;
+					z-index: 10;
+					width:3.3706666667rem;
+					line-height:3.3706666667rem;
+					text-align:center;
+					font-size:2rem;
+					color:#fff;
+					font-family:SimSun !important;
 				}
 			}
 		}

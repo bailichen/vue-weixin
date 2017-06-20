@@ -213,7 +213,6 @@
 
 	            	}
             		this.groupconversine = [...groupData.history, ...this.groupconversine]
-            		console.log(this.groupconversine)
             		this.allgroups=[...this.groupconversine]
 					Array.prototype.unique = function(){//数组去重
 						var res = [this[0]];

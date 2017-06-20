@@ -56,7 +56,7 @@
 								<span class="right">12:07</span>
 							</div>
 							<div class="infordetail_bot ellipsis">
-								地点
+								请同学们文明交流~~~
 							</div>
 						</div>
 					</router-link>
