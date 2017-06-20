@@ -267,9 +267,11 @@
 		@include widthHeight(12rem,2rem);
 		background:#fff;
 		left:2rem;
+
 	}
 	.friend_wipe{
 		width:100%;
+		padding-bottom:1rem;
 		background-color: #f8f8f8;
 		overflow:scroll;  
 		-webkit-overflow-scrolling: touch; 

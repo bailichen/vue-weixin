@@ -314,7 +314,7 @@
 	.router-show-enter-active,.router-show-leave-active{
 		transition: all .4s;
 	}
-	.router-show-enter,.router-show-leave{
+	.router-show-enter,.router-show-leave-active{
 		transform:translateX(100%)
 	}
 	
@@ -654,11 +654,12 @@
 		z-index:100;
 		img{
 			display:block;
-			width:100%;
+			width:auto;
 			height:15.0186666667rem;
 			position: absolute;
 			top:50%;
-			left:0;
+			left:50%;
+			transform:translateX(-50%);
 			margin-top:-7.5093333333rem;
 		}
 	}
