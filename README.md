@@ -159,9 +159,7 @@ npm run dev (访问本地，运行后访问 http://localhost:8882)
 │   │   │   └── wallet
 │   │   │       └── wallet.vue                   // 我的钱包
 │   │   ├── search
-│   │   │   └── search.vue                       // 搜索
-│   │   └── transfer
-│   │       └── transfer.vue
+│   │       └── search.vue                       // 搜索     
 │   ├── images
 │   ├── main.js                                  // 程序入口文件，加载各种公共组件
 │   ├── router
