@@ -7,29 +7,33 @@ import './config/rem'
 import FastClick from 'fastclick'
 
 if ('addEventListener' in document) {
-  document.addEventListener('DOMContentLoaded', function() {
-    FastClick.attach(document.body);
-  }, false);
+	document.addEventListener('DOMContentLoaded', function() {
+		FastClick.attach(document.body);
+	}, false);
 }
 
 Vue.use(VueRouter)
+
 const router = new VueRouter({
 	routes,
-	mode:'history',  //路由模式
+	mode: 'history', //路由模式
 	strict: process.env.NODE_ENV !== 'production',
-	scrollBehavior (to, from, savedPosition) {
-		if(savedPosition){
+	scrollBehavior(to, from, savedPosition) {
+		if (savedPosition) {
 			return savedPosition
 		} else {
-			return {x:0,y:to.meta.savedPosition || 0}
+			return {
+				x: 0,
+				y: to.meta.savedPosition || 0
+			}
 		}
 	}
 })
 router.beforeEach((to, from, next) => {
-  	if(from.meta.keepAlive){
+	if (from.meta.keepAlive) {
 		from.meta.savedPosition = document.body.scrollTop;
 	}
-  	next()
+	next()
 })
 
 new Vue({

@@ -1,5 +1,5 @@
 //获取图片地址
-const imgurl = 'http://images.cangdu.org/';
+const imgurl = 'http://cangdu.org/files/images/';
 let baseUrl;
 
 if (process.env.NODE_ENV == 'development') {

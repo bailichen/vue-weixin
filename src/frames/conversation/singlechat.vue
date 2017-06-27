@@ -229,7 +229,7 @@
 	.router-show-enter-active,.router-show-leave-active{
 		transition: all .4s;
 	}
-	.router-show-enter,.router-show-leave{
+	.router-show-enter,.router-show-leave-active{
 		transform:translateX(100%)
 	}
 

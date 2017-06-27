@@ -339,7 +339,7 @@ X:[
 		"sex":1,
 		"sdasd":"披荆斩棘",
 		"phone":"15800319949",
-		"sendobject":0,
+		"sendobject":1,
 		"gallery":[
 			imgurl+'chen.jpg',imgurl+'cangdu.jpg',imgurl+'b1.jpg'
 		],

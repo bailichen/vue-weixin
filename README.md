@@ -1,17 +1,17 @@
-## 前言
+### 前言
 
 这个项目是利用工作之余写的一个模仿微信app的单页面应用，整个项目包含27个页面，涉及实时群聊，机器人聊天，同学录，朋友圈等等，后续页面还是开发中。写这个项目主要目的是练习和熟悉vue和vuex的配合使用，利用socket.io实现实时聊天。
 
 欢迎各路大神Issues
 
-## 技术栈
+### 技术栈
 
 ```
 vue2+vue-router+webpack+vuex+sass+svg构图+es6/7
 
 ```
 
-## 项目运行
+### 项目运行
 
 ```
 git clone https://github.com/bailichen/vue-weixin.git
@@ -23,7 +23,7 @@ npm install
 npm run dev (访问本地，运行后访问 http://localhost:8882)
 
 ```
-### 效果演示
+### 效果演示 
 
 [项目演示请点击这里](http://cangdu.org:8003/dialogue) （请用chrome手机模式预览）
 
@@ -159,9 +159,7 @@ npm run dev (访问本地，运行后访问 http://localhost:8882)
 │   │   │   └── wallet
 │   │   │       └── wallet.vue                   // 我的钱包
 │   │   ├── search
-│   │   │   └── search.vue                       // 搜索
-│   │   └── transfer
-│   │       └── transfer.vue
+│   │       └── search.vue                       // 搜索     
 │   ├── images
 │   ├── main.js                                  // 程序入口文件，加载各种公共组件
 │   ├── router

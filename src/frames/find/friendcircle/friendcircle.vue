@@ -92,7 +92,7 @@
 				<!-- 评论 -->
 				<section class="criticism" v-if="criticismstate">
 					<div class="criticism_con">
-						<textarea name="" id="" cols="30" rows="10" v-model="textareaVlue" @input="inputCriticism"></textarea>
+						<textarea name="" id="" cols="30" rows="10" ref="textinput" v-model="textareaVlue" @input="inputCriticism" @keyup.enter="enterThing"></textarea>
 						<span :class="{notempty:changeinput}" @click="commentSend">发送</span>
 					</div>
 				</section>
@@ -173,6 +173,9 @@
             ...mapActions([
             	"getUserInfo",
             ]),
+            enterThing(){
+				this.commentSend()
+            },
 			exportInput(){
 				this.afterclcik=false;
 			},
@@ -226,25 +229,32 @@
 				}
 			},
 			criticismThing(item){//评论
+
 				this.itemlist={};
 				this.itemlist=item;
 				this.criticismstate=true;
+				this.$nextTick(()=>{
+					this.$refs.textinput.focus();
+				})
 				this.commentHide(item);
 			},
 			inputCriticism(){//文本框是否为空
 				this.textareaVlue ? this.changeinput=true : this.changeinput=false;
 			},
 			commentSend(){//评论点击发送
-				if(this.textareaVlue){
-					this.itemlist.comment.push({
-						wxid:this.userInfoData.id,
-						petname:this.userInfoData.name,
-						commentext:this.textareaVlue
-					})
+				if(this.changeinput){
+					if(this.textareaVlue){
+						this.itemlist.comment.push({
+							wxid:this.userInfoData.id,
+							petname:this.userInfoData.name,
+							commentext:this.textareaVlue
+						})
+					}
+					this.criticismstate=false;
+					this.textareaVlue='';
+					this.changeinput=false;
 				}
-				this.criticismstate=false;
-				this.textareaVlue='';
-				this.changeinput=false;
+				
 			}
 		}
 	}
@@ -267,9 +277,11 @@
 		@include widthHeight(12rem,2rem);
 		background:#fff;
 		left:2rem;
+
 	}
 	.friend_wipe{
 		width:100%;
+		padding-bottom:1rem;
 		background-color: #f8f8f8;
 		overflow:scroll;  
 		-webkit-overflow-scrolling: touch; 

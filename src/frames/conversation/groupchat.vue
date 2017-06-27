@@ -16,8 +16,10 @@
 					<!--  群聊-->
 					<li v-for="item in groupconversine" >
 						<div class="other" :class="{mysay : item.user_id == userInfo.id }">
+							<div class="say-time">{{item.time}}</div>
 							<img :src="imgurl + item.avatar" alt="" @click="enlargeImg(item.avatar)">
 							<div class="whatsay">
+								
 								<div class="whatsay_svg">
 									<svg>
 										<use xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="item.user_id == userInfo.id ? '#trigon-right' : '#trigon-left'"></use>
@@ -27,6 +29,7 @@
 									{{item.content}}
 								</div>
 							</div>
+							
 						</div>
 					</li>
 				</ul>
@@ -152,6 +155,7 @@
 			
 		},
 		mounted(){
+
 			this.getUserInfo();
 			this.groupList(this.offset);
 			this.loadStatus=true;
@@ -199,6 +203,7 @@
 
             async groupList(offset){
             	const groupData = await getHistory({"offset":this.offset, "limit":20} )
+            	console.log(groupData)
             	if(groupData.history.length < 20){
             		this.underscore=true;
             	}
@@ -213,7 +218,6 @@
 
 	            	}
             		this.groupconversine = [...groupData.history, ...this.groupconversine]
-            		console.log(this.groupconversine)
             		this.allgroups=[...this.groupconversine]
 					Array.prototype.unique = function(){//数组去重
 						var res = [this[0]];
@@ -283,7 +287,6 @@
 				this.clickmore=false;
 			},
 			async clickSend(){
-				console.log(this.inputmessage)
 				socket.emit('chat', {user_id: this.userInfo.id, content: this.inputmessage});
 				this.inputmessage='';
 				this.light=false;
@@ -314,7 +317,7 @@
 	.router-show-enter-active,.router-show-leave-active{
 		transition: all .4s;
 	}
-	.router-show-enter,.router-show-leave{
+	.router-show-enter,.router-show-leave-active{
 		transform:translateX(100%)
 	}
 	
@@ -480,14 +483,24 @@
 					.other{
 						width:100%;
 						@include justify(flex-start);
-						margin-bottom:0.512rem;
+						margin-bottom:1.3rem;
 						align-items:top;
+						position: relative;
+						.say-time{
+							@include sizeColor(.64rem,#999);
+							width:8rem;
+							position: absolute;
+							top:-.4rem;
+							left:2.5rem;
+						}
 						img{
 							display:block;
 							@include widthHeight(1.7493333333rem,1.7493333333rem);
 						}
 						.whatsay{
 							position: relative;
+							margin-top: .4rem;
+							
 							.whatsay_svg{
 								@include widthHeight(0.4266666667rem,0.64rem);
 								position: absolute;
@@ -499,7 +512,6 @@
 									@include widthHeight(0.4266666667rem,0.64rem);
 								}
 							}
-							
 							.whatsay_text{
 								margin-left:0.6399997rem;
 								max-width:10.3253333333rem;
@@ -512,12 +524,16 @@
 								word-break: break-all;
 							}
 						}
-						
+
 					}
 					.mysay{
 						display:flex;
 						flex-direction:row-reverse;
+						.say-time{
+							left:7.8rem;
+						}
 						.whatsay{
+							
 							.whatsay_svg{
 								right:.36rem;
 								left:auto;
@@ -654,11 +670,12 @@
 		z-index:100;
 		img{
 			display:block;
-			width:100%;
+			width:auto;
 			height:15.0186666667rem;
 			position: absolute;
 			top:50%;
-			left:0;
+			left:50%;
+			transform:translateX(-50%);
 			margin-top:-7.5093333333rem;
 		}
 	}
