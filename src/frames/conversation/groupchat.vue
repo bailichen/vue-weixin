@@ -262,6 +262,7 @@
             		this.groupList(this.offset);
             	}else{
             		this.underscore=false;
+                this.loadStatus=false;
             	}
             },
 			whatInput(){
