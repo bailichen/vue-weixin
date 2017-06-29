@@ -529,7 +529,7 @@
 						display:flex;
 						flex-direction:row-reverse;
 						.say-time{
-							left:7.8rem;
+							left:8.8rem;
 						}
 						.whatsay{
 							
