@@ -203,7 +203,6 @@
 
             async groupList(offset){
             	const groupData = await getHistory({"offset":this.offset, "limit":20} )
-            	console.log(groupData)
             	if(groupData.history.length < 20){
             		this.underscore=true;
             	}
@@ -487,7 +486,7 @@
 						align-items:top;
 						position: relative;
 						.say-time{
-							@include sizeColor(.64rem,#999);
+							@include sizeColor(.48rem,#999);
 							width:8rem;
 							position: absolute;
 							top:-.4rem;

@@ -65,7 +65,7 @@
 <style lang="scss" scoped>
 	@import "src/style/public";
 	.child_page{
-		position: absolute;
+		position: fixed;
 		width:100%;
 		height:100%;
 		top: 0;
