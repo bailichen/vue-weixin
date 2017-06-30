@@ -262,6 +262,7 @@
             		this.groupList(this.offset);
             	}else{
             		this.underscore=false;
+            		this.loadStatus=false;
             	}
             },
 			whatInput(){
@@ -475,6 +476,7 @@
 			ul{
 				padding-top:.4rem;
 				width:15.4rem;
+				overflow-x: hidden;
 				overflow-scrolling: touch; 
 				-webkit-overflow-scrolling: touch; 
 				top:0;
