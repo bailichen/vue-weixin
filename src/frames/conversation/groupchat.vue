@@ -476,11 +476,7 @@
 			ul{
 				padding-top:.4rem;
 				width:15.4rem;
-<<<<<<< HEAD
-				overflow-x: hidden;
-=======
         overflow-x: hidden;
->>>>>>> 88b97824d1f4fe6a0e37debcb2c08bdf17fb6bf6
 				overflow-scrolling: touch; 
 				-webkit-overflow-scrolling: touch; 
 				top:0;
