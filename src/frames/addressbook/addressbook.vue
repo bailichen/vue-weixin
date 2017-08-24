@@ -47,7 +47,7 @@
 					</router-link>
 				</ul>
 			</div>
-			<div class="contacts_bottom">
+			<div class="contacts_bottom" ref="addlistfather">
 				<ul class="contacts_bottom_ul" ref="addlist">
 					<li v-for="(value, key, index) in manageaddress" :key="key" class="addlistLi" >
 						<h1>{{key}}</h1>
@@ -71,16 +71,17 @@
 						<p>#</p>
 					</section>
 				</section>
-				
 				<section class="big-letter" v-if="letter">
 					<div class="letter-bg"></div>
 					<div class="letter">
 						{{atpresent}}
 					</div>
 				</section>
+				<section class="peoplenum">{{peoplenum}}位联系人</section>
 			</div>
+
 		</section>
-		<section class="peoplenum">{{peoplenum}}位联系人</section>
+		
 		<foot-guide></foot-guide>
 		<transition name="router-show">
 			<router-view></router-view>
@@ -157,13 +158,23 @@
 				this.atpresent=value;
 				this.$nextTick(() =>{ //滚动到通讯录分组的地方
 					const listArray = this.$refs.addlist.getElementsByClassName("addlistLi");
+					const getBody = document.getElementsByTagName("body")[0];
 					for(let i =0; i<listArray.length; i++){
 						if(listArray[i].getElementsByTagName("h1")[0].innerText == value){
-
-							const getBody = document.getElementsByTagName("body")[0];
-
+							if(this.$refs.addlistfather.offsetTop+this.$refs.addlistfather.offsetHeight+100 >=listArray[i].offsetTop+document.body.clientHeight){
+								console.log(this.$refs.addlistfather.offsetTop)
+							console.log(this.$refs.addlistfather.offsetHeight)
+							console.log(listArray[i].offsetTop)
+							console.log(document.body.clientHeight)
+								
 							animate(getBody,{scrollTop : listArray[i].offsetTop-50});
-
+						}else{
+							console.log(1);
+							var scrollval = this.$refs.addlistfather.offsetTop+this.$refs.addlistfather.offsetHeight;
+							animate(getBody,{scrollTop : scrollval});
+						}
+							
+							
 						}
 					}
 					
