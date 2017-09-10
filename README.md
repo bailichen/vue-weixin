@@ -32,6 +32,8 @@ npm run dev (访问本地，运行后访问 http://localhost:8882)
 
 ![](https://github.com/bailichen/vue-weixin/raw/master/printscreen/code.png)
 
+### 后台代码在这里
+[后台代码](https://github.com/bailicangdu/node-weixin)
 
 ### 说明
 
