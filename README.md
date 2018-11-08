@@ -39,7 +39,7 @@ npm run dev (访问本地，运行后访问 http://localhost:8882)
 
 > 本项目主要用于熟悉vue2+vuex的用法
 
-> 如有问题请直接在Issues中提出，或加qq：812571880
+> 如有问题请直接在Issues中提出
 
 > 如果觉得对您学习vue有点点帮助，请右上角star一下吧   ^_^
 
