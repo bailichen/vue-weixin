@@ -22,7 +22,7 @@
 ### 技术栈
 
 ```
-vue2+vue-router+webpack+vuex+sass+svg构图+es6/7
+vue2+vue-router+webpack+vuex+scss+svg构图+es6/7
 
 ```
 
