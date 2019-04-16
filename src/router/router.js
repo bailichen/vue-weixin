@@ -1,4 +1,4 @@
-import App from '../APP'
+import App from '../app'
  
 const dialogue = r => require.ensure([], () => r(require('../frames/dialogue/dialogue')), 'dialogue')
 const singlechat = r => require.ensure([], () => r(require('../frames/conversation/singlechat')), 'singlechat')

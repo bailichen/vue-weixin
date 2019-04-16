@@ -5,7 +5,7 @@ import store from './vuex/'
 import './style/public.scss'
 import './config/rem'
 import FastClick from 'fastclick'
-
+import App from './app.vue';
 if ('addEventListener' in document) {
 	document.addEventListener('DOMContentLoaded', function() {
 		FastClick.attach(document.body);
@@ -37,6 +37,8 @@ router.beforeEach((to, from, next) => {
 })
 
 new Vue({
-	router,
+    el: '#weixin',
+    router,
+    render: h => h(App),
 	store,
-}).$mount("#weixin")
+})

@@ -39,7 +39,7 @@
 					<li class="wallet_li" v-for="(value,key) in serviceData" :key="key">
 						<h1>{{key}}</h1>
 						<ul class="clear">
-							<li v-for="item in value">
+							<li v-for="(item,index) in value" :key="index">
 								<img :src="item.servicelogo" alt="">
 								<span>{{item.servicename}}</span>
 							</li>
@@ -83,7 +83,7 @@
 	}
 </script>
 <style lang="scss" scoped>
-	@import "src/style/public";
+	@import "~@/style/public";
 	.child_page{
 		position: fixed;
 		top: 0;
