@@ -1,11 +1,17 @@
 ### 通知
-```
+
 项目vue+vuex版本已更新版本，只接口图片不加载，不影响初学者学习vue。
-## 更新说明
+
+### 更新说明
+```
 "vue": "^2.5.2",
+
 "vue-router": "^3.0.1",
+
 "vuex": "^3.1.0"
+
 "webpack": "^4.17.1",
+
 ```
 ### 前言
 
@@ -29,7 +35,7 @@ cd vue-weixin
 
 npm install
 
-npm run dev (访问本地，运行后访问 http://localhost:8882)
+npm run start (访问本地，运行后访问 http://localhost:10022)
 
 ```
 ### 效果演示 
