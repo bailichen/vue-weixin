@@ -5,7 +5,7 @@
   "author": "chen <812571880@qq.com>",
   "private": true,
   "scripts": {
-    "ins": "npm install --registry=https://registry.npm.taobao.org",
+    "ins": "npm install --registry=https://registry.npmmirror.com",
     "start": "cross-env DOMAIN=local webpack-dev-server --hide-modules --config build/webpack.dev.config.js --hot --historyApiFallback --inline --open",
     "start:test": "cross-env DOMAIN=test webpack-dev-server --hide-modules --config build/webpack.dev.config.js --hot --historyApiFallback --inline --open",
     "dev": "cross-env DOMAIN=development webpack --hide-modules --config build/webpack.prod.config.js",
